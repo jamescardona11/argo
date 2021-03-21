@@ -1,4 +1,5 @@
 import 'package:argo/argo.dart';
+import 'package:argo/responsive/orientation_layout_builder.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -27,8 +28,21 @@ class HomeView extends StatelessWidget {
           width: context.widthPct(10),
           height: context.heightPct(20),
           color: Theme.of(context).primaryColor,
-          child: Center(
-            child: Text('Hello World'),
+          child: Column(
+            children: [
+              Center(
+                child: Text('Hello World'),
+              ),
+              OrientationLayoutBuilder(
+                portrait: (context) {
+                  return Container(
+                    width: context.widthPct(100),
+                    height: context.heightPct(10),
+                    color: Colors.green,
+                  );
+                },
+              )
+            ],
           ),
         ),
       ),
