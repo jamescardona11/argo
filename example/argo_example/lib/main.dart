@@ -1,5 +1,4 @@
 import 'package:argo/argo.dart';
-import 'package:argo/responsive/orientation_layout_builder.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -22,6 +21,10 @@ class MyApp extends StatelessWidget {
 class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final b = ResponsiveWrapper.of(context);
+
+    print('msg ${b == null}');
+
     return Container(
       child: Center(
         child: Container(
@@ -35,17 +38,31 @@ class HomeView extends StatelessWidget {
               ),
               OrientationLayoutBuilder(
                 portrait: (context) {
-                  return Container(
-                    width: context.widthPct(100),
-                    height: context.heightPct(10),
-                    color: Colors.green,
-                  );
+                  print('constraints.maxWidth1 => ${context.widthPx}');
+                  print('constraints.maxHeight1 => ${context.heightPx}');
+                  return OrientationExample();
                 },
               )
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class OrientationExample extends StatelessWidget {
+  const OrientationExample({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    print('constraints.maxWidth => ${context.widthPx}');
+    print('constraints.maxHeight => ${context.heightPx}');
+
+    return Container(
+      width: context.widthPct(100),
+      height: context.heightPct(10),
+      color: Colors.green,
     );
   }
 }
