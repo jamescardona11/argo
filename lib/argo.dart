@@ -1,7 +1,4 @@
 library argo;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export './responsive/responsive_extension.dart';
+export './platform_info/platform_info.dart' hide PlatformInfo, PlatformInfoType;

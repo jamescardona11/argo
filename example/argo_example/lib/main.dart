@@ -12,8 +12,22 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Material App Bar'),
         ),
-        body: Center(
-          child: Container(
+        body: HomeView(),
+      ),
+    );
+  }
+}
+
+class HomeView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Center(
+        child: Container(
+          width: context.widthPct(10),
+          height: context.heightPct(20),
+          color: Theme.of(context).primaryColor,
+          child: Center(
             child: Text('Hello World'),
           ),
         ),
