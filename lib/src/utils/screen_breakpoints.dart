@@ -1,4 +1,5 @@
 // Minimum values breakpoints for type of device
+
 class ScreenBreakpoints {
   final double mobile;
   final double tablet;
@@ -9,6 +10,17 @@ class ScreenBreakpoints {
     required this.tablet,
     required this.desktop,
   });
+
+  ScreenBreakpoints copyWith({
+    double? mobile,
+    double? tablet,
+    double? desktop,
+  }) =>
+      ScreenBreakpoints(
+        mobile: mobile ?? defaultBreakPoints.mobile,
+        tablet: tablet ?? defaultBreakPoints.tablet,
+        desktop: desktop ?? defaultBreakPoints.desktop,
+      );
 
   @override
   String toString() {
