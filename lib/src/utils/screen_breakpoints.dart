@@ -1,4 +1,4 @@
-import 'package:argo/src/responsive/responsive_wrapper.dart';
+import 'package:argo/src/widgets/responsive_wrapper.dart';
 import 'package:flutter/widgets.dart';
 
 // Minimum values breakpoints for type of device
