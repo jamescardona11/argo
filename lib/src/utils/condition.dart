@@ -1,48 +1,45 @@
-import 'package:argo/src/utils/screen_breakpoints.dart';
-
 import 'device_screen_type.dart';
 
-class Condition {
-  final DeviceScreenType? type;
-  final Conditional? condition;
-
-  final bool? value;
+class Condition<T> {
+  final DeviceScreenType? screenType;
+  final Conditional? conditional;
+  final T? value;
   final double? breakpoint;
 
   const Condition._({
-    this.type,
-    this.condition,
+    this.screenType,
+    this.conditional,
     this.value,
     this.breakpoint,
   });
 
-  const Condition.equals({required DeviceScreenType type})
-      : this.type = type,
-        this.value = true,
+  const Condition.equals({required DeviceScreenType type, T? value})
+      : this.screenType = type,
+        this.value = value,
         this.breakpoint = null,
-        this.condition = Conditional.EQUALS;
+        this.conditional = Conditional.EQUALS;
 
-  const Condition.largerThan({required DeviceScreenType type, double? breakpoint})
-      : this.type = type,
-        this.value = true,
+  const Condition.largerThan({DeviceScreenType? type, double? breakpoint, T? value})
+      : this.screenType = type,
+        this.value = value,
         this.breakpoint = breakpoint,
-        this.condition = Conditional.LARGER_THAN;
+        this.conditional = Conditional.LARGER_THAN;
 
-  const Condition.smallerThan({required DeviceScreenType type, double? breakpoint})
-      : this.type = type,
-        this.value = true,
+  const Condition.smallerThan({DeviceScreenType? type, double? breakpoint, T? value})
+      : this.screenType = type,
+        this.value = value,
         this.breakpoint = breakpoint,
-        this.condition = Conditional.SMALLER_THAN;
+        this.conditional = Conditional.SMALLER_THAN;
 
   Condition copyWith({
     DeviceScreenType? type,
     Conditional? condition,
-    bool? value,
+    T? value,
     double? breakpoint,
   }) =>
       Condition._(
-        type: type ?? this.type,
-        condition: condition ?? this.condition,
+        screenType: type ?? this.screenType,
+        conditional: condition ?? this.conditional,
         value: value ?? this.value,
         breakpoint: breakpoint ?? this.breakpoint,
       );
@@ -53,9 +50,9 @@ class Condition {
       'breakpoint: ' +
       breakpoint.toString() +
       ', type: ' +
-      type.toString() +
+      screenType.toString() +
       ', condition: ' +
-      condition.toString() +
+      conditional.toString() +
       ', value: ' +
       value.toString() +
       ')';
@@ -71,5 +68,3 @@ enum Conditional {
   SMALLER_THAN,
   LARGER_THAN,
 }
-
-void conditionValue(ScreenBreakpoints breakpoints, List<Condition> valueWhen) {}

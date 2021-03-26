@@ -1,4 +1,12 @@
+import 'package:argo/src/responsive/responsive_wrapper.dart';
+import 'package:flutter/widgets.dart';
+
 // Minimum values breakpoints for type of device
+const defaultBreakPoints = const ScreenBreakpoints(
+  mobile: 320,
+  tablet: 700,
+  desktop: 1200,
+);
 
 class ScreenBreakpoints {
   final double mobile;
@@ -28,27 +36,13 @@ class ScreenBreakpoints {
   }
 }
 
-// Minimum values breakpoints for type of device
-const ScreenBreakpoints defaultBreakPoints = const ScreenBreakpoints(
-  mobile: 320,
-  tablet: 700,
-  desktop: 1200,
-);
+ScreenBreakpoints getBreakPoints(BuildContext context, ScreenBreakpoints? local) {
+  final rw = ResponsiveWrapper.of(context);
+  ScreenBreakpoints? globalBreakpoints = rw?.globalBreakpoints;
 
-class RefinedBreakpoints {
-  // Desktop
-  final double desktopExtraLarge = 4096;
-  final double desktopLarge = 3840;
-  final double desktopNormal = 1920;
-  final double desktopSmall = 950;
-  // Tablet
-  final double tabletExtraLarge = 900;
-  final double tabletLarge = 850;
-  final double tabletNormal = 768;
-  final double tabletSmall = 650;
-  // Mobile
-  final double mobileExtraLarge = 480;
-  final double mobileLarge = 414;
-  final double mobileNormal = 375;
-  final double mobileSmall = 320;
+  return defaultBreakPoints.copyWith(
+    mobile: local != null ? local.mobile : globalBreakpoints?.mobile,
+    tablet: local != null ? local.tablet : globalBreakpoints?.tablet,
+    desktop: local != null ? local.desktop : globalBreakpoints?.tablet,
+  );
 }

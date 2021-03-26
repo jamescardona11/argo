@@ -1,4 +1,5 @@
 import 'package:argo/src/utils/condition.dart';
+import 'package:argo/src/utils/screen_breakpoints.dart';
 import 'package:flutter/widgets.dart';
 
 class ResponsiveVisibility extends StatelessWidget {
@@ -12,6 +13,7 @@ class ResponsiveVisibility extends StatelessWidget {
   final bool maintainSize;
   final bool maintainSemantics;
   final bool maintainInteractivity;
+  final ScreenBreakpoints? breakpoints;
 
   const ResponsiveVisibility({
     Key? key,
@@ -25,6 +27,7 @@ class ResponsiveVisibility extends StatelessWidget {
     this.maintainSize = false,
     this.maintainSemantics = false,
     this.maintainInteractivity = false,
+    this.breakpoints,
   }) : super(key: key);
 
   @override
@@ -36,6 +39,8 @@ class ResponsiveVisibility extends StatelessWidget {
     // Combine Conditions.
     conditions.addAll(visibleWhen.map((e) => e.copyWith(value: true)));
     conditions.addAll(hiddenWhen.map((e) => e.copyWith(value: false)));
+    final bp = getBreakPoints(context, breakpoints);
+
     // Get visible value from active condition.
     // visibleValue =
     //     ResponsiveValue(context, defaultValue: visibleValue, valueWhen: conditions).value;
