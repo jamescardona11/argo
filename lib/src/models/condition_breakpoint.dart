@@ -32,13 +32,13 @@ class ConditionBreakpoint<T> extends Condition<T> {
       'ConditionBreakpoint( breakpoint: $breakpoint, type: $screenType, condition: $conditional, value: ${value.toString()})';
 
   @override
-  ConditionBreakpoint copyWith({
+  ConditionBreakpoint<T> copyWith({
     DeviceScreenType? type,
     Conditional? condition,
     T? value,
     double? breakpoint,
   }) =>
-      ConditionBreakpoint._(
+      ConditionBreakpoint<T>._(
         screenType: type ?? this.screenType,
         conditional: condition ?? this.conditional,
         value: value ?? this.value,

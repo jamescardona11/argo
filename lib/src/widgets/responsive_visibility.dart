@@ -10,9 +10,9 @@ import 'package:flutter/widgets.dart';
 class ResponsiveVisibility extends StatelessWidget {
   final ScreenBreakpoints? breakpoints;
   final Widget child;
-  final List<ConditionBreakpoint> hiddenWhen;
-  final List<ConditionBreakpoint> visibleWhen;
-  final ConditionScreen conditionScreen;
+  final List<ConditionBreakpoint<bool>> hiddenWhen;
+  final List<ConditionBreakpoint<bool>> visibleWhen;
+  final ConditionScreen<bool> conditionScreen;
   final bool maintainAnimation;
   final bool maintainInteractivity;
   final bool maintainSemantics;
@@ -58,7 +58,7 @@ class ResponsiveVisibility extends StatelessWidget {
   Widget build(BuildContext context) {
     // Initialize mutable value holders.
     final size = MediaQuery.of(context).size;
-    List<ConditionBreakpoint> conditions = [];
+    List<ConditionBreakpoint<bool>> conditions = [];
     bool visibleValue = visible;
 
     // Combine Conditions.
@@ -67,9 +67,19 @@ class ResponsiveVisibility extends StatelessWidget {
     final bp = getCurrentBreakPoints(context: context, local: breakpoints);
 
     if (type! == _ResponsiveVisibilityType.conditions) {
-      visibleValue = valueFromListCondition<bool>(size, bp, visibleValue, conditions);
+      visibleValue = valueFromListCondition<bool>(
+        currentSize: size,
+        conditions: conditions,
+        breakpoints: bp,
+        defaultValue: visibleValue,
+      );
     } else {
-      visibleValue = valueFromCondition<bool>(size, conditionScreen, bp, true);
+      visibleValue = valueFromCondition<bool>(
+        currentSize: size,
+        conditionScreen: conditionScreen,
+        breakpoints: bp,
+        defaultValue: visibleValue,
+      );
     }
 
     return Visibility(

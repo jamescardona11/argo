@@ -1,3 +1,4 @@
+import 'package:argo/src/models/screen_model.dart';
 import 'package:flutter/widgets.dart';
 
 import '../utils/size_by_platform.dart';
@@ -10,7 +11,7 @@ extension DeviceScreenTypeX on DeviceScreenType {
   bool isTablet() => this == DeviceScreenType.tablet;
   bool isDesktop() => this == DeviceScreenType.desktop;
 
-  double? getBreakpoint(ScreenBreakpoints sbp) => {
+  T? getScreenValue<T>(ScreenModel<T> sbp) => {
         DeviceScreenType.mobile: sbp.mobile,
         DeviceScreenType.tablet: sbp.tablet,
         DeviceScreenType.desktop: sbp.desktop,

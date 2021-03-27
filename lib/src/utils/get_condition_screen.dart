@@ -3,20 +3,28 @@ import '../models/device_screen.dart';
 import '../models/screen_breakpoints.dart';
 import 'package:flutter/widgets.dart';
 
-T valueFromCondition<T>(
-  Size currentSize,
-  ConditionScreen conditionScreen,
-  ScreenBreakpoints breakpoint,
-  T defaultValue,
-) {
-  final deviceScreenType = DeviceScreenTypeX.fromBreakpoint(currentSize, breakpoint);
+import 'get_current_breakpoints.dart';
 
-  switch (deviceScreenType) {
-    case DeviceScreenType.mobile:
-      return conditionScreen.mobile ?? defaultValue;
-    case DeviceScreenType.tablet:
-      return conditionScreen.tablet ?? defaultValue;
-    case DeviceScreenType.desktop:
-      return conditionScreen.desktop ?? defaultValue;
-  }
+T valueFromCondition<T>({
+  required Size currentSize,
+  required ConditionScreen<T> conditionScreen,
+  required ScreenBreakpoints breakpoints,
+  required T defaultValue,
+}) {
+  final deviceScreenType = DeviceScreenTypeX.fromBreakpoint(currentSize, breakpoints);
+  return deviceScreenType.getScreenValue(conditionScreen) ?? defaultValue;
+}
+
+T valueFromConditionCtx<T>({
+  required BuildContext context,
+  required ConditionScreen<T> conditionScreen,
+  required T defaultValue,
+}) {
+  final breakpoints = getCurrentBreakPoints(context: context);
+  return valueFromCondition(
+    currentSize: MediaQuery.of(context).size,
+    conditionScreen: conditionScreen,
+    breakpoints: breakpoints,
+    defaultValue: defaultValue,
+  );
 }

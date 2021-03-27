@@ -9,15 +9,15 @@ import 'size_by_platform.dart';
 
 /// Goal: Get a value for an array of conditions
 /// breakpoints: Currentbreakpoint for widget from(global, local and default)
-T valueFromListCondition<T>(
-  Size currentSize,
-  ScreenBreakpoints breakpoints,
-  T defaultValue,
-  List<ConditionBreakpoint> valueWhen,
-) {
-  valueWhen.removeWhere((element) => element.isNull);
+T valueFromListCondition<T>({
+  required Size currentSize,
+  required List<ConditionBreakpoint> conditions,
+  required ScreenBreakpoints breakpoints,
+  required T defaultValue,
+}) {
+  conditions.removeWhere((element) => element.isNull);
 
-  final conditions = _setDefaultValuesToConditions(breakpoints, valueWhen);
+  final valueWhen = _setDefaultValuesToConditions(breakpoints, conditions);
   conditions.sort((a, b) => a.breakpoint!.compareTo(b.breakpoint!));
   final activeCondition = getActiveCondition(valueWhen, currentSize);
 
@@ -28,7 +28,7 @@ List<ConditionBreakpoint> _setDefaultValuesToConditions(
         ScreenBreakpoints breakpoints, List<ConditionBreakpoint> conditions) =>
     conditions.map((cdt) {
       if (cdt.breakpoint == null) {
-        return cdt.copyWith(breakpoint: cdt.screenType!.getBreakpoint(breakpoints));
+        return cdt.copyWith(breakpoint: cdt.screenType!.getScreenValue(breakpoints));
       }
       return cdt;
     }).toList();
