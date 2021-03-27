@@ -8,6 +8,7 @@ abstract class IThemeDataRule {
 }
 
 class DefaultThemeDataRure implements IThemeDataRule {
+  const DefaultThemeDataRure();
   @override
   ThemeData getThemeByRule(ThemeRule rule) {
     switch (rule) {

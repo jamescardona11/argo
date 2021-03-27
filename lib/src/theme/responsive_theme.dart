@@ -7,14 +7,17 @@ class ResponsiveTheme {
   final List<ConditionBreakpoint<IThemeDataRule>>? changeWhen;
   final ConditionScreen<IThemeDataRule>? conditionScreen;
   final ConditionType? type;
+  final IThemeDataRule? deafultTheme;
 
-  ResponsiveTheme.screen(
-    this.conditionScreen,
-  )   : type = ConditionType.conditions,
+  ResponsiveTheme.screen({
+    required this.conditionScreen,
+    this.deafultTheme = const DefaultThemeDataRure(),
+  })  : type = ConditionType.conditions,
         changeWhen = null;
 
-  ResponsiveTheme.conditions(
-    this.changeWhen,
-  )   : type = ConditionType.conditions,
+  ResponsiveTheme.conditions({
+    required this.changeWhen,
+    this.deafultTheme = const DefaultThemeDataRure(),
+  })  : type = ConditionType.conditions,
         conditionScreen = null;
 }

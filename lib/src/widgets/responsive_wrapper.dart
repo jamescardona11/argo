@@ -58,14 +58,14 @@ class ResponsiveWrapper extends StatelessWidget {
           currentSize: size,
           conditions: responsiveTheme!.changeWhen!,
           breakpoints: globalBreakpoints,
-          defaultValue: themeData,
+          defaultValue: responsiveTheme!.deafultTheme ?? themeData,
         );
       } else {
         themeData = valueFromCondition<IThemeDataRule>(
           currentSize: size,
           conditionScreen: responsiveTheme!.conditionScreen!,
           breakpoints: globalBreakpoints,
-          defaultValue: themeData,
+          defaultValue: responsiveTheme!.deafultTheme ?? themeData,
         );
       }
     }
