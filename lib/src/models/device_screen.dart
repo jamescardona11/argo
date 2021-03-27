@@ -1,8 +1,8 @@
-import 'package:argo/src/models/screen_model.dart';
 import 'package:flutter/widgets.dart';
 
 import '../utils/size_by_platform.dart';
 import 'screen_breakpoints.dart';
+import 'screen_model.dart';
 
 enum DeviceScreenType { mobile, tablet, desktop }
 

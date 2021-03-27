@@ -1,8 +1,8 @@
+import 'package:flutter/widgets.dart';
+
 import '../models/condition_screen.dart';
 import '../models/device_screen.dart';
 import '../models/screen_breakpoints.dart';
-import 'package:flutter/widgets.dart';
-
 import 'get_current_breakpoints.dart';
 
 T valueFromCondition<T>({

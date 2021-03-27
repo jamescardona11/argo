@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+
 import 'device_screen.dart';
 
 class ResponsiveInformation {

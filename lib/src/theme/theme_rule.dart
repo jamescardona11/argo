@@ -1,0 +1,4 @@
+enum ThemeRule {
+  light,
+  dark,
+}

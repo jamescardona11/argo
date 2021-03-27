@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import '../platform_info/platform_info.dart';
@@ -43,6 +44,12 @@ extension ResponsiveContext on BuildContext {
 
   /// Returns percent (1-100) of screen inches
   double inchesPct(double percent) => responsiveUtils.inchesPct(percent);
+
+  /// Extension for getting Theme
+  ThemeData get theme => Theme.of(this);
+
+  /// Extension for getting textTheme
+  TextTheme get textTheme => Theme.of(this).textTheme;
 
   ResponsiveUtils get responsiveUtils => ResponsiveUtils._(this);
 }
@@ -98,4 +105,10 @@ class ResponsiveUtils {
 
   /// Returns percent (1-100) of screen inches
   double inchesPct(double percent) => percent * diagonalInches / 100;
+
+  /// Extension for getting Theme
+  ThemeData get theme => Theme.of(_context);
+
+  /// Extension for getting textTheme
+  TextTheme get textTheme => Theme.of(_context).textTheme;
 }

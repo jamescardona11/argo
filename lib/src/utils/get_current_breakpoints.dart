@@ -7,7 +7,7 @@ ScreenBreakpoints getCurrentBreakPoints({
   required BuildContext context,
   ScreenBreakpoints? local,
 }) {
-  final rw = ResponsiveWrapper.of(context);
+  final rw = IWResponsiveWrapper.of(context);
   ScreenBreakpoints? globalBreakpoints = rw?.globalBreakpoints;
 
   return defaultBreakPoints.copyWith(

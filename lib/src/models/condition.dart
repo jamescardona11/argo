@@ -25,3 +25,5 @@ enum Conditional {
   SMALLER_THAN,
   LARGER_THAN,
 }
+
+enum ConditionType { screen, conditions }

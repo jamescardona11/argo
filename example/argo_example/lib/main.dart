@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final b = ResponsiveWrapper.of(context);
+    final b = IWResponsiveWrapper.of(context);
 
     print('msg ${b == null}');
 
