@@ -1,14 +1,9 @@
+import 'package:argo/src/theme/i_theme_data_rule.dart';
+import 'package:argo/src/theme/theme_rule.dart';
 import 'package:flutter/material.dart';
 
-import 'theme_rule.dart';
-
-//Interface
-abstract class IThemeDataRule {
-  ThemeData getThemeByRule(ThemeRule rule);
-}
-
-class DefaultThemeDataRure implements IThemeDataRule {
-  const DefaultThemeDataRure();
+class DefaultThemeDataRule implements IThemeDataRule {
+  const DefaultThemeDataRule();
   @override
   ThemeData getThemeByRule(ThemeRule rule) {
     switch (rule) {

@@ -1,10 +1,11 @@
+import 'package:argo/src/theme/default_theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import '../models/condition.dart';
 import '../models/screen_breakpoints.dart';
 import '../theme/responsive_theme.dart';
-import '../theme/theme_data_rule.dart';
+import '../theme/i_theme_data_rule.dart';
 import '../theme/theme_rule.dart';
 import '../utils/get_condition_breakpoint.dart';
 import '../utils/get_condition_screen.dart';
@@ -50,7 +51,7 @@ class ResponsiveWrapper extends StatelessWidget {
 
   IThemeDataRule getThemeDataFromCondition(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    IThemeDataRule themeData = DefaultThemeDataRure();
+    IThemeDataRule themeData = DefaultThemeDataRule();
 
     if (responsiveTheme != null) {
       if (responsiveTheme!.type == ConditionType.conditions) {

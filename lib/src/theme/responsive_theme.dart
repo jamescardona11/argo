@@ -1,7 +1,8 @@
 import '../models/condition.dart';
 import '../models/condition_breakpoint.dart';
 import '../models/condition_screen.dart';
-import 'theme_data_rule.dart';
+import 'default_theme_data.dart';
+import 'i_theme_data_rule.dart';
 
 class ResponsiveTheme {
   final List<ConditionBreakpoint<IThemeDataRule>>? changeWhen;
@@ -11,13 +12,13 @@ class ResponsiveTheme {
 
   ResponsiveTheme.screen({
     required this.conditionScreen,
-    this.deafultTheme = const DefaultThemeDataRure(),
+    this.deafultTheme = const DefaultThemeDataRule(),
   })  : type = ConditionType.conditions,
         changeWhen = null;
 
   ResponsiveTheme.conditions({
     required this.changeWhen,
-    this.deafultTheme = const DefaultThemeDataRure(),
+    this.deafultTheme = const DefaultThemeDataRule(),
   })  : type = ConditionType.conditions,
         conditionScreen = null;
 }
