@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'screen_model.dart';
 
 class ScreenBreakpoints extends ScreenModel<double> {

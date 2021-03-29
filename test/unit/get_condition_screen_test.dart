@@ -1,14 +1,11 @@
-import 'package:argo/src/models/condition_breakpoint.dart';
 import 'package:argo/src/models/condition_screen.dart';
-import 'package:argo/src/models/device_screen.dart';
 import 'package:argo/src/models/screen_breakpoints.dart';
-import 'package:argo/src/utils/get_condition_breakpoint.dart';
 import 'package:argo/src/utils/get_condition_screen.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  group('Utils getValueFromListConditions', () {
+  group('Utils getValueFromCondition By Screen', () {
     ScreenBreakpoints screenBreakpoints = const ScreenBreakpoints(
       mobile: 320,
       tablet: 700,
