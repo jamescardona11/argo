@@ -22,7 +22,7 @@ extension DeviceScreenTypeX on DeviceScreenType {
   static DeviceScreenType fromBreakpoint(Size size, ScreenBreakpoints breakpoint) {
     double deviceWidth = getSizeByPlatform(size);
 
-    if (deviceWidth > breakpoint.desktop!) {
+    if (deviceWidth >= breakpoint.desktop!) {
       return DeviceScreenType.desktop;
     }
 

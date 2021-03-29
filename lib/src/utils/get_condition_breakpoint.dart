@@ -18,8 +18,8 @@ T valueFromListCondition<T>({
   conditions.removeWhere((element) => element.isNull);
 
   final valueWhen = _setDefaultValuesToConditions(breakpoints, conditions);
-  conditions.sort((a, b) => a.breakpoint!.compareTo(b.breakpoint!));
-  final activeCondition = getActiveCondition(valueWhen, currentSize);
+  valueWhen.sort((a, b) => a.breakpoint!.compareTo(b.breakpoint!));
+  final activeCondition = _getActiveCondition(valueWhen, currentSize, breakpoints);
 
   return activeCondition?.value ?? defaultValue;
 }
@@ -33,12 +33,13 @@ List<ConditionBreakpoint> _setDefaultValuesToConditions(
       return cdt;
     }).toList();
 
-ConditionBreakpoint? getActiveCondition(
-    List<ConditionBreakpoint> conditions, Size currentSize) {
+ConditionBreakpoint? _getActiveCondition(List<ConditionBreakpoint> conditions,
+    Size currentSize, ScreenBreakpoints breakpoints) {
   ConditionBreakpoint? equalsCondition = conditions
       .where((element) => element.conditional == Conditional.EQUALS)
-      .firstWhereOrNull(
-          (element) => DeviceScreenTypeX.fromSize(currentSize) == element.screenType);
+      .firstWhereOrNull((element) =>
+          DeviceScreenTypeX.fromBreakpoint(currentSize, breakpoints) ==
+          element.screenType);
 
   if (equalsCondition != null) {
     return equalsCondition;
