@@ -54,16 +54,16 @@ class ResponsiveWrapper extends StatelessWidget {
 
     if (responsiveTheme != null) {
       if (responsiveTheme!.type == ConditionType.conditions) {
-        themeData = valueFromListCondition<IThemeDataRule>(
+        themeData = valueFromConditionByBreakpoints<IThemeDataRule>(
           currentSize: size,
-          conditions: responsiveTheme!.changeWhen!,
+          condition: responsiveTheme!.changeWhen!,
           breakpoints: globalBreakpoints,
           defaultValue: responsiveTheme!.deafultTheme ?? themeData,
         );
       } else {
-        themeData = valueFromCondition<IThemeDataRule>(
+        themeData = valueFromConditionByScreen<IThemeDataRule>(
           currentSize: size,
-          conditionScreen: responsiveTheme!.conditionScreen!,
+          condition: responsiveTheme!.conditionScreen!,
           breakpoints: globalBreakpoints,
           defaultValue: responsiveTheme!.deafultTheme ?? themeData,
         );

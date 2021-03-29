@@ -5,14 +5,14 @@ import '../models/device_screen.dart';
 import '../models/screen_breakpoints.dart';
 import 'get_current_breakpoints.dart';
 
-T valueFromCondition<T>({
+T valueFromConditionByScreen<T>({
   required Size currentSize,
-  required ConditionScreen<T> conditionScreen,
+  required ConditionScreen<T> condition,
   required ScreenBreakpoints breakpoints,
   required T defaultValue,
 }) {
   final deviceScreenType = DeviceScreenTypeX.fromBreakpoint(currentSize, breakpoints);
-  return deviceScreenType.getScreenValue(conditionScreen) ?? defaultValue;
+  return deviceScreenType.getScreenValue(condition) ?? defaultValue;
 }
 
 T valueFromConditionCtx<T>({
@@ -21,9 +21,9 @@ T valueFromConditionCtx<T>({
   required T defaultValue,
 }) {
   final breakpoints = getCurrentBreakPoints(context: context);
-  return valueFromCondition(
+  return valueFromConditionByScreen(
     currentSize: MediaQuery.of(context).size,
-    conditionScreen: conditionScreen,
+    condition: conditionScreen,
     breakpoints: breakpoints,
     defaultValue: defaultValue,
   );

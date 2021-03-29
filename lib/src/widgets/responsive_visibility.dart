@@ -83,16 +83,16 @@ class ResponsiveVisibility extends StatelessWidget {
     final bp = getCurrentBreakPoints(context: context, local: breakpoints);
 
     if (type! == ConditionType.conditions) {
-      visibleValue = valueFromListCondition<bool>(
+      visibleValue = valueFromConditionByBreakpoints<bool>(
         currentSize: size,
-        conditions: conditions,
+        condition: conditions,
         breakpoints: bp,
         defaultValue: visibleValue,
       );
     } else {
-      visibleValue = valueFromCondition<bool>(
+      visibleValue = valueFromConditionByScreen<bool>(
         currentSize: size,
-        conditionScreen: conditionScreen,
+        condition: conditionScreen,
         breakpoints: bp,
         defaultValue: visibleValue,
       );

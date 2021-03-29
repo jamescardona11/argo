@@ -34,9 +34,9 @@ void main() {
         ),
       ];
 
-      final value = valueFromListCondition<bool>(
+      final value = valueFromConditionByBreakpoints<bool>(
         currentSize: size,
-        conditions: conditions,
+        condition: conditions,
         breakpoints: screenBreakpoints,
         defaultValue: true,
       );
@@ -65,9 +65,9 @@ void main() {
         ),
       ];
 
-      final value = valueFromListCondition<bool>(
+      final value = valueFromConditionByBreakpoints<bool>(
         currentSize: size,
-        conditions: conditions,
+        condition: conditions,
         breakpoints: screenBreakpoints,
         defaultValue: true,
       );
@@ -84,9 +84,9 @@ void main() {
         ),
       ];
 
-      final value = valueFromListCondition<bool>(
+      final value = valueFromConditionByBreakpoints<bool>(
         currentSize: size,
-        conditions: conditions,
+        condition: conditions,
         breakpoints: screenBreakpoints,
         defaultValue: false,
       );
@@ -103,9 +103,9 @@ void main() {
         ),
       ];
 
-      final value = valueFromListCondition<bool>(
+      final value = valueFromConditionByBreakpoints<bool>(
         currentSize: size,
-        conditions: conditions,
+        condition: conditions,
         breakpoints: screenBreakpoints,
         defaultValue: false,
       );
