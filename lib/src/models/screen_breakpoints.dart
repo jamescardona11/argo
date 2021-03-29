@@ -1,13 +1,29 @@
-import 'dart:ui';
-
 import 'screen_model.dart';
 
+//Minimum Values for Mobile, Tablet, Desktop
 class ScreenBreakpoints extends ScreenModel<double> {
+  final bool isFloor;
+
   const ScreenBreakpoints({
     required double mobile,
     required double tablet,
     required double desktop,
-  }) : super(mobile: mobile, tablet: tablet, desktop: desktop);
+  })   : isFloor = true,
+        super(mobile: mobile, tablet: tablet, desktop: desktop);
+
+  const ScreenBreakpoints.byFloor({
+    required double mobile,
+    required double tablet,
+    required double desktop,
+  })   : isFloor = true,
+        super(mobile: mobile, tablet: tablet, desktop: desktop);
+
+  const ScreenBreakpoints.byCeiling({
+    required double mobile,
+    required double tablet,
+    required double desktop,
+  })   : isFloor = false,
+        super(mobile: mobile, tablet: tablet, desktop: desktop);
 
   @override
   ScreenBreakpoints copyWith({
@@ -22,7 +38,7 @@ class ScreenBreakpoints extends ScreenModel<double> {
       );
 
   @override
-  String toString() => 'ScreenBreakpoints(${super.toString()})';
+  String toString() => 'ScreenBreakpoints(${super.toString()} isFloor: $isFloor)';
 }
 
 // Minimum values breakpoints for type of device

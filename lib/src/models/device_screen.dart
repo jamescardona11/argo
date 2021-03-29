@@ -22,14 +22,26 @@ extension DeviceScreenTypeX on DeviceScreenType {
   static DeviceScreenType fromBreakpoint(Size size, ScreenBreakpoints breakpoint) {
     double deviceWidth = getSizeByPlatform(size);
 
-    if (deviceWidth >= breakpoint.desktop!) {
+    if (breakpoint.isFloor) {
+      if (deviceWidth >= breakpoint.desktop!) {
+        return DeviceScreenType.desktop;
+      }
+
+      if (deviceWidth > breakpoint.tablet!) {
+        return DeviceScreenType.tablet;
+      }
+
+      return DeviceScreenType.mobile;
+    } else {
+      if (deviceWidth <= breakpoint.mobile!) {
+        return DeviceScreenType.mobile;
+      }
+
+      if (deviceWidth <= breakpoint.tablet!) {
+        return DeviceScreenType.tablet;
+      }
+
       return DeviceScreenType.desktop;
     }
-
-    if (deviceWidth > breakpoint.tablet!) {
-      return DeviceScreenType.tablet;
-    }
-
-    return DeviceScreenType.mobile;
   }
 }
