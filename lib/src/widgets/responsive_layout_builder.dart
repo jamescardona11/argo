@@ -1,7 +1,8 @@
+import 'package:flutter/widgets.dart';
+
 import '../models/device_screen.dart';
 import '../models/screen_breakpoints.dart';
 import '../utils/get_current_breakpoints.dart';
-import 'package:flutter/widgets.dart';
 
 /// Widget to show diferents childs depends of situation, you can use LocalBreakpoints, GlobalBreakpoints or DefaultBreakpoints
 /// [Mobile], [tablet], [desktop] are widget children
@@ -12,7 +13,7 @@ class ResponsiveWidget extends StatelessWidget {
   final Widget? desktop;
   final ScreenBreakpoints? breakpoints;
 
-  ResponsiveWidget({
+  const ResponsiveWidget({
     Key? key,
     this.mobile = const SizedBox(),
     this.tablet,

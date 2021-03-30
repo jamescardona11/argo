@@ -48,7 +48,7 @@ ConditionBreakpoint<T>? _getActiveCondition<T>(List<ConditionBreakpoint<T>> cond
     return equalsCondition;
   }
 
-  ConditionBreakpoint<T>? smallerThanCondition = conditions
+  final ConditionBreakpoint<T>? smallerThanCondition = conditions
       .where((element) => element.conditional == Conditional.SMALLER_THAN)
       .firstWhereOrNull(
           (element) => getSizeByPlatform(currentSize) < element.breakpoint!);
@@ -57,7 +57,7 @@ ConditionBreakpoint<T>? _getActiveCondition<T>(List<ConditionBreakpoint<T>> cond
     return smallerThanCondition;
   }
 
-  ConditionBreakpoint<T>? largerThanCondition = conditions.reversed
+  final ConditionBreakpoint<T>? largerThanCondition = conditions.reversed
       .where((element) => element.conditional == Conditional.LARGER_THAN)
       .firstWhereOrNull(
           (element) => getSizeByPlatform(currentSize) >= element.breakpoint!);

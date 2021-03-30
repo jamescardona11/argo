@@ -7,15 +7,15 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Utils getValueFromConditions By Breakpoint', () {
-    ScreenBreakpoints screenBreakpoints = const ScreenBreakpoints(
+    const ScreenBreakpoints screenBreakpoints = ScreenBreakpoints(
       mobile: 320,
       tablet: 700,
       desktop: 1200,
     );
 
     test('GetValue boolean Size(800, 1000)', () {
-      final size = Size(800, 1000);
-      List<ConditionBreakpoint> conditions = [
+      const size = Size(800, 1000);
+      const List<ConditionBreakpoint<bool>> conditions = [
         ConditionBreakpoint<bool>.equals(
           screenType: DeviceScreenType.mobile,
           value: true,
@@ -45,8 +45,8 @@ void main() {
     });
 
     test('GetValue boolean Size(1200, 1400)', () {
-      final size = Size(1200, 1400);
-      List<ConditionBreakpoint> conditions = [
+      const size = Size(1200, 1400);
+      const List<ConditionBreakpoint<bool>> conditions = [
         ConditionBreakpoint<bool>.equals(
           screenType: DeviceScreenType.mobile,
           value: true,
@@ -76,8 +76,8 @@ void main() {
     });
 
     test('GetValue boolean Size(450, 1400) LargeThan', () {
-      final size = Size(450, 1400);
-      List<ConditionBreakpoint> conditions = [
+      const size = Size(450, 1400);
+      const List<ConditionBreakpoint<bool>> conditions = [
         ConditionBreakpoint<bool>.largerThan(
           value: true,
           breakpoint: 950,
@@ -95,8 +95,8 @@ void main() {
     });
 
     test('GetValue boolean Size(450, 1400) SmallerThan', () {
-      final size = Size(450, 1400);
-      List<ConditionBreakpoint> conditions = [
+      const size = Size(450, 1400);
+      const List<ConditionBreakpoint<bool>> conditions = [
         ConditionBreakpoint<bool>.smallerThan(
           value: true,
           breakpoint: 950,

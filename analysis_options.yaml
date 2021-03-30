@@ -4,4 +4,6 @@ analyzer:
   errors:
     sort_unnamed_constructors_first: ignore
     avoid_redundant_argument_values: ignore
+    constant_identifier_names: ignore
+    
     

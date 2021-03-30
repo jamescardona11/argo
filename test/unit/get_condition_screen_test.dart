@@ -6,15 +6,15 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Utils getValueFromCondition By Screen', () {
-    ScreenBreakpoints screenBreakpoints = const ScreenBreakpoints(
+    const ScreenBreakpoints screenBreakpoints = ScreenBreakpoints(
       mobile: 320,
       tablet: 700,
       desktop: 1200,
     );
 
     test('GetValue boolean Size(800, 1000)', () {
-      final size = Size(800, 1000);
-      final condition = ConditionScreen(
+      const size = Size(800, 1000);
+      const condition = ConditionScreen(
         mobile: 'Mobile',
         tablet: 'Tablet',
         desktop: 'Desktop',
@@ -31,8 +31,8 @@ void main() {
     });
 
     test('GetValue boolean Size(1200, 1400)', () {
-      final size = Size(1200, 1400);
-      final condition = ConditionScreen(
+      const size = Size(1200, 1400);
+      const condition = ConditionScreen(
         mobile: true,
         tablet: false,
         desktop: true,

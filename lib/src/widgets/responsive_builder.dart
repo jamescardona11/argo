@@ -1,8 +1,9 @@
+import 'package:flutter/widgets.dart';
+
 import '../models/device_screen.dart';
 import '../models/responsive_information.dart';
 import '../models/screen_breakpoints.dart';
 import '../utils/get_current_breakpoints.dart';
-import 'package:flutter/widgets.dart';
 
 typedef RBuilder = Widget Function(BuildContext context, ResponsiveInformation info);
 
@@ -24,7 +25,7 @@ class ResponsiveBuilder extends StatelessWidget {
       final bp = getCurrentBreakPoints(context: context, local: breakpoints);
       final size = MediaQuery.of(context).size;
 
-      var info = ResponsiveInformation(
+      final info = ResponsiveInformation(
         deviceScreenType: DeviceScreenTypeX.fromBreakpoint(size, bp),
         screenSize: size,
         localSize: Size(boxConstraints.maxWidth, boxConstraints.maxHeight),

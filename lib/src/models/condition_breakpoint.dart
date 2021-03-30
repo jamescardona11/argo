@@ -8,6 +8,7 @@ class ConditionBreakpoint<T> extends Condition<T> {
 
   const ConditionBreakpoint._({
     this.screenType,
+    // ignore: avoid_unused_constructor_parameters
     required Conditional conditional,
     this.value,
     this.breakpoint,
@@ -16,7 +17,7 @@ class ConditionBreakpoint<T> extends Condition<T> {
   const ConditionBreakpoint.equals({
     required this.screenType,
     this.value,
-  })  : this.breakpoint = null,
+  })  : breakpoint = null,
         super.equals(value: value);
 
   const ConditionBreakpoint.largerThan({this.screenType, this.breakpoint, this.value})
@@ -33,14 +34,14 @@ class ConditionBreakpoint<T> extends Condition<T> {
 
   @override
   ConditionBreakpoint<T> copyWith({
-    DeviceScreenType? type,
-    Conditional? condition,
+    DeviceScreenType? screenType,
+    Conditional? conditional,
     T? value,
     double? breakpoint,
   }) =>
       ConditionBreakpoint<T>._(
-        screenType: type ?? this.screenType,
-        conditional: condition ?? this.conditional,
+        screenType: screenType ?? this.screenType,
+        conditional: conditional ?? this.conditional,
         value: value ?? this.value,
         breakpoint: breakpoint ?? this.breakpoint,
       );

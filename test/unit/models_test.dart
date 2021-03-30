@@ -9,7 +9,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   group('ConditionBreakpoint Model', () {
     test('Create an equals breakpoint', () {
-      final conditionBreakpoint = ConditionBreakpoint.equals(
+      const conditionBreakpoint = ConditionBreakpoint.equals(
         screenType: DeviceScreenType.mobile,
         value: 10.0,
       );
@@ -20,7 +20,7 @@ void main() {
     });
 
     test('Create an largeThan breakpoint', () {
-      final conditionBreakpoint = ConditionBreakpoint.largerThan(
+      const conditionBreakpoint = ConditionBreakpoint.largerThan(
         screenType: DeviceScreenType.mobile,
         value: 10.0,
         breakpoint: 20,
@@ -33,7 +33,7 @@ void main() {
     });
 
     test('Create an smallerThan breakpoint', () {
-      final conditionBreakpoint = ConditionBreakpoint.smallerThan(
+      const conditionBreakpoint = ConditionBreakpoint.smallerThan(
         screenType: DeviceScreenType.mobile,
         value: 10.0,
         breakpoint: 20.0,
@@ -46,13 +46,13 @@ void main() {
     });
 
     test('Test copywith', () {
-      final conditionBreakpoint = ConditionBreakpoint.equals(
+      const conditionBreakpoint = ConditionBreakpoint.equals(
         screenType: DeviceScreenType.mobile,
         value: 10.0,
       );
       final theCopy = conditionBreakpoint.copyWith(
         breakpoint: 45,
-        type: DeviceScreenType.desktop,
+        screenType: DeviceScreenType.desktop,
       );
 
       expect(theCopy.conditional, Conditional.EQUALS);
@@ -64,7 +64,7 @@ void main() {
 
   group('ConditionScreen Model', () {
     test('Create an Element without null', () {
-      final conditionScreen = ConditionScreen<double>(
+      const conditionScreen = ConditionScreen<double>(
         mobile: 10,
         tablet: 20,
         desktop: 30,
@@ -76,7 +76,7 @@ void main() {
     });
 
     test('Create an Element with null value', () {
-      final conditionScreen = ConditionScreen<double>(
+      const conditionScreen = ConditionScreen<double>(
         mobile: 10,
         desktop: 30,
       );
@@ -87,7 +87,7 @@ void main() {
     });
 
     test('test copyWith', () {
-      final conditionScreen = ConditionScreen<double>(
+      const conditionScreen = ConditionScreen<double>(
         mobile: 10,
         desktop: 30,
       );
@@ -102,11 +102,11 @@ void main() {
     });
   });
   group('DeviceScreenTypeX Model', () {
-    final Size size = Size(500, 1000);
+    const Size size = Size(500, 1000);
     ScreenBreakpoints? screenBreakpoints;
 
     setUp(() {
-      screenBreakpoints = ScreenBreakpoints(
+      screenBreakpoints = const ScreenBreakpoints(
         mobile: 100,
         tablet: 200,
         desktop: 300,
@@ -126,7 +126,7 @@ void main() {
     });
 
     test('Get ScreenValue', () {
-      final device = DeviceScreenType.tablet;
+      const device = DeviceScreenType.tablet;
       final dst = device.getScreenValue<double>(screenBreakpoints!);
 
       expect(dst, 200);

@@ -24,7 +24,7 @@ class ResponsiveVisibility extends StatelessWidget {
   final ScreenBreakpoints? breakpoints;
   final ConditionType? type;
 
-  ResponsiveVisibility.conditions({
+  const ResponsiveVisibility.conditions({
     Key? key,
     required this.child,
     this.visible = true,
@@ -38,9 +38,10 @@ class ResponsiveVisibility extends StatelessWidget {
     this.maintainInteractivity = false,
     this.breakpoints,
   })  : type = ConditionType.conditions,
-        conditionScreen = _defaultConditionScreenVisibility;
+        conditionScreen = _defaultConditionScreenVisibility,
+        super(key: key);
 
-  ResponsiveVisibility.screen({
+  const ResponsiveVisibility.screen({
     Key? key,
     required this.child,
     this.visible = true,
@@ -54,15 +55,15 @@ class ResponsiveVisibility extends StatelessWidget {
     this.breakpoints,
   })  : type = ConditionType.screen,
         visibleWhen = const [],
-        hiddenWhen = const [];
+        hiddenWhen = const [],
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
     // Initialize mutable value holders.
-    bool visibleValue = getVisibilityValue(context);
+    final bool visibleValue = getVisibilityValue(context);
 
     return Visibility(
-      child: child,
       replacement: replacement,
       visible: visibleValue,
       maintainState: maintainState,
@@ -70,12 +71,13 @@ class ResponsiveVisibility extends StatelessWidget {
       maintainSize: maintainSize,
       maintainSemantics: maintainSemantics,
       maintainInteractivity: maintainInteractivity,
+      child: child,
     );
   }
 
   bool getVisibilityValue(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    List<ConditionBreakpoint<bool>> conditions = [];
+    final List<ConditionBreakpoint<bool>> conditions = [];
     bool visibleValue = visible;
 
     // Combine Conditions.

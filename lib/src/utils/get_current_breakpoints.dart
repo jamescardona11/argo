@@ -9,7 +9,7 @@ ScreenBreakpoints getCurrentBreakPoints({
   ScreenBreakpoints? local,
 }) {
   final rw = IWResponsiveWrapper.of(context);
-  ScreenBreakpoints? globalBreakpoints = rw?.globalBreakpoints;
+  final ScreenBreakpoints? globalBreakpoints = rw?.globalBreakpoints;
 
   return defaultBreakPoints.copyWith(
     mobile: local != null ? local.mobile : globalBreakpoints?.mobile,

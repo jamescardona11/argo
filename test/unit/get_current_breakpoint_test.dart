@@ -16,7 +16,7 @@ void main() {
     });
 
     test('GetValue local', () {
-      final sb = ScreenBreakpoints(
+      const sb = ScreenBreakpoints(
         mobile: 450,
         tablet: 780,
         desktop: 1201,

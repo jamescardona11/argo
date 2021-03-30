@@ -4,8 +4,8 @@ import 'package:flutter/widgets.dart';
 
 import '../models/condition.dart';
 import '../models/screen_breakpoints.dart';
-import '../theme/responsive_theme.dart';
 import '../theme/i_theme_data_rule.dart';
+import '../theme/responsive_theme.dart';
 import '../theme/theme_rule.dart';
 import '../utils/get_condition_breakpoint.dart';
 import '../utils/get_condition_screen.dart';
@@ -41,19 +41,19 @@ class ResponsiveWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    IThemeDataRule themeData = getThemeDataFromCondition(context);
+    final IThemeDataRule themeData = getThemeDataFromCondition(context);
     return IWResponsiveWrapper(
+      globalBreakpoints: globalBreakpoints,
+      themeRule: themeRule,
       child: child != null
           ? Theme(data: themeData.getThemeByRule(themeRule), child: child!)
           : builder!(context, themeData),
-      globalBreakpoints: globalBreakpoints,
-      themeRule: themeRule,
     );
   }
 
   IThemeDataRule getThemeDataFromCondition(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    IThemeDataRule themeData = DefaultThemeDataRule();
+    IThemeDataRule themeData = const DefaultThemeDataRule();
 
     if (responsiveTheme != null) {
       if (responsiveTheme!.type == ConditionType.conditions) {

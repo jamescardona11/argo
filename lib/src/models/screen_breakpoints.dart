@@ -1,6 +1,5 @@
 import 'screen_model.dart';
 
-//Minimum Values for Mobile, Tablet, Desktop
 class ScreenBreakpoints extends ScreenModel<double> {
   final bool isFloor;
 
@@ -42,7 +41,7 @@ class ScreenBreakpoints extends ScreenModel<double> {
 }
 
 // Minimum values breakpoints for type of device
-const defaultBreakPoints = const ScreenBreakpoints(
+const defaultBreakPoints = ScreenBreakpoints(
   mobile: 320,
   tablet: 700,
   desktop: 1200,

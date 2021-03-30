@@ -16,11 +16,12 @@ abstract class ScreenModel<T> {
   @override
   String toString() => 'mobile: $mobile, tablet: $tablet, desktop: $desktop';
 
-  bool operator ==(other) =>
+  @override
+  bool operator ==(Object other) =>
       other is ScreenModel &&
-      other.mobile == this.mobile &&
-      other.tablet == this.tablet &&
-      other.desktop == this.desktop;
+      other.mobile == mobile &&
+      other.tablet == tablet &&
+      other.desktop == desktop;
 
   @override
   int get hashCode => hashValues(mobile.hashCode, tablet.hashCode, desktop.hashCode);

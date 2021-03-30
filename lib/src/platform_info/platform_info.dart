@@ -1,5 +1,6 @@
 import 'platform_locator.dart' if (dart.library.io) 'platform_io.dart';
 
+// ignore: avoid_classes_with_only_static_members
 abstract class PlatformInfo {
   static PlatformInfoType get value => currentPlatformInfo;
 
