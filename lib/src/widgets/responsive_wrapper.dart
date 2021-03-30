@@ -78,19 +78,24 @@ class ResponsiveWrapper extends StatelessWidget {
     return themeData;
   }
 
-  ScreenBreakpoints _bp(BuildContext context) => getCurrentBreakPoints(context: context);
+  ScreenBreakpoints getGlobalBreakpoints(BuildContext context) =>
+      getCurrentBreakPoints(context: context);
 
-  bool isMobile(BuildContext context) =>
-      DeviceScreenTypeX.fromBreakpoint(MediaQuery.of(context).size, _bp(context))
-          .isMobile();
+  ScreenBreakpoints currentBP(
+          {required BuildContext context, ScreenBreakpoints? local}) =>
+      getCurrentBreakPoints(context: context, local: local);
 
-  bool isTablet(BuildContext context) =>
-      DeviceScreenTypeX.fromBreakpoint(MediaQuery.of(context).size, _bp(context))
-          .isTablet();
+  bool isMobile(BuildContext context) => DeviceScreenTypeX.fromBreakpoint(
+          MediaQuery.of(context).size, getGlobalBreakpoints(context))
+      .isMobile();
 
-  bool isDesktop(BuildContext context) =>
-      DeviceScreenTypeX.fromBreakpoint(MediaQuery.of(context).size, _bp(context))
-          .isDesktop();
+  bool isTablet(BuildContext context) => DeviceScreenTypeX.fromBreakpoint(
+          MediaQuery.of(context).size, getGlobalBreakpoints(context))
+      .isTablet();
+
+  bool isDesktop(BuildContext context) => DeviceScreenTypeX.fromBreakpoint(
+          MediaQuery.of(context).size, getGlobalBreakpoints(context))
+      .isDesktop();
 }
 
 @immutable
@@ -107,21 +112,6 @@ class IWResponsiveWrapper extends InheritedWidget {
 
   static IWResponsiveWrapper? of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<IWResponsiveWrapper>();
-
-  static ScreenBreakpoints breakpointsCopyWith(
-    BuildContext context, {
-    double? mobile,
-    double? tablet,
-    double? desktop,
-  }) {
-    return getCurrentBreakPoints(
-        context: context,
-        local: ScreenBreakpoints(
-          mobile: mobile ?? defaultBreakPoints.mobile!,
-          tablet: tablet ?? defaultBreakPoints.tablet!,
-          desktop: desktop ?? defaultBreakPoints.desktop!,
-        ));
-  }
 
   @override
   bool updateShouldNotify(IWResponsiveWrapper oldWidget) => false;
