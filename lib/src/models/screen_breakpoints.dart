@@ -3,25 +3,32 @@ import 'screen_model.dart';
 class ScreenBreakpoints extends ScreenModel<double> {
   final bool isFloor;
 
+  /// When the need to call [getCurrentBreakPoints]
+  /// the null values set from globalValue
+  /// if global.value == null set from [defaultBreakPoints]
   const ScreenBreakpoints({
-    required double mobile,
-    required double tablet,
-    required double desktop,
-  })   : isFloor = true,
+    double? mobile,
+    double? tablet,
+    double? desktop,
+  })  : isFloor = true,
         super(mobile: mobile, tablet: tablet, desktop: desktop);
 
+  /// The values was compared by Minimum values from [mobile], [tablet], [desktop]
+  /// Ex: Mobile minimum value 320 from [defaultBreakPoints]
   const ScreenBreakpoints.byFloor({
-    required double mobile,
-    required double tablet,
-    required double desktop,
-  })   : isFloor = true,
+    double? mobile,
+    double? tablet,
+    double? desktop,
+  })  : isFloor = true,
         super(mobile: mobile, tablet: tablet, desktop: desktop);
 
+  /// The values was compared by Maximun values from [mobile], [tablet], [desktop]
+  /// Ex: Mobile maximun value 700 from ScreenBreakpoints( mobile: 700, tablet: 1100, desktop: 4000)
   const ScreenBreakpoints.byCeiling({
-    required double mobile,
-    required double tablet,
-    required double desktop,
-  })   : isFloor = false,
+    double? mobile,
+    double? tablet,
+    double? desktop,
+  })  : isFloor = false,
         super(mobile: mobile, tablet: tablet, desktop: desktop);
 
   @override

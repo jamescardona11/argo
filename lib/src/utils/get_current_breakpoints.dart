@@ -12,8 +12,12 @@ ScreenBreakpoints getCurrentBreakPoints({
   final ScreenBreakpoints? globalBreakpoints = rw?.globalBreakpoints;
 
   return defaultBreakPoints.copyWith(
-    mobile: local != null ? local.mobile : globalBreakpoints?.mobile,
-    tablet: local != null ? local.tablet : globalBreakpoints?.tablet,
-    desktop: local != null ? local.desktop : globalBreakpoints?.tablet,
+    mobile: _getDoubleValue(local?.mobile, globalBreakpoints?.mobile),
+    tablet: _getDoubleValue(local?.tablet, globalBreakpoints?.tablet),
+    desktop: _getDoubleValue(local?.desktop, globalBreakpoints?.desktop),
   );
+}
+
+double? _getDoubleValue(double? local, double? globalBreakpoints) {
+  return local ?? globalBreakpoints;
 }

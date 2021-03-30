@@ -29,6 +29,7 @@ class ResponsiveBuilder extends StatelessWidget {
         deviceScreenType: DeviceScreenTypeX.fromBreakpoint(size, bp),
         screenSize: size,
         localSize: Size(boxConstraints.maxWidth, boxConstraints.maxHeight),
+        currentBreakpoints: bp,
       );
       return builder(context, info);
     });

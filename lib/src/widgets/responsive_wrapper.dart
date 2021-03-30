@@ -1,4 +1,5 @@
 import 'package:argo/src/theme/default_theme_data.dart';
+import 'package:argo/src/utils/get_current_breakpoints.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -91,6 +92,21 @@ class IWResponsiveWrapper extends InheritedWidget {
 
   static IWResponsiveWrapper? of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<IWResponsiveWrapper>();
+
+  static ScreenBreakpoints breakpointsCopyWith(
+    BuildContext context, {
+    double? mobile,
+    double? tablet,
+    double? desktop,
+  }) {
+    return getCurrentBreakPoints(
+        context: context,
+        local: ScreenBreakpoints(
+          mobile: mobile ?? defaultBreakPoints.mobile!,
+          tablet: tablet ?? defaultBreakPoints.tablet!,
+          desktop: desktop ?? defaultBreakPoints.desktop!,
+        ));
+  }
 
   @override
   bool updateShouldNotify(IWResponsiveWrapper oldWidget) => false;
