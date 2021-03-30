@@ -1,8 +1,7 @@
 import 'package:argo_example/config/assets_manager.dart';
+import 'package:argo_example/config/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:websafe_svg/websafe_svg.dart';
-
-import '../../../config/constants.dart';
 
 class Header extends StatelessWidget {
   const Header({

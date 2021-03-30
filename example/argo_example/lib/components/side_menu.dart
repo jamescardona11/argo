@@ -1,3 +1,4 @@
+import 'package:argo/argo.dart';
 import 'package:argo_example/config/assets_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:websafe_svg/websafe_svg.dart';
@@ -19,9 +20,29 @@ class SideMenu extends StatelessWidget {
       color: kBgLightColor,
       child: Column(
         children: [
-          Image.asset(
-            AssetsManager.outlook,
-            width: 46,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                AssetsManager.outlook,
+                width: 46,
+              ),
+              ResponsiveVisibility.screen(
+                conditionScreen: ConditionScreen(
+                  mobile: true,
+                  tablet: true,
+                  desktop: false,
+                ),
+                child: Expanded(
+                  child: Row(
+                    children: [
+                      Spacer(),
+                      CloseButton(),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
           SizedBox(height: kDefaultPadding),
           FlatButton.icon(

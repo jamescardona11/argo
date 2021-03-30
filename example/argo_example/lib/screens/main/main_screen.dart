@@ -8,21 +8,43 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
-        children: [
-          Expanded(
-            flex: context.widthPx > 1340 ? 2 : 4,
-            child: SideMenu(),
-          ),
-          Expanded(
-            flex: context.widthPx > 1340 ? 3 : 5,
-            child: ListOfEmails(),
-          ),
-          Expanded(
-            flex: context.widthPx > 1340 ? 8 : 10,
-            child: EmailScreen(),
-          ),
-        ],
+      body: ResponsiveLayoutWidget(
+        mobile: ListOfEmails(),
+        tablet: Row(
+          children: [
+            Expanded(
+              flex: 6,
+              child: ListOfEmails(),
+            ),
+            Expanded(
+              flex: 9,
+              child: EmailScreen(),
+            ),
+          ],
+        ),
+        desktop: Builder(
+          builder: (context) {
+            final isBigSize = context.widthPx >= 1340;
+            debugPrint('MainScreen: isBigSize: ${isBigSize}');
+
+            return Row(
+              children: [
+                Expanded(
+                  flex: isBigSize ? 2 : 4,
+                  child: SideMenu(),
+                ),
+                Expanded(
+                  flex: isBigSize ? 3 : 5,
+                  child: ListOfEmails(),
+                ),
+                Expanded(
+                  flex: isBigSize ? 8 : 10,
+                  child: EmailScreen(),
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

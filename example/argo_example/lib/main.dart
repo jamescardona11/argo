@@ -1,3 +1,4 @@
+import 'package:argo/argo.dart';
 import 'package:argo_example/screens/main/main_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -8,8 +9,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Argo Example App',
-      home: Scaffold(
-        body: MainScreen(),
+      debugShowCheckedModeBanner: false,
+      home: ResponsiveWrapper(
+        globalBreakpoints: ScreenBreakpoints(
+          mobile: 321,
+          tablet: 650,
+          desktop: 1100,
+        ),
+        child: MainScreen(),
       ),
     );
   }
