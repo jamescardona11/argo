@@ -1,7 +1,6 @@
 import 'package:argo_example/config/assets_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:websafe_svg/websafe_svg.dart';
-
 import '../config/constants.dart';
 import 'counter_badge.dart';
 
@@ -39,7 +38,7 @@ class SideMenuItem extends StatelessWidget {
             SizedBox(width: kDefaultPadding / 4),
             Expanded(
               child: Container(
-                padding: EdgeInsets.only(bottom: 15, right: 5),
+                padding: EdgeInsets.only(bottom: 10, right: 5),
                 decoration: showBorder
                     ? BoxDecoration(
                         border: Border(

@@ -78,22 +78,22 @@ class ResponsiveWrapper extends StatelessWidget {
     return themeData;
   }
 
-  ScreenBreakpoints getGlobalBreakpoints(BuildContext context) =>
+  static ScreenBreakpoints getGlobalBreakpoints(BuildContext context) =>
       getCurrentBreakPoints(context: context);
 
-  ScreenBreakpoints currentBP(
+  static ScreenBreakpoints currentBP(
           {required BuildContext context, ScreenBreakpoints? local}) =>
       getCurrentBreakPoints(context: context, local: local);
 
-  bool isMobile(BuildContext context) => DeviceScreenTypeX.fromBreakpoint(
+  static bool isMobile(BuildContext context) => DeviceScreenTypeX.fromBreakpoint(
           MediaQuery.of(context).size, getGlobalBreakpoints(context))
       .isMobile();
 
-  bool isTablet(BuildContext context) => DeviceScreenTypeX.fromBreakpoint(
+  static bool isTablet(BuildContext context) => DeviceScreenTypeX.fromBreakpoint(
           MediaQuery.of(context).size, getGlobalBreakpoints(context))
       .isTablet();
 
-  bool isDesktop(BuildContext context) => DeviceScreenTypeX.fromBreakpoint(
+  static bool isDesktop(BuildContext context) => DeviceScreenTypeX.fromBreakpoint(
           MediaQuery.of(context).size, getGlobalBreakpoints(context))
       .isDesktop();
 }

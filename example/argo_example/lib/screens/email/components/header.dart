@@ -1,3 +1,4 @@
+import 'package:argo/argo.dart';
 import 'package:argo_example/config/assets_manager.dart';
 import 'package:argo_example/config/constants.dart';
 import 'package:flutter/material.dart';
@@ -11,65 +12,69 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(kDefaultPadding),
+      padding: const EdgeInsets.symmetric(
+        vertical: kDefaultPadding,
+        horizontal: kDefaultPadding / 2,
+      ),
       child: Row(
         children: [
+          if (ResponsiveWrapper.isMobile(context)) BackButton(),
           IconButton(
             icon: WebsafeSvg.asset(
               AssetsManager.trashIcon,
-              width: 24,
+              width: 22,
             ),
             onPressed: () {},
           ),
-          SizedBox(width: kDefaultPadding / 2),
           IconButton(
             icon: WebsafeSvg.asset(
               AssetsManager.replyIcon,
-              width: 24,
+              width: 22,
             ),
             onPressed: () {},
           ),
-          SizedBox(width: kDefaultPadding / 2),
           IconButton(
             icon: WebsafeSvg.asset(
               AssetsManager.replyAllIcon,
-              width: 24,
+              width: 22,
             ),
             onPressed: () {},
           ),
-          SizedBox(width: kDefaultPadding / 2),
           IconButton(
             icon: WebsafeSvg.asset(
               AssetsManager.transferIcon,
-              width: 24,
+              width: 22,
             ),
             onPressed: () {},
           ),
-          Spacer(),
-          IconButton(
-            icon: WebsafeSvg.asset(
-              AssetsManager.printerIcon,
-              width: 24,
+          ResponsiveVisibility.screen(
+            conditionScreen: ConditionScreen(
+              mobile: false,
+              tablet: false,
+              desktop: true,
             ),
-            onPressed: () {},
+            child: IconButton(
+              icon: WebsafeSvg.asset(
+                AssetsManager.printerIcon,
+                width: 22,
+              ),
+              onPressed: () {},
+            ),
           ),
-          SizedBox(width: kDefaultPadding / 2),
           IconButton(
             icon: WebsafeSvg.asset(
               AssetsManager.markupIcon,
-              width: 24,
+              width: 22,
             ),
             onPressed: () {},
           ),
-          SizedBox(width: kDefaultPadding / 2),
           IconButton(
             icon: WebsafeSvg.asset(
               AssetsManager.moreVerticalIcon,
-              width: 24,
+              width: 22,
             ),
             onPressed: () {},
           ),
-          SizedBox(width: kDefaultPadding / 2),
         ],
       ),
     );

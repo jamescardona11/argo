@@ -2,7 +2,6 @@ import 'package:argo_example/config/assets_manager.dart';
 import 'package:argo_example/models/email.dart';
 import 'package:flutter/material.dart';
 import 'package:websafe_svg/websafe_svg.dart';
-
 import '../../../config/constants.dart';
 import '../../../extensions.dart';
 
@@ -21,7 +20,8 @@ class EmailCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 20),
+      padding: EdgeInsets.symmetric(
+          horizontal: kDefaultPadding, vertical: kDefaultPadding / 2),
       child: InkWell(
         onTap: press,
         child: Stack(
