@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
+import '../config/constants.dart';
 import '../extensions.dart';
 
 class CounterBadge extends StatelessWidget {

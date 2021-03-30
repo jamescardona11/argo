@@ -1,7 +1,8 @@
+import 'package:argo_example/config/assets_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
-import '../constants.dart';
+import '../config/constants.dart';
 import '../extensions.dart';
 import 'side_menu_item.dart';
 import 'tags.dart';
@@ -19,7 +20,7 @@ class SideMenu extends StatelessWidget {
       child: Column(
         children: [
           Image.asset(
-            "assets/images/Logo Outlook.png",
+            AssetsManager.outlook,
             width: 46,
           ),
           SizedBox(height: kDefaultPadding),
@@ -34,7 +35,7 @@ class SideMenu extends StatelessWidget {
             ),
             color: kPrimaryColor,
             onPressed: () {},
-            icon: WebsafeSvg.asset("assets/Icons/Edit.svg", width: 16),
+            icon: WebsafeSvg.asset(AssetsManager.editIcon, width: 16),
             label: Text(
               "New message",
               style: TextStyle(color: Colors.white),
@@ -55,7 +56,7 @@ class SideMenu extends StatelessWidget {
             ),
             color: kBgDarkColor,
             onPressed: () {},
-            icon: WebsafeSvg.asset("assets/Icons/Download.svg", width: 16),
+            icon: WebsafeSvg.asset(AssetsManager.downloadIcon, width: 16),
             label: Text(
               "Get messages",
               style: TextStyle(color: kTextColor),
@@ -66,26 +67,26 @@ class SideMenu extends StatelessWidget {
           SideMenuItem(
             press: () {},
             title: "Inbox",
-            iconSrc: "assets/Icons/Inbox.svg",
+            iconSrc: AssetsManager.inboxIcon,
             isActive: true,
             itemCount: 3,
           ),
           SideMenuItem(
             press: () {},
             title: "Sent",
-            iconSrc: "assets/Icons/Send.svg",
+            iconSrc: AssetsManager.sendIcon,
             isActive: false,
           ),
           SideMenuItem(
             press: () {},
             title: "Drafts",
-            iconSrc: "assets/Icons/File.svg",
+            iconSrc: AssetsManager.fileIcon,
             isActive: false,
           ),
           SideMenuItem(
             press: () {},
             title: "Deleted",
-            iconSrc: "assets/Icons/Trash.svg",
+            iconSrc: AssetsManager.trashIcon,
             isActive: false,
             showBorder: false,
           ),

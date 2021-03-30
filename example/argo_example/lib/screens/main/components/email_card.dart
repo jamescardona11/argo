@@ -1,8 +1,9 @@
-import 'package:argo_example/models/Email.dart';
+import 'package:argo_example/config/assets_manager.dart';
+import 'package:argo_example/models/email.dart';
 import 'package:flutter/material.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
-import '../../../constants.dart';
+import '../../../config/constants.dart';
 import '../../../extensions.dart';
 
 class EmailCard extends StatelessWidget {
@@ -122,7 +123,7 @@ class EmailCard extends StatelessWidget {
                 left: 8,
                 top: 0,
                 child: WebsafeSvg.asset(
-                  "assets/Icons/Markup filled.svg",
+                  AssetsManager.markupFilledIcon,
                   height: 18,
                   color: email?.tagColor,
                 ),

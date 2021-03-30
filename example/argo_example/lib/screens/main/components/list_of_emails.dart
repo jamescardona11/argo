@@ -1,8 +1,9 @@
-import 'package:argo_example/models/Email.dart';
+import 'package:argo_example/config/assets_manager.dart';
+import 'package:argo_example/models/email.dart';
 import 'package:flutter/material.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
-import '../../../constants.dart';
+import '../../../config/constants.dart';
 import 'email_card.dart';
 
 class ListOfEmails extends StatelessWidget {
@@ -25,7 +26,7 @@ class ListOfEmails extends StatelessWidget {
                 fillColor: kBgLightColor,
                 filled: true,
                 suffixIcon: WebsafeSvg.asset(
-                  "assets/Icons/Search.svg",
+                  AssetsManager.searchIcon,
                   width: 24,
                 ),
                 border: OutlineInputBorder(
@@ -38,7 +39,7 @@ class ListOfEmails extends StatelessWidget {
             Row(
               children: [
                 WebsafeSvg.asset(
-                  "assets/Icons/Angle down.svg",
+                  AssetsManager.angleDownIcon,
                   width: 16,
                   color: Colors.black,
                 ),
@@ -52,7 +53,7 @@ class ListOfEmails extends StatelessWidget {
                   minWidth: 20,
                   onPressed: () {},
                   child: WebsafeSvg.asset(
-                    "assets/Icons/Sort.svg",
+                    AssetsManager.sortIcon,
                     width: 16,
                   ),
                 ),

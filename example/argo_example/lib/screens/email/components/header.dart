@@ -1,7 +1,8 @@
+import 'package:argo_example/config/assets_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
-import '../../../constants.dart';
+import '../../../config/constants.dart';
 
 class Header extends StatelessWidget {
   const Header({
@@ -16,7 +17,7 @@ class Header extends StatelessWidget {
         children: [
           IconButton(
             icon: WebsafeSvg.asset(
-              "assets/Icons/Trash.svg",
+              AssetsManager.trashIcon,
               width: 24,
             ),
             onPressed: () {},
@@ -24,7 +25,7 @@ class Header extends StatelessWidget {
           SizedBox(width: kDefaultPadding / 2),
           IconButton(
             icon: WebsafeSvg.asset(
-              "assets/Icons/Reply.svg",
+              AssetsManager.replyIcon,
               width: 24,
             ),
             onPressed: () {},
@@ -32,7 +33,7 @@ class Header extends StatelessWidget {
           SizedBox(width: kDefaultPadding / 2),
           IconButton(
             icon: WebsafeSvg.asset(
-              "assets/Icons/Reply all.svg",
+              AssetsManager.replyAllIcon,
               width: 24,
             ),
             onPressed: () {},
@@ -40,7 +41,7 @@ class Header extends StatelessWidget {
           SizedBox(width: kDefaultPadding / 2),
           IconButton(
             icon: WebsafeSvg.asset(
-              "assets/Icons/Transfer.svg",
+              AssetsManager.transferIcon,
               width: 24,
             ),
             onPressed: () {},
@@ -48,7 +49,7 @@ class Header extends StatelessWidget {
           Spacer(),
           IconButton(
             icon: WebsafeSvg.asset(
-              "assets/Icons/Printer.svg",
+              AssetsManager.printerIcon,
               width: 24,
             ),
             onPressed: () {},
@@ -56,7 +57,7 @@ class Header extends StatelessWidget {
           SizedBox(width: kDefaultPadding / 2),
           IconButton(
             icon: WebsafeSvg.asset(
-              "assets/Icons/Markup.svg",
+              AssetsManager.markupIcon,
               width: 24,
             ),
             onPressed: () {},
@@ -64,7 +65,7 @@ class Header extends StatelessWidget {
           SizedBox(width: kDefaultPadding / 2),
           IconButton(
             icon: WebsafeSvg.asset(
-              "assets/Icons/More vertical.svg",
+              AssetsManager.moreVerticalIcon,
               width: 24,
             ),
             onPressed: () {},

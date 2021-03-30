@@ -1,3 +1,4 @@
+import 'package:argo_example/config/assets_manager.dart';
 import 'package:flutter/material.dart';
 
 class Email {
@@ -34,7 +35,7 @@ List<Email> emails = List.generate(
 List demo_data = [
   {
     "name": "Apple",
-    "image": "assets/images/user_1.png",
+    "image": AssetsManager.user1,
     "subject": "iPhone 12 is here",
     "isAttachmentAvailable": false,
     "isChecked": true,
@@ -43,7 +44,7 @@ List demo_data = [
   },
   {
     "name": "Elvia Atkins",
-    "image": "assets/images/user_2.png",
+    "image": AssetsManager.user2,
     "subject": "Inspiration for our new home",
     "isAttachmentAvailable": true,
     "isChecked": false,
@@ -52,7 +53,7 @@ List demo_data = [
   },
   {
     "name": "Marvin Kiehn",
-    "image": "assets/images/user_3.png",
+    "image": AssetsManager.user3,
     "subject": "Business-focused empowering the world",
     "isAttachmentAvailable": true,
     "isChecked": false,
@@ -61,7 +62,7 @@ List demo_data = [
   },
   {
     "name": "Domenic Bosco",
-    "image": "assets/images/user_4.png",
+    "image": AssetsManager.user4,
     "subject": "The fastest way to Design",
     "isAttachmentAvailable": false,
     "isChecked": true,
@@ -70,7 +71,7 @@ List demo_data = [
   },
   {
     "name": "Elenor Bauch",
-    "image": "assets/images/user_5.png",
+    "image": AssetsManager.user5,
     "subject": "New job opportunities",
     "isAttachmentAvailable": false,
     "isChecked": false,

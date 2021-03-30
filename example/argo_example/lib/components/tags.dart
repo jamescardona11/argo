@@ -1,7 +1,8 @@
+import 'package:argo_example/config/assets_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
-import '../constants.dart';
+import '../config/constants.dart';
 
 class Tags extends StatelessWidget {
   const Tags({
@@ -14,9 +15,9 @@ class Tags extends StatelessWidget {
       children: [
         Row(
           children: [
-            WebsafeSvg.asset("assets/Icons/Angle down.svg", width: 16),
+            WebsafeSvg.asset(AssetsManager.angleDownIcon, width: 16),
             SizedBox(width: kDefaultPadding / 4),
-            WebsafeSvg.asset("assets/Icons/Markup.svg", width: 20),
+            WebsafeSvg.asset(AssetsManager.markupIcon, width: 20),
             SizedBox(width: kDefaultPadding / 2),
             Text(
               "Tags",
@@ -56,7 +57,7 @@ class Tags extends StatelessWidget {
         child: Row(
           children: [
             WebsafeSvg.asset(
-              "assets/Icons/Markup filled.svg",
+              AssetsManager.markupFilledIcon,
               height: 18,
               color: color,
             ),

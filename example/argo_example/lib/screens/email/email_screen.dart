@@ -1,9 +1,10 @@
-import 'package:argo_example/models/Email.dart';
+import 'package:argo_example/config/assets_manager.dart';
+import 'package:argo_example/models/email.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
-import '../../constants.dart';
+import '../../config/constants.dart';
 import 'components/header.dart';
 
 class EmailScreen extends StatelessWidget {
@@ -101,7 +102,7 @@ class EmailScreen extends StatelessWidget {
                                       ),
                                       SizedBox(width: kDefaultPadding / 4),
                                       WebsafeSvg.asset(
-                                        "assets/Icons/Download.svg",
+                                        AssetsManager.downloadIcon,
                                         height: 16,
                                         color: kGrayColor,
                                       ),
@@ -119,7 +120,7 @@ class EmailScreen extends StatelessWidget {
                                           ClipRRect(
                                         borderRadius: BorderRadius.circular(8),
                                         child: Image.asset(
-                                          "assets/images/Img_$index.png",
+                                          "assets/images/img_$index.png",
                                           fit: BoxFit.cover,
                                         ),
                                       ),

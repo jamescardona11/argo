@@ -1,7 +1,8 @@
+import 'package:argo_example/config/assets_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
-import '../constants.dart';
+import '../config/constants.dart';
 import 'counter_badge.dart';
 
 class SideMenuItem extends StatelessWidget {
@@ -9,7 +10,7 @@ class SideMenuItem extends StatelessWidget {
     Key? key,
     this.isActive = false,
     this.isHover = false,
-    this.itemCount,
+    this.itemCount = 0,
     this.showBorder = true,
     required this.iconSrc,
     required this.title,
@@ -17,7 +18,7 @@ class SideMenuItem extends StatelessWidget {
   }) : super(key: key);
 
   final bool isActive, isHover, showBorder;
-  final int? itemCount;
+  final int itemCount;
   final String iconSrc, title;
   final VoidCallback press;
 
@@ -31,7 +32,7 @@ class SideMenuItem extends StatelessWidget {
           children: [
             (isHover || isActive)
                 ? WebsafeSvg.asset(
-                    "assets/Icons/Angle right.svg",
+                    AssetsManager.angleRightIcon,
                     width: 15,
                   )
                 : SizedBox(width: 15),
@@ -61,7 +62,7 @@ class SideMenuItem extends StatelessWidget {
                           ),
                     ),
                     Spacer(),
-                    if (itemCount != null) CounterBadge(count: itemCount!)
+                    if (itemCount != 0) CounterBadge(count: itemCount)
                   ],
                 ),
               ),
