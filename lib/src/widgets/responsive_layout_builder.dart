@@ -3,6 +3,9 @@ import '../models/screen_breakpoints.dart';
 import '../utils/get_current_breakpoints.dart';
 import 'package:flutter/widgets.dart';
 
+/// Widget to show diferents childs depends of situation, you can use LocalBreakpoints, GlobalBreakpoints or DefaultBreakpoints
+/// [Mobile], [tablet], [desktop] are widget children
+/// [ScreenBreakpoints] property is LocalBreakpoints for this widgets
 class ResponsiveWidget extends StatelessWidget {
   final Widget mobile;
   final Widget? tablet;

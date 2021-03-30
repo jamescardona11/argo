@@ -8,6 +8,7 @@ import '../utils/get_condition_breakpoint.dart';
 import '../utils/get_condition_screen.dart';
 import '../utils/get_current_breakpoints.dart';
 
+/// Widget to handle the visbility with conditions [ConditionBreakpoint or ConditionScreen]
 class ResponsiveVisibility extends StatelessWidget {
   final Widget child;
   final List<ConditionBreakpoint<bool>> hiddenWhen;

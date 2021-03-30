@@ -5,27 +5,30 @@ import '../models/condition.dart';
 import '../models/condition_breakpoint.dart';
 import '../models/device_screen.dart';
 import '../models/screen_breakpoints.dart';
+import 'get_current_breakpoints.dart';
 import 'size_by_platform.dart';
 
-/// Goal: Get a value for an array of conditions
-/// breakpoints: Currentbreakpoint for widget from(global, local and default)
+/// Goal, Get a value for an list of conditions
+/// [breakpoints] Currentbreakpoint for widget from(LocalBreakpoints, GlobalBreakpoints or DefaultBreakpoints)
+/// [CurrentSize] The current size for view screen
+/// [defaultValue] Default value in case you List of [conditions] don't return anything
 T valueFromConditionByBreakpoints<T>({
   required Size currentSize,
-  required List<ConditionBreakpoint> condition,
+  required List<ConditionBreakpoint<T>> condition,
   required ScreenBreakpoints breakpoints,
   required T defaultValue,
 }) {
   condition.removeWhere((element) => element.isNull);
 
-  final valueWhen = _setDefaultValuesToConditions(breakpoints, condition);
+  final valueWhen = _setDefaultValuesToConditions<T>(breakpoints, condition);
   valueWhen.sort((a, b) => a.breakpoint!.compareTo(b.breakpoint!));
-  final activeCondition = _getActiveCondition(valueWhen, currentSize, breakpoints);
+  final activeCondition = _getActiveCondition<T>(valueWhen, currentSize, breakpoints);
 
   return activeCondition?.value ?? defaultValue;
 }
 
-List<ConditionBreakpoint> _setDefaultValuesToConditions(
-        ScreenBreakpoints breakpoints, List<ConditionBreakpoint> conditions) =>
+List<ConditionBreakpoint<T>> _setDefaultValuesToConditions<T>(
+        ScreenBreakpoints breakpoints, List<ConditionBreakpoint<T>> conditions) =>
     conditions.map((cdt) {
       if (cdt.breakpoint == null) {
         return cdt.copyWith(breakpoint: cdt.screenType!.getScreenValue(breakpoints));
@@ -33,9 +36,9 @@ List<ConditionBreakpoint> _setDefaultValuesToConditions(
       return cdt;
     }).toList();
 
-ConditionBreakpoint? _getActiveCondition(List<ConditionBreakpoint> conditions,
+ConditionBreakpoint<T>? _getActiveCondition<T>(List<ConditionBreakpoint<T>> conditions,
     Size currentSize, ScreenBreakpoints breakpoints) {
-  ConditionBreakpoint? equalsCondition = conditions
+  final ConditionBreakpoint<T>? equalsCondition = conditions
       .where((element) => element.conditional == Conditional.EQUALS)
       .firstWhereOrNull((element) =>
           DeviceScreenTypeX.fromBreakpoint(currentSize, breakpoints) ==
@@ -45,7 +48,7 @@ ConditionBreakpoint? _getActiveCondition(List<ConditionBreakpoint> conditions,
     return equalsCondition;
   }
 
-  ConditionBreakpoint? smallerThanCondition = conditions
+  ConditionBreakpoint<T>? smallerThanCondition = conditions
       .where((element) => element.conditional == Conditional.SMALLER_THAN)
       .firstWhereOrNull(
           (element) => getSizeByPlatform(currentSize) < element.breakpoint!);
@@ -54,7 +57,7 @@ ConditionBreakpoint? _getActiveCondition(List<ConditionBreakpoint> conditions,
     return smallerThanCondition;
   }
 
-  ConditionBreakpoint? largerThanCondition = conditions.reversed
+  ConditionBreakpoint<T>? largerThanCondition = conditions.reversed
       .where((element) => element.conditional == Conditional.LARGER_THAN)
       .firstWhereOrNull(
           (element) => getSizeByPlatform(currentSize) >= element.breakpoint!);
@@ -64,4 +67,18 @@ ConditionBreakpoint? _getActiveCondition(List<ConditionBreakpoint> conditions,
   }
 
   return null;
+}
+
+T valueFromConditionByBreakpointsCtx<T>({
+  required BuildContext context,
+  required List<ConditionBreakpoint<T>> condition,
+  required T defaultValue,
+}) {
+  final breakpoints = getCurrentBreakPoints(context: context);
+  return valueFromConditionByBreakpoints(
+    currentSize: MediaQuery.of(context).size,
+    condition: condition,
+    breakpoints: breakpoints,
+    defaultValue: defaultValue,
+  );
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+/// Widget to handle orientation changes
 class OrientationLayoutBuilder extends StatelessWidget {
   final WidgetBuilder? landscape;
   final WidgetBuilder portrait;

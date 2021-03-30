@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import '../models/screen_breakpoints.dart';
 import '../widgets/responsive_wrapper.dart';
 
+/// Get the current breakpoint from LocalBreakpoints, GlobalBreakpoints or DefaultBreakpoints
 ScreenBreakpoints getCurrentBreakPoints({
   required BuildContext context,
   ScreenBreakpoints? local,

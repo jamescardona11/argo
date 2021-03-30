@@ -12,6 +12,8 @@ import '../utils/get_condition_screen.dart';
 
 typedef RWBuilder = Widget Function(BuildContext context, IThemeDataRule themeDataRule);
 
+/// Widget to configure the responsive for the application, you can configure [globalbreakpoints], the [thmeRule]
+/// You can use like global widget or builder widget into [MaterialApp] Widget
 class ResponsiveWrapper extends StatelessWidget {
   final Widget? child;
   final ScreenBreakpoints globalBreakpoints;

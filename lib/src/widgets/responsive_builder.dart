@@ -6,6 +6,8 @@ import 'package:flutter/widgets.dart';
 
 typedef RBuilder = Widget Function(BuildContext context, ResponsiveInformation info);
 
+/// Widget to build a responsive view, this widget return [ResponsiveInformation]
+/// [ScreenBreakpoints] property is LocalBreakpoints for this widgets
 class ResponsiveBuilder extends StatelessWidget {
   final RBuilder builder;
   final ScreenBreakpoints? breakpoints;

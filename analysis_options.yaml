@@ -1,0 +1,7 @@
+include: package:lint/analysis_options.yaml
+
+analyzer:
+  errors:
+    sort_unnamed_constructors_first: ignore
+    avoid_redundant_argument_values: ignore
+    
