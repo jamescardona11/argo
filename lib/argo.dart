@@ -9,6 +9,6 @@ export 'src/theme/theme_rule.dart';
 export 'src/utils/utils.dart';
 export 'src/widgets/orientation_layout_builder.dart';
 export 'src/widgets/responsive_builder.dart';
-export 'src/widgets/responsive_layout_builder.dart';
+export 'src/widgets/responsive_layout_widget.dart';
 export 'src/widgets/responsive_visibility.dart';
 export 'src/widgets/responsive_wrapper.dart';

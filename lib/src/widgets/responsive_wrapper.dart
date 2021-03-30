@@ -1,3 +1,4 @@
+import 'package:argo/src/models/device_screen.dart';
 import 'package:argo/src/theme/default_theme_data.dart';
 import 'package:argo/src/utils/get_current_breakpoints.dart';
 import 'package:flutter/material.dart';
@@ -76,6 +77,20 @@ class ResponsiveWrapper extends StatelessWidget {
 
     return themeData;
   }
+
+  ScreenBreakpoints _bp(BuildContext context) => getCurrentBreakPoints(context: context);
+
+  bool isMobile(BuildContext context) =>
+      DeviceScreenTypeX.fromBreakpoint(MediaQuery.of(context).size, _bp(context))
+          .isMobile();
+
+  bool isTablet(BuildContext context) =>
+      DeviceScreenTypeX.fromBreakpoint(MediaQuery.of(context).size, _bp(context))
+          .isTablet();
+
+  bool isDesktop(BuildContext context) =>
+      DeviceScreenTypeX.fromBreakpoint(MediaQuery.of(context).size, _bp(context))
+          .isDesktop();
 }
 
 @immutable

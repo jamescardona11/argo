@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:argo/argo.dart';
+import 'package:argo/src/models/device_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -52,6 +54,10 @@ extension ResponsiveContext on BuildContext {
   TextTheme get textTheme => Theme.of(this).textTheme;
 
   ResponsiveUtils get responsiveUtils => ResponsiveUtils._(this);
+
+  bool isMobile() => responsiveUtils.isMobile();
+  bool isTablet() => responsiveUtils.isTablet();
+  bool isDesktop() => responsiveUtils.isDesktop();
 }
 
 class ResponsiveUtils {
@@ -111,4 +117,10 @@ class ResponsiveUtils {
 
   /// Extension for getting textTheme
   TextTheme get textTheme => Theme.of(_context).textTheme;
+
+  ScreenBreakpoints get _bp => getCurrentBreakPoints(context: _context);
+
+  bool isMobile() => DeviceScreenTypeX.fromBreakpoint(sizePx, _bp).isMobile();
+  bool isTablet() => DeviceScreenTypeX.fromBreakpoint(sizePx, _bp).isTablet();
+  bool isDesktop() => DeviceScreenTypeX.fromBreakpoint(sizePx, _bp).isDesktop();
 }
