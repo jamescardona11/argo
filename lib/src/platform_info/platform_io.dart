@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'platform_info.dart';
 
 PlatformInfoType get currentPlatformInfo {

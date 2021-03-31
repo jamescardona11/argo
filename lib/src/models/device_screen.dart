@@ -1,47 +1,43 @@
-import 'package:flutter/widgets.dart';
-
-import '../utils/size_by_platform.dart';
 import 'screen_breakpoints.dart';
 import 'screen_model.dart';
 
-enum DeviceScreenType { mobile, tablet, desktop }
+enum DeviceScreen { mobile, tablet, desktop }
 
-extension DeviceScreenTypeX on DeviceScreenType {
-  bool isMobile() => this == DeviceScreenType.mobile;
-  bool isTablet() => this == DeviceScreenType.tablet;
-  bool isDesktop() => this == DeviceScreenType.desktop;
+extension DeviceScreenX on DeviceScreen {
+  bool isMobile() => this == DeviceScreen.mobile;
+  bool isTablet() => this == DeviceScreen.tablet;
+  bool isDesktop() => this == DeviceScreen.desktop;
 
   T? getScreenValue<T>(ScreenModel<T> sbp) => {
-        DeviceScreenType.mobile: sbp.mobile,
-        DeviceScreenType.tablet: sbp.tablet,
-        DeviceScreenType.desktop: sbp.desktop,
+        DeviceScreen.mobile: sbp.mobile,
+        DeviceScreen.tablet: sbp.tablet,
+        DeviceScreen.desktop: sbp.desktop,
       }[this];
 
-  static DeviceScreenType fromSize(Size size) => fromBreakpoint(size, defaultBreakPoints);
-
-  static DeviceScreenType fromBreakpoint(Size size, ScreenBreakpoints breakpoint) {
-    final double deviceWidth = getSizeByPlatform(size);
-
-    if (breakpoint.isFloor) {
-      if (deviceWidth >= breakpoint.desktop!) {
-        return DeviceScreenType.desktop;
+  static DeviceScreen fromBreakpoint(
+    double deviceWidth,
+    ScreenBreakpoints breakpoints,
+  ) {
+    if (breakpoints.isFloor) {
+      if (deviceWidth >= breakpoints.desktop!) {
+        return DeviceScreen.desktop;
       }
 
-      if (deviceWidth > breakpoint.tablet!) {
-        return DeviceScreenType.tablet;
+      if (deviceWidth > breakpoints.tablet!) {
+        return DeviceScreen.tablet;
       }
 
-      return DeviceScreenType.mobile;
+      return DeviceScreen.mobile;
     } else {
-      if (deviceWidth <= breakpoint.mobile!) {
-        return DeviceScreenType.mobile;
+      if (deviceWidth <= breakpoints.mobile!) {
+        return DeviceScreen.mobile;
       }
 
-      if (deviceWidth <= breakpoint.tablet!) {
-        return DeviceScreenType.tablet;
+      if (deviceWidth <= breakpoints.tablet!) {
+        return DeviceScreen.tablet;
       }
 
-      return DeviceScreenType.desktop;
+      return DeviceScreen.desktop;
     }
   }
 }

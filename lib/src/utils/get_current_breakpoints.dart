@@ -5,16 +5,13 @@ import '../widgets/responsive_wrapper.dart';
 
 /// Get the current breakpoint from LocalBreakpoints, GlobalBreakpoints or DefaultBreakpoints
 ScreenBreakpoints getCurrentBreakPoints({
-  required BuildContext context,
+  required ScreenBreakpoints global,
   ScreenBreakpoints? local,
 }) {
-  final rw = IWResponsiveWrapper.of(context);
-  final ScreenBreakpoints? globalBreakpoints = rw?.globalBreakpoints;
-
   return defaultBreakPoints.copyWith(
-    mobile: _getDoubleValue(local?.mobile, globalBreakpoints?.mobile),
-    tablet: _getDoubleValue(local?.tablet, globalBreakpoints?.tablet),
-    desktop: _getDoubleValue(local?.desktop, globalBreakpoints?.desktop),
+    mobile: _getDoubleValue(local?.mobile, global.mobile),
+    tablet: _getDoubleValue(local?.tablet, global.tablet),
+    desktop: _getDoubleValue(local?.desktop, global.desktop),
   );
 }
 

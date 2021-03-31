@@ -6,7 +6,6 @@ import '../models/condition_screen.dart';
 import '../models/screen_breakpoints.dart';
 import '../utils/get_condition_breakpoint.dart';
 import '../utils/get_condition_screen.dart';
-import '../utils/get_current_breakpoints.dart';
 
 /// Widget to handle the visbility with conditions [ConditionBreakpoint or ConditionScreen]
 class ResponsiveVisibility extends StatelessWidget {
@@ -14,14 +13,8 @@ class ResponsiveVisibility extends StatelessWidget {
   final List<ConditionBreakpoint<bool>> hiddenWhen;
   final List<ConditionBreakpoint<bool>> visibleWhen;
   final ConditionScreen<bool> conditionScreen;
-  final bool maintainAnimation;
-  final bool maintainInteractivity;
-  final bool maintainSemantics;
-  final bool maintainSize;
-  final bool maintainState;
-  final Widget replacement;
   final bool visible;
-  final ScreenBreakpoints? breakpoints;
+  final ScreenBreakpoints? localBreakpoints;
   final ConditionType? type;
 
   const ResponsiveVisibility.conditions({
@@ -30,13 +23,7 @@ class ResponsiveVisibility extends StatelessWidget {
     this.visible = true,
     this.visibleWhen = const [],
     this.hiddenWhen = const [],
-    this.replacement = const SizedBox.shrink(),
-    this.maintainState = false,
-    this.maintainAnimation = false,
-    this.maintainSize = false,
-    this.maintainSemantics = false,
-    this.maintainInteractivity = false,
-    this.breakpoints,
+    this.localBreakpoints,
   })  : type = ConditionType.conditions,
         conditionScreen = _defaultConditionScreenVisibility,
         super(key: key);
@@ -46,13 +33,7 @@ class ResponsiveVisibility extends StatelessWidget {
     required this.child,
     this.visible = true,
     this.conditionScreen = _defaultConditionScreenVisibility,
-    this.replacement = const SizedBox.shrink(),
-    this.maintainState = false,
-    this.maintainAnimation = false,
-    this.maintainSize = false,
-    this.maintainSemantics = false,
-    this.maintainInteractivity = false,
-    this.breakpoints,
+    this.localBreakpoints,
   })  : type = ConditionType.screen,
         visibleWhen = const [],
         hiddenWhen = const [],
@@ -63,40 +44,32 @@ class ResponsiveVisibility extends StatelessWidget {
     // Initialize mutable value holders.
     final bool visibleValue = getVisibilityValue(context);
 
-    return Visibility(
-      replacement: replacement,
-      visible: visibleValue,
-      maintainState: maintainState,
-      maintainAnimation: maintainAnimation,
-      maintainSize: maintainSize,
-      maintainSemantics: maintainSemantics,
-      maintainInteractivity: maintainInteractivity,
+    return Offstage(
+      offstage: visibleValue,
       child: child,
     );
   }
 
   bool getVisibilityValue(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final List<ConditionBreakpoint<bool>> conditions = [];
     bool visibleValue = visible;
 
     // Combine Conditions.
     conditions.addAll(visibleWhen.map((e) => e.copyWith(value: true)));
     conditions.addAll(hiddenWhen.map((e) => e.copyWith(value: false)));
-    final bp = getCurrentBreakPoints(context: context, local: breakpoints);
 
     if (type! == ConditionType.conditions) {
       visibleValue = valueFromConditionByBreakpoints<bool>(
-        currentSize: size,
+        context: context,
         condition: conditions,
-        breakpoints: bp,
+        localBreakpoints: localBreakpoints,
         defaultValue: visibleValue,
       );
     } else {
       visibleValue = valueFromConditionByScreen<bool>(
-        currentSize: size,
+        context: context,
         condition: conditionScreen,
-        breakpoints: bp,
+        localBreakpoints: localBreakpoints,
         defaultValue: visibleValue,
       );
     }

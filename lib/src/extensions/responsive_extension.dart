@@ -1,11 +1,12 @@
 import 'dart:math';
 
-import 'package:argo/argo.dart';
-import 'package:argo/src/models/device_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import '../models/device_screen.dart';
+import '../models/wrapper_config.dart';
 import '../platform_info/platform_info.dart';
+import '../widgets/responsive_wrapper.dart';
 
 extension ResponsiveContext on BuildContext {
   /// Returns same as MediaQuery.of(context)
@@ -118,9 +119,13 @@ class ResponsiveUtils {
   /// Extension for getting textTheme
   TextTheme get textTheme => Theme.of(_context).textTheme;
 
-  ScreenBreakpoints get _bp => getCurrentBreakPoints(context: _context);
+  bool isMobile() => _getDeviceScreen(_context).isMobile();
+  bool isTablet() => _getDeviceScreen(_context).isTablet();
+  bool isDesktop() => _getDeviceScreen(_context).isDesktop();
 
-  bool isMobile() => DeviceScreenTypeX.fromBreakpoint(sizePx, _bp).isMobile();
-  bool isTablet() => DeviceScreenTypeX.fromBreakpoint(sizePx, _bp).isTablet();
-  bool isDesktop() => DeviceScreenTypeX.fromBreakpoint(sizePx, _bp).isDesktop();
+  WrapperConfig get _rw => ResponsiveWrapper.getWrapperConfig(_context);
+  DeviceScreen _getDeviceScreen(BuildContext context) {
+    return DeviceScreenX.fromBreakpoint(
+        _rw.getDeviceWidth(MediaQuery.of(context).size), _rw.globalBreakpoints);
+  }
 }

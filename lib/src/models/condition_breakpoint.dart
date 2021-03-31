@@ -2,7 +2,7 @@ import 'condition.dart';
 import 'device_screen.dart';
 
 class ConditionBreakpoint<T> extends Condition<T> {
-  final DeviceScreenType? screenType;
+  final DeviceScreen? screenType;
   final T? value;
   final double? breakpoint;
 
@@ -34,7 +34,7 @@ class ConditionBreakpoint<T> extends Condition<T> {
 
   @override
   ConditionBreakpoint<T> copyWith({
-    DeviceScreenType? screenType,
+    DeviceScreen? screenType,
     Conditional? conditional,
     T? value,
     double? breakpoint,
