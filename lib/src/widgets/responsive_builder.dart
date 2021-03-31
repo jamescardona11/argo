@@ -1,11 +1,9 @@
-import '../models/typedef.dart';
-import '../utils/get_resonsive_information.dart';
 import 'package:flutter/widgets.dart';
 
-import '../models/device_screen.dart';
 import '../models/responsive_information.dart';
 import '../models/screen_breakpoints.dart';
-import '../utils/get_current_breakpoints.dart';
+import '../models/typedef.dart';
+import '../utils/get_resonsive_information.dart';
 
 /// Widget to build a responsive view, this widget return [ResponsiveInformation]
 /// [ScreenBreakpoints] property is LocalBreakpoints for this widgets
