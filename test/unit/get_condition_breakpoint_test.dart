@@ -2,6 +2,8 @@ import 'package:argo/src/models/condition_breakpoint.dart';
 import 'package:argo/src/models/device_screen.dart';
 import 'package:argo/src/models/screen_breakpoints.dart';
 import 'package:argo/src/utils/get_condition_breakpoint.dart';
+import 'package:argo/src/widgets/responsive_wrapper.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -13,19 +15,31 @@ void main() {
       desktop: 1200,
     );
 
-    test('GetValue boolean Size(800, 1000)', () {
-      const size = Size(800, 1000);
+    Widget configWidget(WidgetBuilder child) {
+      return MediaQuery(
+        data: const MediaQueryData(),
+        child: MaterialApp(
+          home: ResponsiveWrapper(
+            child: Builder(
+              builder: child,
+            ),
+          ),
+        ),
+      );
+    }
+
+    testWidgets('GetValue boolean Size(800, 1000)', (WidgetTester tester) async {
       const List<ConditionBreakpoint<bool>> conditions = [
         ConditionBreakpoint<bool>.equals(
-          screenType: DeviceScreenType.mobile,
+          screenType: DeviceScreen.mobile,
           value: true,
         ),
         ConditionBreakpoint<bool>.smallerThan(
-          screenType: DeviceScreenType.desktop,
+          screenType: DeviceScreen.desktop,
           value: true,
         ),
         ConditionBreakpoint<bool>.equals(
-          screenType: DeviceScreenType.tablet,
+          screenType: DeviceScreen.tablet,
           value: false,
         ),
         ConditionBreakpoint<bool>.largerThan(
@@ -34,29 +48,41 @@ void main() {
         ),
       ];
 
-      final value = valueFromConditionByBreakpoints<bool>(
-        currentSize: size,
-        condition: conditions,
-        breakpoints: screenBreakpoints,
-        defaultValue: true,
-      );
+      const width = 800;
+      const height = 1000;
+      final dpi = tester.binding.window.devicePixelRatio;
+      tester.binding.window.physicalSizeTestValue = Size(width * dpi, height * dpi);
 
-      expect(value, false);
+      await tester.pumpWidget(
+        configWidget(
+          (BuildContext context) {
+            final value = valueFromConditionByBreakpoints<bool>(
+              context: context,
+              condition: conditions,
+              localBreakpoints: screenBreakpoints,
+              defaultValue: true,
+            );
+
+            expect(value, false);
+
+            return const SizedBox();
+          },
+        ),
+      );
     });
 
-    test('GetValue boolean Size(1200, 1400)', () {
-      const size = Size(1200, 1400);
+    testWidgets('GetValue boolean Size(1200, 1400)', (WidgetTester tester) async {
       const List<ConditionBreakpoint<bool>> conditions = [
         ConditionBreakpoint<bool>.equals(
-          screenType: DeviceScreenType.mobile,
+          screenType: DeviceScreen.mobile,
           value: true,
         ),
         ConditionBreakpoint<bool>.smallerThan(
-          screenType: DeviceScreenType.desktop,
+          screenType: DeviceScreen.desktop,
           value: true,
         ),
         ConditionBreakpoint<bool>.equals(
-          screenType: DeviceScreenType.tablet,
+          screenType: DeviceScreen.tablet,
           value: false,
         ),
         ConditionBreakpoint<bool>.largerThan(
@@ -65,18 +91,31 @@ void main() {
         ),
       ];
 
-      final value = valueFromConditionByBreakpoints<bool>(
-        currentSize: size,
-        condition: conditions,
-        breakpoints: screenBreakpoints,
-        defaultValue: true,
-      );
+      const width = 1200;
+      const height = 1400;
+      final dpi = tester.binding.window.devicePixelRatio;
+      tester.binding.window.physicalSizeTestValue = Size(width * dpi, height * dpi);
 
-      expect(value, true);
+      await tester.pumpWidget(
+        configWidget(
+          (BuildContext context) {
+            final value = valueFromConditionByBreakpoints<bool>(
+              context: context,
+              condition: conditions,
+              localBreakpoints: screenBreakpoints,
+              defaultValue: true,
+            );
+
+            expect(value, true);
+
+            return const SizedBox();
+          },
+        ),
+      );
     });
 
-    test('GetValue boolean Size(450, 1400) LargeThan', () {
-      const size = Size(450, 1400);
+    testWidgets('GetValue boolean Size(450, 1400) LargeThan',
+        (WidgetTester tester) async {
       const List<ConditionBreakpoint<bool>> conditions = [
         ConditionBreakpoint<bool>.largerThan(
           value: true,
@@ -84,18 +123,31 @@ void main() {
         ),
       ];
 
-      final value = valueFromConditionByBreakpoints<bool>(
-        currentSize: size,
-        condition: conditions,
-        breakpoints: screenBreakpoints,
-        defaultValue: false,
-      );
+      const width = 450;
+      const height = 1400;
+      final dpi = tester.binding.window.devicePixelRatio;
+      tester.binding.window.physicalSizeTestValue = Size(width * dpi, height * dpi);
 
-      expect(value, false);
+      await tester.pumpWidget(
+        configWidget(
+          (BuildContext context) {
+            final value = valueFromConditionByBreakpoints<bool>(
+              context: context,
+              condition: conditions,
+              localBreakpoints: screenBreakpoints,
+              defaultValue: false,
+            );
+
+            expect(value, false);
+
+            return const SizedBox();
+          },
+        ),
+      );
     });
 
-    test('GetValue boolean Size(450, 1400) SmallerThan', () {
-      const size = Size(450, 1400);
+    testWidgets('GetValue boolean Size(450, 1400) SmallerThan',
+        (WidgetTester tester) async {
       const List<ConditionBreakpoint<bool>> conditions = [
         ConditionBreakpoint<bool>.smallerThan(
           value: true,
@@ -103,14 +155,27 @@ void main() {
         ),
       ];
 
-      final value = valueFromConditionByBreakpoints<bool>(
-        currentSize: size,
-        condition: conditions,
-        breakpoints: screenBreakpoints,
-        defaultValue: false,
-      );
+      const width = 450;
+      const height = 1400;
+      final dpi = tester.binding.window.devicePixelRatio;
+      tester.binding.window.physicalSizeTestValue = Size(width * dpi, height * dpi);
 
-      expect(value, true);
+      await tester.pumpWidget(
+        configWidget(
+          (BuildContext context) {
+            final value = valueFromConditionByBreakpoints<bool>(
+              context: context,
+              condition: conditions,
+              localBreakpoints: screenBreakpoints,
+              defaultValue: false,
+            );
+
+            expect(value, true);
+
+            return const SizedBox();
+          },
+        ),
+      );
     });
   });
 }

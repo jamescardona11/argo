@@ -5,12 +5,10 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-class MockBuildContext extends Mock implements BuildContext {}
-
 void main() {
   group('Utils getCurrentBreakpoints', () {
     test('GetValue default', () {
-      final current = getCurrentBreakPoints(context: MockBuildContext());
+      final current = getCurrentBreakPoints(global: defaultBreakPoints);
 
       expect(current, defaultBreakPoints);
     });
@@ -23,7 +21,7 @@ void main() {
       );
 
       final current = getCurrentBreakPoints(
-        context: MockBuildContext(),
+        global: defaultBreakPoints,
         local: sb,
       );
 

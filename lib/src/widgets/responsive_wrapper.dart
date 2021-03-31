@@ -42,7 +42,7 @@ class ResponsiveWrapper extends StatelessWidget {
     return _IWResponsiveWrapper(
       wrapConfig: wrapConfig,
       child: child != null
-          ? Theme(data: themeData.getThemeByRule(wrapConfig!.themeRule), child: child!)
+          ? Theme(data: themeData.getThemeByRule(wrapConfig.themeRule), child: child!)
           : builder!(context, themeData),
     );
   }

@@ -3,6 +3,7 @@ import 'package:argo/src/models/condition_breakpoint.dart';
 import 'package:argo/src/models/condition_screen.dart';
 import 'package:argo/src/models/device_screen.dart';
 import 'package:argo/src/models/screen_breakpoints.dart';
+import 'package:argo/src/utils/size_by_platform.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -10,53 +11,53 @@ void main() {
   group('ConditionBreakpoint Model', () {
     test('Create an equals breakpoint', () {
       const conditionBreakpoint = ConditionBreakpoint.equals(
-        screenType: DeviceScreenType.mobile,
+        screenType: DeviceScreen.mobile,
         value: 10.0,
       );
 
       expect(conditionBreakpoint.conditional, Conditional.EQUALS);
-      expect(conditionBreakpoint.screenType, DeviceScreenType.mobile);
+      expect(conditionBreakpoint.screenType, DeviceScreen.mobile);
       expect(conditionBreakpoint.value, 10.0);
     });
 
     test('Create an largeThan breakpoint', () {
       const conditionBreakpoint = ConditionBreakpoint.largerThan(
-        screenType: DeviceScreenType.mobile,
+        screenType: DeviceScreen.mobile,
         value: 10.0,
         breakpoint: 20,
       );
 
       expect(conditionBreakpoint.conditional, Conditional.LARGER_THAN);
-      expect(conditionBreakpoint.screenType, DeviceScreenType.mobile);
+      expect(conditionBreakpoint.screenType, DeviceScreen.mobile);
       expect(conditionBreakpoint.value, 10.0);
       expect(conditionBreakpoint.breakpoint, 20.0);
     });
 
     test('Create an smallerThan breakpoint', () {
       const conditionBreakpoint = ConditionBreakpoint.smallerThan(
-        screenType: DeviceScreenType.mobile,
+        screenType: DeviceScreen.mobile,
         value: 10.0,
         breakpoint: 20.0,
       );
 
       expect(conditionBreakpoint.conditional, Conditional.SMALLER_THAN);
-      expect(conditionBreakpoint.screenType, DeviceScreenType.mobile);
+      expect(conditionBreakpoint.screenType, DeviceScreen.mobile);
       expect(conditionBreakpoint.value, 10.0);
       expect(conditionBreakpoint.breakpoint, 20.0);
     });
 
     test('Test copywith', () {
       const conditionBreakpoint = ConditionBreakpoint.equals(
-        screenType: DeviceScreenType.mobile,
+        screenType: DeviceScreen.mobile,
         value: 10.0,
       );
       final theCopy = conditionBreakpoint.copyWith(
         breakpoint: 45,
-        screenType: DeviceScreenType.desktop,
+        screenType: DeviceScreen.desktop,
       );
 
       expect(theCopy.conditional, Conditional.EQUALS);
-      expect(theCopy.screenType, DeviceScreenType.desktop);
+      expect(theCopy.screenType, DeviceScreen.desktop);
       expect(theCopy.value, 10.0);
       expect(theCopy.breakpoint, 45.0);
     });
@@ -113,20 +114,14 @@ void main() {
       );
     });
 
-    test('Get DeviceType from Size', () {
-      final dst = DeviceScreenTypeX.fromSize(size);
-
-      expect(dst, DeviceScreenType.mobile);
-    });
-
     test('Get DeviceType from Breakpoint', () {
-      final dst = DeviceScreenTypeX.fromBreakpoint(size, screenBreakpoints!);
-
-      expect(dst, DeviceScreenType.desktop);
+      final mSize = getSizeByPlatform(size, shortestSide: false);
+      final dst = DeviceScreenX.fromBreakpoint(mSize, screenBreakpoints!);
+      expect(dst, DeviceScreen.desktop);
     });
 
     test('Get ScreenValue', () {
-      const device = DeviceScreenType.tablet;
+      const device = DeviceScreen.tablet;
       final dst = device.getScreenValue<double>(screenBreakpoints!);
 
       expect(dst, 200);

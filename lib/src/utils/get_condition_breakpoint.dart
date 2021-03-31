@@ -20,7 +20,9 @@ T valueFromConditionByBreakpoints<T>({
   ScreenBreakpoints? localBreakpoints,
   required T defaultValue,
 }) {
-  condition.removeWhere((element) => element.isNull);
+  final nCondition = List<ConditionBreakpoint<T>>.from(condition);
+
+  nCondition.removeWhere((element) => element.isNull);
 
   final rw = ResponsiveWrapper.getWrapperConfig(context);
   final breakpoints = getCurrentBreakPoints(
@@ -30,7 +32,7 @@ T valueFromConditionByBreakpoints<T>({
 
   final valueWhen = _setDefaultValuesToConditions<T>(
     breakpoints,
-    condition,
+    nCondition,
   );
 
   valueWhen.sort((a, b) => a.breakpoint!.compareTo(b.breakpoint!));
