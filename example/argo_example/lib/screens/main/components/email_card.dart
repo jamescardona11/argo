@@ -1,7 +1,7 @@
 import 'package:argo_example/config/assets_manager.dart';
 import 'package:argo_example/models/email.dart';
 import 'package:flutter/material.dart';
-import 'package:websafe_svg/websafe_svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../config/constants.dart';
 import '../../../extensions.dart';
 
@@ -74,8 +74,8 @@ class EmailCard extends StatelessWidget {
                           ),
                           SizedBox(height: 5),
                           if (email?.isAttachmentAvailable ?? false)
-                            WebsafeSvg.asset(
-                              "assets/Icons/Paperclip.svg",
+                            SvgPicture.asset(
+                              AssetsManager.paperclipIcon,
                               color: isActive ? Colors.white70 : kGrayColor,
                             )
                         ],
@@ -122,7 +122,7 @@ class EmailCard extends StatelessWidget {
               Positioned(
                 left: 8,
                 top: 0,
-                child: WebsafeSvg.asset(
+                child: SvgPicture.asset(
                   AssetsManager.markupFilledIcon,
                   height: 18,
                   color: email?.tagColor,

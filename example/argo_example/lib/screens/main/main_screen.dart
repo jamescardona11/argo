@@ -25,9 +25,9 @@ class MainScreen extends StatelessWidget {
         desktop: Builder(
           builder: (context) {
             final isBigSize = context.widthPx >= 1340;
-            debugPrint('MainScreen: isBigSize: ${isBigSize}');
 
             return Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                   flex: isBigSize ? 2 : 4,

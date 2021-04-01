@@ -2,7 +2,7 @@ import 'package:argo_example/config/assets_manager.dart';
 import 'package:argo_example/models/email.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:websafe_svg/websafe_svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../config/constants.dart';
 import 'components/header.dart';
 
@@ -103,7 +103,7 @@ class EmailScreen extends StatelessWidget {
                                           style: Theme.of(context).textTheme.caption,
                                         ),
                                         SizedBox(width: kDefaultPadding / 4),
-                                        WebsafeSvg.asset(
+                                        SvgPicture.asset(
                                           AssetsManager.downloadIcon,
                                           height: 16,
                                           color: kGrayColor,

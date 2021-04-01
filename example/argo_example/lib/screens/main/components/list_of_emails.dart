@@ -5,7 +5,7 @@ import 'package:argo_example/config/constants.dart';
 import 'package:argo_example/models/email.dart';
 import 'package:argo_example/screens/email/email_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:websafe_svg/websafe_svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'email_card.dart';
 
 class ListOfEmails extends StatefulWidget {
@@ -28,9 +28,10 @@ class _ListOfEmailsState extends State<ListOfEmails> {
         child: SideMenu(),
       ),
       body: Container(
-        // padding: EdgeInsets.all(kDefaultPadding),
+        padding: EdgeInsets.only(top: PlatformInfo.isWeb ? kDefaultPadding : 0),
         color: kBgDarkColor,
         child: SafeArea(
+          right: false,
           child: Column(
             children: [
               Row(
@@ -62,7 +63,7 @@ class _ListOfEmailsState extends State<ListOfEmails> {
                         filled: true,
                         suffixIcon: Padding(
                           padding: const EdgeInsets.all(kDefaultPadding * 0.75),
-                          child: WebsafeSvg.asset(
+                          child: SvgPicture.asset(
                             AssetsManager.searchIcon,
                             width: 18,
                           ),
@@ -81,7 +82,7 @@ class _ListOfEmailsState extends State<ListOfEmails> {
                 padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
                 child: Row(
                   children: [
-                    WebsafeSvg.asset(
+                    SvgPicture.asset(
                       AssetsManager.angleDownIcon,
                       width: 16,
                       color: Colors.black,
@@ -95,7 +96,7 @@ class _ListOfEmailsState extends State<ListOfEmails> {
                     MaterialButton(
                       minWidth: 20,
                       onPressed: () {},
-                      child: WebsafeSvg.asset(
+                      child: SvgPicture.asset(
                         AssetsManager.sortIcon,
                         width: 16,
                       ),

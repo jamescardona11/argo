@@ -2,7 +2,7 @@ import 'package:argo/argo.dart';
 import 'package:argo_example/config/assets_manager.dart';
 import 'package:argo_example/config/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:websafe_svg/websafe_svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Header extends StatelessWidget {
   const Header({
@@ -20,28 +20,28 @@ class Header extends StatelessWidget {
         children: [
           if (ResponsiveWrapper.isMobile(context)) BackButton(),
           IconButton(
-            icon: WebsafeSvg.asset(
+            icon: SvgPicture.asset(
               AssetsManager.trashIcon,
               width: 22,
             ),
             onPressed: () {},
           ),
           IconButton(
-            icon: WebsafeSvg.asset(
+            icon: SvgPicture.asset(
               AssetsManager.replyIcon,
               width: 22,
             ),
             onPressed: () {},
           ),
           IconButton(
-            icon: WebsafeSvg.asset(
+            icon: SvgPicture.asset(
               AssetsManager.replyAllIcon,
               width: 22,
             ),
             onPressed: () {},
           ),
           IconButton(
-            icon: WebsafeSvg.asset(
+            icon: SvgPicture.asset(
               AssetsManager.transferIcon,
               width: 22,
             ),
@@ -54,7 +54,7 @@ class Header extends StatelessWidget {
               desktop: true,
             ),
             child: IconButton(
-              icon: WebsafeSvg.asset(
+              icon: SvgPicture.asset(
                 AssetsManager.printerIcon,
                 width: 22,
               ),
@@ -62,14 +62,14 @@ class Header extends StatelessWidget {
             ),
           ),
           IconButton(
-            icon: WebsafeSvg.asset(
+            icon: SvgPicture.asset(
               AssetsManager.markupIcon,
               width: 22,
             ),
             onPressed: () {},
           ),
           IconButton(
-            icon: WebsafeSvg.asset(
+            icon: SvgPicture.asset(
               AssetsManager.moreVerticalIcon,
               width: 22,
             ),

@@ -84,7 +84,7 @@ packages:
     source: hosted
     version: "0.4.0-nullsafety.3"
   flutter_svg:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_svg
       url: "https://pub.dartlang.org"

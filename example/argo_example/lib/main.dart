@@ -11,10 +11,12 @@ class MyApp extends StatelessWidget {
       title: 'Argo Example App',
       debugShowCheckedModeBanner: false,
       home: ResponsiveWrapper(
-        globalBreakpoints: ScreenBreakpoints(
-          mobile: 321,
-          tablet: 650,
-          desktop: 1100,
+        wrapConfig: WrapperConfig(
+          globalBreakpoints: ScreenBreakpoints(
+            mobile: 321,
+            tablet: 650,
+            desktop: 1100,
+          ),
         ),
         child: MainScreen(),
       ),
