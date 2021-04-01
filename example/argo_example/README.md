@@ -1,16 +1,21 @@
-# argo_example
+# Argo Example
 
-A new Flutter project.
+This project is basic example for argo library use.
+- [Based Video from](https://www.youtube.com/watch?v=0mp-Ok00WZE&t=564s) The Flutter Way
 
-## Getting Started
+  Mobile Landscape
+  <img src="preview/mobile1.png" width="225"/>
+  Mobile
+  <img src="preview/mobile2.png" width="225"/>
+  Web
+  <img src="preview/web.png" width="225"/>
+  Web Tablet responsive
+  <img src="preview/web1.png" width="225"/>
+  Web Mobile responsive
+  <img src="preview/web2.png" width="225"/>
+  Web Mobile responsive 2
+  <img src="preview/web3.png" width="225"/>
+  Web Mobile vs Mobile
+  <img src="preview/web_mobile.png" width="225"/>
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
