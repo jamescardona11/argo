@@ -78,3 +78,5 @@ build/
 **/android/*
 **/ios/*
 **/web/*
+
+todo.txt
