@@ -44,10 +44,7 @@ class ResponsiveVisibility extends StatelessWidget {
     // Initialize mutable value holders.
     final bool visibleValue = getVisibilityValue(context);
 
-    return Offstage(
-      offstage: visibleValue,
-      child: child,
-    );
+    return visibleValue ? child : const SizedBox();
   }
 
   bool getVisibilityValue(BuildContext context) {

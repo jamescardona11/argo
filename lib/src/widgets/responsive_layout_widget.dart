@@ -59,7 +59,7 @@ class ResponsiveLayoutWidget extends StatelessWidget {
         }
 
         // If none of the layouts above are supplied or we're on the mobile layout then we show the mobile layout
-        return mobile != null ? returnValue(tablet, context, info) : const SizedBox();
+        return mobile != null ? returnValue(mobile, context, info) : const SizedBox();
       },
     );
   }
