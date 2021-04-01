@@ -47,14 +47,14 @@ class ResponsiveLayoutWidget extends StatelessWidget {
           localBreakpoints: breakpoints,
         );
 
-        if (info.deviceScreenType.isDesktop()) {
+        if (info.deviceScreen.isDesktop()) {
           // If we have supplied the desktop layout then display that
           if (desktop != null) return returnValue(desktop, context, info);
           // If no desktop layout is supplied we want to check if we have the size below it and display that
           if (tablet != null) return returnValue(tablet, context, info);
         }
 
-        if (info.deviceScreenType.isTablet()) {
+        if (info.deviceScreen.isTablet()) {
           if (tablet != null) return returnValue(tablet, context, info);
         }
 

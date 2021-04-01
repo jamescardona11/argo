@@ -19,10 +19,11 @@ ResponsiveInformation getResponsiveInformation({
 
   final mp = MediaQuery.of(context);
   final deviceWith = rw.getDeviceWidth(mp.size);
-  final deviceScreenType = DeviceScreenX.fromBreakpoint(deviceWith, breakpoints);
+  final deviceScreen = DeviceScreenX.fromBreakpoint(deviceWith, breakpoints);
+  deviceScreen.isMobile();
 
   return ResponsiveInformation(
-    deviceScreenType: deviceScreenType,
+    deviceScreen: deviceScreen,
     screenSize: mp.size,
     localSize: localSize ?? mp.size,
     currentBreakpoints: breakpoints,

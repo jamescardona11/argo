@@ -4,7 +4,7 @@ import 'device_screen.dart';
 import 'screen_breakpoints.dart';
 
 class ResponsiveInformation {
-  final DeviceScreen deviceScreenType;
+  final DeviceScreen deviceScreen;
   final Size screenSize;
   final Size localSize;
   final ScreenBreakpoints currentBreakpoints;
@@ -12,7 +12,7 @@ class ResponsiveInformation {
   final bool isPortrait;
 
   ResponsiveInformation({
-    required this.deviceScreenType,
+    required this.deviceScreen,
     required this.screenSize,
     required this.localSize,
     required this.currentBreakpoints,
@@ -20,11 +20,11 @@ class ResponsiveInformation {
   })   : isLandscape = orientation == Orientation.landscape,
         isPortrait = orientation == Orientation.portrait;
 
-  bool get isMobile => deviceScreenType.isMobile();
-  bool get isTablet => deviceScreenType.isTablet();
-  bool get isDesktop => deviceScreenType.isDesktop();
+  bool get isMobile => deviceScreen.isMobile();
+  bool get isTablet => deviceScreen.isTablet();
+  bool get isDesktop => deviceScreen.isDesktop();
 
   @override
   String toString() =>
-      'DeviceType:$deviceScreenType +ScreenSize:$screenSize LocalSize:$localSize currentBreakpoints: $currentBreakpoints isLandScape: $isLandscape isPortrait: $isPortrait';
+      'DeviceType:$deviceScreen +ScreenSize:$screenSize LocalSize:$localSize currentBreakpoints: $currentBreakpoints isLandScape: $isLandscape isPortrait: $isPortrait';
 }
