@@ -1,7 +1,6 @@
 name: argo
 description: Responsive tools and widget for flutter apps.
 version: 0.0.1
-author: James Cardona
 homepage: https://github.com/jamescardona11/argo
 
 environment:
