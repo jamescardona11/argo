@@ -1,3 +1,4 @@
+import 'package:argo/src/models/responsive_information.dart';
 import 'package:flutter/widgets.dart';
 
 import '../models/device_screen.dart';
@@ -9,18 +10,32 @@ import '../utils/get_resonsive_information.dart';
 /// [Mobile], [tablet], [desktop] are widget children
 /// [ScreenBreakpoints] property is LocalBreakpoints for this widgets
 class ResponsiveLayoutWidget extends StatelessWidget {
-  final RBuilder? mobile;
-  final RBuilder? tablet;
-  final RBuilder? desktop;
+  final dynamic? mobile;
+  final dynamic? tablet;
+  final dynamic? desktop;
   final ScreenBreakpoints? breakpoints;
 
   const ResponsiveLayoutWidget({
     Key? key,
-    this.mobile,
-    this.tablet,
-    this.desktop,
+    Widget mobile = const SizedBox(),
+    Widget? tablet,
+    Widget? desktop,
     this.breakpoints,
-  }) : super(key: key);
+  })  : mobile = mobile,
+        tablet = tablet,
+        desktop = desktop,
+        super(key: key);
+
+  const ResponsiveLayoutWidget.builder({
+    Key? key,
+    RBuilder? mobile,
+    RBuilder? tablet,
+    RBuilder? desktop,
+    this.breakpoints,
+  })  : mobile = mobile,
+        tablet = tablet,
+        desktop = desktop,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,18 +49,28 @@ class ResponsiveLayoutWidget extends StatelessWidget {
 
         if (info.deviceScreenType.isDesktop()) {
           // If we have supplied the desktop layout then display that
-          if (desktop != null) return desktop!(context, info);
+          if (desktop != null) return returnValue(desktop, context, info);
           // If no desktop layout is supplied we want to check if we have the size below it and display that
-          if (tablet != null) return tablet!(context, info);
+          if (tablet != null) return returnValue(tablet, context, info);
         }
 
         if (info.deviceScreenType.isTablet()) {
-          if (tablet != null) return tablet!(context, info);
+          if (tablet != null) return returnValue(tablet, context, info);
         }
 
         // If none of the layouts above are supplied or we're on the mobile layout then we show the mobile layout
-        return mobile != null ? mobile!(context, info) : const SizedBox();
+        return mobile != null ? returnValue(tablet, context, info) : const SizedBox();
       },
     );
+  }
+
+  bool _isRBuilder(dynamic data) => data is RBuilder;
+
+  Widget returnValue(dynamic data, BuildContext context, ResponsiveInformation info) {
+    if (_isRBuilder(data)) {
+      return (data as RBuilder)(context, info);
+    } else {
+      return data as Widget;
+    }
   }
 }

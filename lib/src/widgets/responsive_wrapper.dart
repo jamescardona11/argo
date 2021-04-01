@@ -1,3 +1,4 @@
+import 'package:argo/src/models/typedef.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -9,8 +10,6 @@ import '../theme/i_theme_data_rule.dart';
 import '../theme/responsive_theme.dart';
 import '../utils/get_condition_breakpoint.dart';
 import '../utils/get_condition_screen.dart';
-
-typedef RWBuilder = Widget Function(BuildContext context, IThemeDataRule themeDataRule);
 
 /// Widget to configure the responsive for the application, you can configure [globalbreakpoints], the [thmeRule]
 /// You can use like global widget or builder widget into [MaterialApp] Widget
