@@ -5,6 +5,7 @@ import 'default_theme_data.dart';
 import 'i_theme_data_rule.dart';
 
 /// Data class to handle the theme responsive information, this class only can set with [ResponsiveWrapper]
+/// Is used for [ResponsiveWrapper] to get the value for the currentBreakpoints
 class ResponsiveTheme {
   final List<ConditionBreakpoint<IThemeDataRule>>? changeWhen;
   final ConditionScreen<IThemeDataRule>? conditionScreen;

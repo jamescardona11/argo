@@ -8,6 +8,7 @@ import '../models/wrapper_config.dart';
 import '../platform_info/platform_info.dart';
 import '../widgets/responsive_wrapper.dart';
 
+/// Context Extension to have a lot information for make it easy the responsive design
 extension ResponsiveContext on BuildContext {
   /// Returns same as MediaQuery.of(context)
   MediaQueryData get mq => responsiveUtils.mq;

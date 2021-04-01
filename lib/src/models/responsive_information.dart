@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'device_screen.dart';
 import 'screen_breakpoints.dart';
 
+/// Data class to handle responsive information for the widgets
 class ResponsiveInformation {
   final DeviceScreen deviceScreen;
   final Size screenSize;

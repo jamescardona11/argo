@@ -6,6 +6,7 @@ import '../models/screen_breakpoints.dart';
 import '../widgets/responsive_wrapper.dart';
 import 'get_current_breakpoints.dart';
 
+/// Get the responsive information util
 ResponsiveInformation getResponsiveInformation({
   required BuildContext context,
   Size? localSize,

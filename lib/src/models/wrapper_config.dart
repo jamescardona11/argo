@@ -4,6 +4,7 @@ import '../theme/theme_rule.dart';
 import '../utils/size_by_platform.dart';
 import 'screen_breakpoints.dart';
 
+/// Data class to handle the global configururation
 class WrapperConfig {
   final ScreenBreakpoints globalBreakpoints;
   final ThemeRule themeRule;

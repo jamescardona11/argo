@@ -182,9 +182,9 @@ OrientationLayoutBuilder(
 ```
 
 
-### TOOLS
+## TOOLS
 
-## valueFromConditionByBreakpoints
+### valueFromConditionByBreakpoints
 
 You can get single value from `ConditionBreakpoint` List
 
@@ -217,7 +217,7 @@ final value = valueFromConditionByBreakpoints<bool>(
 
 ```
 
-## valueFromConditionByBreakpoints
+### valueFromConditionByBreakpoints
 
 You can get single value from `ConditionScreen` List
 
@@ -237,13 +237,26 @@ final value = valueFromConditionByScreen<String>(
 
 ```
 
+### ResponsiveContext Extension
+
+You can get from the context info for make it easy the responsive apps
+
+```dart
+  context.widthPx = Returns same as MediaQuery.of(context).size.width
+  context.heightPx = Returns same as MediaQuery.of(context).size.height
+  context.theme = Getting Theme
+  context.widthPct(10) = Returns percent (1-100) of screen width in pixels
+  ...
+
+```
+
 ### Responsive Theme (TODO)
 
 
 ### Examples
 
-1. [ArgoExample](https://github.com/jamescardona11/argo/tree/main/example/argo_example) Simple example of use the argo library
-3. [ThemingExample]() TODO
+1. [ArgoExample](https://github.com/jamescardona11/argo/tree/main/example/argo_example): Simple example of use the argo library
+3. [ThemingExample](): TODO
 
 
 
@@ -251,7 +264,7 @@ Flutter is a game-changing technology that will revolutionize not just developme
 
 <a href="https://github.com/flutter/flutter">
   <img alt="Flutter"
-       src="https://raw.githubusercontent.com/jamescardona11/argo/main/img/flutter_logo.png" />
+       src="https://github.com/jamescardona11/argo/blob/main/img/flutter_logo.png?raw=true" />
 </a>
 
 

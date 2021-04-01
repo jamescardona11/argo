@@ -3,6 +3,7 @@ import 'screen_model.dart';
 
 enum DeviceScreen { mobile, tablet, desktop }
 
+/// Extension to get the device type for the current breakpoint
 extension DeviceScreenX on DeviceScreen {
   bool isMobile() => this == DeviceScreen.mobile;
   bool isTablet() => this == DeviceScreen.tablet;
