@@ -1,4 +1,7 @@
-# argo
+<p align="center">
+<img src="https://raw.githubusercontent.com/jamescardona11/argo/main/img/argo_logo.svg" height="100" alt="Flutter Bloc Package" />
+</p>
+
 
 A new Flutter package project.
 
