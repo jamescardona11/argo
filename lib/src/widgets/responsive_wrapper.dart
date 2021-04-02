@@ -14,25 +14,25 @@ import '../utils/get_condition_screen.dart';
 /// Widget to configure the responsive for the application, you can configure [globalbreakpoints], the [thmeRule]
 /// You can use like global widget or builder widget into [MaterialApp] Widget
 class ResponsiveWrapper extends StatelessWidget {
-  final Widget? child;
-  final RWBuilder? builder;
+  final dynamic child;
+
   final ResponsiveTheme? responsiveTheme;
   final WrapperConfig wrapConfig;
 
   const ResponsiveWrapper({
     Key? key,
-    required this.child,
+    required Widget child,
     this.responsiveTheme,
     this.wrapConfig = const WrapperConfig(),
-  })  : builder = null,
+  })  : child = child,
         super(key: key);
 
   const ResponsiveWrapper.builder({
     Key? key,
-    required this.builder,
+    required RWBuilder builder,
     this.responsiveTheme,
     this.wrapConfig = const WrapperConfig(),
-  })  : child = null,
+  })  : child = builder,
         super(key: key);
 
   @override
@@ -40,10 +40,23 @@ class ResponsiveWrapper extends StatelessWidget {
     final IThemeDataRule themeData = getThemeDataFromCondition(context);
     return _IWResponsiveWrapper(
       wrapConfig: wrapConfig,
-      child: child != null
-          ? Theme(data: themeData.getThemeByRule(wrapConfig.themeRule), child: child!)
-          : builder!(context, themeData),
+      child: returnValue(child, themeData),
     );
+  }
+
+  bool _isRWuilder(dynamic data) => data is RWBuilder;
+
+  Widget returnValue(dynamic data, IThemeDataRule themeData) {
+    if (_isRWuilder(data)) {
+      return (data as RWBuilder)(themeData, wrapConfig.themeRule);
+    }
+
+    return responsiveTheme != null
+        ? Theme(
+            data: themeData.getThemeByRule(wrapConfig.themeRule),
+            child: data as Widget,
+          )
+        : data as Widget;
   }
 
   IThemeDataRule getThemeDataFromCondition(BuildContext context) {

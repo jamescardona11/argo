@@ -2,4 +2,5 @@
 enum ThemeRule {
   light,
   dark,
+  custom,
 }

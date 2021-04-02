@@ -69,8 +69,8 @@ class ResponsiveLayoutWidget extends StatelessWidget {
   Widget returnValue(dynamic data, BuildContext context, ResponsiveInformation info) {
     if (_isRBuilder(data)) {
       return (data as RBuilder)(context, info);
-    } else {
-      return data as Widget;
     }
+
+    return data as Widget;
   }
 }

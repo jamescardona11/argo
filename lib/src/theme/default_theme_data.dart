@@ -7,11 +7,6 @@ class DefaultThemeDataRule implements IThemeDataRule {
   const DefaultThemeDataRule();
   @override
   ThemeData getThemeByRule(ThemeRule rule) {
-    switch (rule) {
-      case ThemeRule.light:
-        return ThemeData.light();
-      case ThemeRule.dark:
-        return ThemeData.dark();
-    }
+    return ThemeData.light();
   }
 }

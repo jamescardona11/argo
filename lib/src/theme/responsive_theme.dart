@@ -15,7 +15,7 @@ class ResponsiveTheme {
   ResponsiveTheme.screen({
     required this.conditionScreen,
     this.deafultTheme = const DefaultThemeDataRule(),
-  })  : type = ConditionType.conditions,
+  })  : type = ConditionType.screen,
         changeWhen = null;
 
   ResponsiveTheme.conditions({
