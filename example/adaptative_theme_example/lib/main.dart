@@ -7,35 +7,48 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  final ruleTheme = ValueNotifier(ThemeRule.light);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Adaptative Theme(Argo)',
-      debugShowCheckedModeBanner: false,
-      builder: (context, child) => ResponsiveWrapper.builder(
-        wrapConfig: WrapperConfig(
-          globalBreakpoints: ScreenBreakpoints(
-            mobile: 321,
-            tablet: 650,
-            desktop: 1100,
+    return ValueListenableBuilder<ThemeRule>(
+      valueListenable: ruleTheme,
+      builder: (context, newRule, child) {
+        return MaterialApp(
+          title: 'Adaptative Theme(Argo)',
+          debugShowCheckedModeBanner: false,
+          builder: (context, child) => ResponsiveWrapper.builder(
+            wrapConfig: WrapperConfig(
+              globalBreakpoints: ScreenBreakpoints(
+                mobile: 321,
+                tablet: 650,
+                desktop: 1100,
+              ),
+              themeRule: newRule,
+            ),
+            responsiveTheme: ResponsiveTheme.screen(
+              conditionScreen: ConditionScreen(
+                mobile: MyThemesApp(),
+                tablet: MyThemesWeb(),
+                desktop: MyThemesWeb(),
+              ),
+            ),
+            builder: (IThemeDataRule themeDataRule, ThemeRule rule) {
+              return Theme(
+                data: themeDataRule.getThemeByRule(rule),
+                child: child!,
+              );
+            },
           ),
-          themeRule: ThemeRule.light,
-        ),
-        responsiveTheme: ResponsiveTheme.screen(
-          conditionScreen: ConditionScreen(
-            mobile: MyThemesApp(),
-            tablet: MyThemesApp(),
-            desktop: MyThemesWeb(),
+          home: HomeView(
+            onChangeTheme: changeRuleTheme,
           ),
-        ),
-        builder: (IThemeDataRule themeDataRule, ThemeRule rule) {
-          return Theme(
-            data: themeDataRule.getThemeByRule(rule),
-            child: child,
-          );
-        },
-      ),
-      home: HomeView(),
+        );
+      },
     );
+  }
+
+  void changeRuleTheme(ThemeRule rule) {
+    ruleTheme.value = rule;
   }
 }

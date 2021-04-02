@@ -23,7 +23,7 @@ class MyThemesWeb with IThemeDataRule {
     primaryColor: Colors.blue,
     brightness: Brightness.light,
     textTheme: TextTheme(
-      headline1: headline1.copyWith(fontSize: 86),
+      headline1: headline1.copyWith(fontSize: 86, color: Colors.white),
       headline2: headline2.copyWith(fontSize: 38),
     ),
   );
@@ -32,7 +32,7 @@ class MyThemesWeb with IThemeDataRule {
     primaryColor: Colors.grey,
     brightness: Brightness.dark,
     textTheme: TextTheme(
-      headline1: headline1.copyWith(fontSize: 86),
+      headline1: headline1.copyWith(fontSize: 86, color: Colors.white),
       headline2: headline2.copyWith(fontSize: 38),
     ),
   );
@@ -41,7 +41,7 @@ class MyThemesWeb with IThemeDataRule {
     primaryColor: Colors.black,
     brightness: Brightness.dark,
     textTheme: TextTheme(
-      headline1: headline1.copyWith(fontSize: 86),
+      headline1: headline1.copyWith(fontSize: 86, color: Colors.white),
       headline2: headline2.copyWith(fontSize: 38),
     ),
   );

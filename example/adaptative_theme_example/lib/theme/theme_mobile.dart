@@ -40,8 +40,8 @@ class MyThemesApp with IThemeDataRule {
     primaryColor: Colors.black,
     brightness: Brightness.dark,
     textTheme: TextTheme(
-      headline1: headline1.copyWith(fontSize: 26),
-      headline2: headline2.copyWith(fontSize: 18),
+      headline1: headline1.copyWith(fontSize: 26, color: Colors.white),
+      headline2: headline2.copyWith(fontSize: 18, color: Colors.white),
     ),
   );
 }
