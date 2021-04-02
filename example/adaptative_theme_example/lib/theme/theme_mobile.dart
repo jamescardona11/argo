@@ -1,3 +1,4 @@
+import 'package:adaptative_theme_example/theme/common_data.dart';
 import 'package:argo/argo.dart';
 import 'package:flutter/material.dart';
 
@@ -6,26 +7,41 @@ class MyThemesApp with IThemeDataRule {
   ThemeData getThemeByRule(ThemeRule rule) {
     switch (rule) {
       case ThemeRule.light:
-        return ThemeData.dark();
+        return lightTheme;
       case ThemeRule.dark:
-        return ThemeData.dark();
+        return darkTheme;
       case ThemeRule.custom:
-        return ThemeData.dark();
+        return darkerTheme;
+
+      default:
+        return lightTheme;
     }
   }
 
   final ThemeData lightTheme = ThemeData(
-    primaryColor: Colors.blue,
+    primaryColor: Colors.blueGrey,
     brightness: Brightness.light,
+    textTheme: TextTheme(
+      headline1: headline1.copyWith(fontSize: 26),
+      headline2: headline2.copyWith(fontSize: 18),
+    ),
   );
 
   final ThemeData darkTheme = ThemeData(
     primaryColor: Colors.grey,
     brightness: Brightness.dark,
+    textTheme: TextTheme(
+      headline1: headline1.copyWith(fontSize: 26),
+      headline2: headline2.copyWith(fontSize: 18),
+    ),
   );
 
-  static final ThemeData darkerTheme = ThemeData(
+  final ThemeData darkerTheme = ThemeData(
     primaryColor: Colors.black,
     brightness: Brightness.dark,
+    textTheme: TextTheme(
+      headline1: headline1.copyWith(fontSize: 26),
+      headline2: headline2.copyWith(fontSize: 18),
+    ),
   );
 }
