@@ -93,12 +93,6 @@ extension ResponsiveContext on BuildContext {
 class ResponsiveUtils {
   final BuildContext _context;
 
-  //Private constructor
-  ResponsiveUtils._(this._context);
-
-  //Public constructor
-  ResponsiveUtils.of(this._context);
-
   double get _pixelsPerInch => PlatformInfo.isAndroid || PlatformInfo.isIOS ? 150 : 96;
 
   /// Returns same as MediaQuery.of(context)
@@ -161,4 +155,10 @@ class ResponsiveUtils {
     return DeviceScreenX.fromBreakpoint(
         _rw.getDeviceWidth(MediaQuery.of(context).size), _rw.globalBreakpoints);
   }
+
+  //Private constructor
+  ResponsiveUtils._(this._context);
+
+  //Public constructor
+  ResponsiveUtils.of(this._context);
 }
