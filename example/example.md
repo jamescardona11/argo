@@ -1,4 +1,5 @@
-// Basic Use
+Basic Use
+```dart
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -40,6 +41,21 @@ ResponsiveVisibility.screen(
   ),
 ),
 
+// ResponsiveBuilder
+ResponsiveBuilder(
+  builder: (ctx, info) { 
+    if(info.localSize.width > 300 && info.deviceScreen.isTablet()){
+      return Container(
+                color: Colors.red,
+                width: 50,
+                height: 50
+              );
+    }else{
+      return const SizedBox();
+    }
+  }
+)
+
 
 // ResponsiveTheme
 ResponsiveTheme.screen(
@@ -49,3 +65,25 @@ ResponsiveTheme.screen(
      desktop: MyThemesWeb(),
    ),
  )
+```
+
+One example `IThemeDataRule` usign of the Condition for ResponsiveTheme
+```dart
+
+class MyThemesApp with IThemeDataRule {
+  @override
+  ThemeData getThemeByRule(ThemeRule rule) {
+    switch (rule) {
+      case ThemeRule.light:
+        return lightTheme;
+      case ThemeRule.dark:
+        return darkTheme;
+      case ThemeRule.custom:
+        return darkerTheme;
+      default:
+        return lightTheme;
+    }
+  }
+}
+
+ ```
