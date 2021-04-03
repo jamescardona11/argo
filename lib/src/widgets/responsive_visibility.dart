@@ -9,7 +9,7 @@ import '../utils/get_condition_screen.dart';
 
 /// {@template responsive_visibility}
 ///
-/// Widget to show or hide a `child` depending of the [Condition]
+/// Widget to show or hide a `child` depending of the [Condition].
 /// You can use [ConditionScreen] or [ConditionBreakpoint] each one will bring you a different control
 ///
 /// {@endtemplate}

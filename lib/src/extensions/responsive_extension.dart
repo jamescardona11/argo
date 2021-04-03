@@ -10,7 +10,7 @@ import '../widgets/responsive_wrapper.dart';
 
 /// {@template responsive_extension}
 ///
-/// Extension to bring the information in a easier way for the responsive
+/// Extension to bring the information in a easier way for the responsive.
 /// All calculations related whit `MediaQuery.of(context).size`
 ///
 /// ```dart

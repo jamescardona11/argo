@@ -5,7 +5,7 @@ import 'screen_breakpoints.dart';
 
 /// {@template responsive_information}
 ///
-/// Data class to handle `responsive` information for the widget
+/// Data class to handle `responsive` information for the widget.
 /// This class stores the necesary information so the widget can create their `responsive`
 ///
 /// {@endtemplate}

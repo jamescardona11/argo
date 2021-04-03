@@ -8,7 +8,7 @@ import '../utils/get_resonsive_information.dart';
 
 /// {@template responsive_layout_widget}
 ///
-/// Widget that shows different children depending of `screen` type
+/// Widget that shows different children depending of `screen` type,
 ///
 /// ```dart
 /// ResponsiveLayoutWidget(
@@ -18,8 +18,8 @@ import '../utils/get_resonsive_information.dart';
 /// )
 /// ```
 ///
-/// Also you can use the constructor `ResponsiveLayoutWidget.builder`
-/// To return for each `child` the [ResponsiveInformation]
+/// Also you can use the constructor `ResponsiveLayoutWidget.builder`,
+/// to return for each `child` the [ResponsiveInformation]
 ///
 /// ```dart
 /// ResponsiveLayoutWidget.builder(

@@ -8,11 +8,16 @@ import 'get_current_breakpoints.dart';
 
 /// {@template get_responsive_information}
 ///
-/// Util to get the responsive information
+/// Util to get the responsive information.
 ///
-/// `context` it is `BuildContext` of the widget
-/// `localSize` is the value gets from constrains
-/// `localBreakpoints` are the local breakpoints for the widget
+///
+/// `context` it is `BuildContext` of the widget.
+///
+///
+/// `localSize` is the value gets from constrains.
+///
+///
+/// `localBreakpoints` are the local breakpoints for the widget.
 ///
 /// {@endtemplate}
 ResponsiveInformation getResponsiveInformation({

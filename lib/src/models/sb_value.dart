@@ -1,24 +1,26 @@
 /// {@template responsive_information}
 ///
-/// [SBValue] class to stores the values of [ScreenBreakpoints]
-/// [SBValue] save a value that means limit for a screen breakpoint is similar to `Size.width`
-/// We can use differents `type` of values `min`, `max`
+/// [SBValue] class to stores the values of [ScreenBreakpoints].
+/// [SBValue] save a value that means limit for a screen breakpoint is similar to `Size.width`.
+/// We can use differents `type` of values `min`, `max`,
 /// The types serves to do comparations between all the differents [ScreenBreakpoints]
 ///
 /// Sugestion: in order to have a consistance in the behaviour of the app
-/// the best is to set the [SBValue] for a [ScreenBreakpoints] in all cases by `min` or `max`
+/// the best is to set the [SBValue] for a [ScreenBreakpoints] in all cases by `min` or `max`,
 /// avoiding mixing the types.
 ///
-/// [min]: refers to the lower limit for the width of screen
-/// [max]: refers to the upper limit for the width of screen
+/// [min]: refers to the lower limit for the width of screen.
+///
+/// [max]: refers to the upper limit for the width of screen.
 ///
 /// Example
-/// mobile: SBValue.max(500) it means the maximum `width` to mobile type is 500
-/// desktop: SBValue.min(1200) it means the minimun `width` to desktop type is 1200
+/// mobile: SBValue.max(500) it means the maximum `width` to mobile type is 500.
+/// desktop: SBValue.min(1200) it means the minimun `width` to desktop type is 1200.
 ///
 ///
-/// Could be use `SBValue.zero` for indicate the minimum value in 0
-/// Could be use `SBValue.inf` for indicate the maximum value in double.infinity
+/// Could be use `SBValue.zero` for indicate the minimum value in 0.
+///
+/// Could be use `SBValue.inf` for indicate the maximum value in double.infinity.
 ///
 /// {@endtemplate}
 class SBValue {

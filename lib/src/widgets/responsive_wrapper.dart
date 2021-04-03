@@ -13,9 +13,9 @@ import '../utils/get_condition_screen.dart';
 
 /// {@template responsive_wrapper}
 ///
-/// Widget to configure the responsive for the application
-/// You can use it like global widget or builder widget into `MaterialApp` Widget
-/// Adicionally allows to configurate the [WrapperConfig]
+/// Widget to configure the responsive for the application.
+/// You can use it like global widget or builder widget into `MaterialApp` Widget.
+/// Adicionally allows to configurate the [WrapperConfig].
 /// You can make the manage for `Responsive Theme`
 ///
 /// This widget uses `InheritedWidget` to acces from the app to the `wrapConfig`

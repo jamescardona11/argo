@@ -4,13 +4,15 @@ import 'screen_model.dart';
 
 /// {@template screen_breakpoints}
 ///
-/// ScreenBreakpoints are the control points that tells [ResponsiveWrapper] to change the `DeviceScreen`
-/// We can say that this is an upper or lower limit depends on how it is configured compared with `Size.width`
-/// Also it serves to do comparisons with the [Condition] class
-/// [SBValue] save a value that means `Size.width`
+/// ScreenBreakpoints are the control points that tells [ResponsiveWrapper] to change the `DeviceScreen`.
+/// This is an upper or lower limit depends on how it is configured compared with `Size.width`.
 ///
-/// The basic use is
-/// for default was set with `SBValue.min`
+///
+/// Also it serves to do comparisons with the [Condition] class.
+/// [SBValue] save a value that means `Size.width`.
+///
+/// The basic use is,
+/// and for default was set with `SBValue.min`
 /// ```dart
 /// ScreenBreakpoints(
 ///   mobile: 320,
@@ -20,8 +22,8 @@ import 'screen_model.dart';
 /// ```
 ///
 ///
-/// Also you can use the constructor `ScreenBreakpoints.values`
-/// to have a bigger control over the [SBValue]
+/// Also you can use the constructor `ScreenBreakpoints.values`,
+/// to have a bigger control over the [SBValue].
 /// ```dart
 /// ScreenBreakpoints.values(
 ///   mobile: const SBValue.max(...),
@@ -30,7 +32,7 @@ import 'screen_model.dart';
 /// )
 /// ```
 /// Sugestion: in order to have a consistance in the behaviour of the app
-/// the best is to set the [SBValue] for a [ScreenBreakpoints] in all cases by `min` or `max`
+/// the best is to set the [SBValue] for a [ScreenBreakpoints] in all cases by `min` or `max`,
 /// avoiding mixing the types.
 ///
 ///
@@ -90,16 +92,18 @@ class ScreenBreakpoints extends ScreenModel<SBValue> {
   String toString() => 'ScreenBreakpoints(${super.toString()}';
 }
 
-/// Minimum values breakpoints for [DeviceScreen]
-/// This values are used when `globalBreakpoints` in the [ResponsiveWrapper] aren't set
+/// Minimum values breakpoints for [DeviceScreen].
+///
+/// This values are used when `globalBreakpoints` in the [ResponsiveWrapper] aren't set.
 const defaultMinimumBreakPoints = ScreenBreakpoints._defaultValues(
   mobile: SBValue.zero(),
   tablet: SBValue.min(700),
   desktop: SBValue.min(1200),
 );
 
-/// Maximum values breakpoints for [DeviceScreen]
-/// This values are used when `globalBreakpoints` in the [ResponsiveWrapper] aren't set
+/// Maximum values breakpoints for [DeviceScreen].
+///
+/// This values are used when `globalBreakpoints` in the [ResponsiveWrapper] aren't set.
 const defaultMaximumBreakPoints = ScreenBreakpoints._defaultValues(
   mobile: SBValue.max(700),
   tablet: SBValue.max(1200),

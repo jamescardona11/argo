@@ -3,7 +3,7 @@ import 'platform_locator.dart' if (dart.library.io) 'platform_io.dart';
 // ignore: avoid_classes_with_only_static_members
 /// {@template platform_info}
 ///
-/// Class to know in what type of plataform is launched
+/// Class to know in what type of plataform is launched.
 /// Use `if` in the import to know if the app is launch in the web or in another plataform
 ///
 /// {@endtemplate}

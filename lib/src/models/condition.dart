@@ -2,7 +2,7 @@ import 'screen_model.dart';
 
 /// {@template condition}
 ///
-/// Parent class that has the rules for classes become a [Condition] valid class
+/// Parent class that has the rules for classes become a [Condition] valid class,
 /// this class serves as a skeleton for [ConditionScreen] and [ConditionBreakpoint].
 ///
 /// {@endtemplate}
@@ -34,7 +34,7 @@ enum Conditional {
   LARGER_THAN,
 }
 
-/// To separate a class constructor creation by `condition` type in this case
-/// you can choose `screen` to use [ConditionScreen] in thew constructor
-/// you can choose `conditions` to use [ConditionBreakpoint] in thew constructor
+/// To separate a class constructor creation by `condition` type in this case,
+/// you can choose `screen` to use [ConditionScreen] in thew constructor,
+/// you can choose `conditions` to use [ConditionBreakpoint] in thew constructor.
 enum ConditionType { screen, conditions }

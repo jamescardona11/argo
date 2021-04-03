@@ -8,12 +8,21 @@ import 'get_current_breakpoints.dart';
 
 /// {@template get_conditions_screen}
 ///
-/// The goal is to obtain the actual value for the `conditions` by `screen`
+/// The goal is to obtain the actual value for the `conditions` by `screen`.
 ///
-/// `context` it is `BuildContext` of the app or the widget
-/// `localBreakpoints` are the local breakpoints for the widget
-/// `condition` the list of conditions to evaluate
-/// `defaultValue` Default value in case your list of `conditions` doesn't return anything
+///
+/// `context` it is `BuildContext` of the app or the widget.
+///
+///
+/// `localBreakpoints` are the local breakpoints for the widget.
+///
+///
+/// `condition` the list of conditions to evaluate.
+///
+///
+/// `defaultValue` Default value in case your list of `conditions` doesn't return anything.
+///
+///
 ///
 /// First point is to find wich are the actual `breakpoints` between
 /// `localBreakpoints`, `GlobalBreakpoints` or `DefaultBreakpoints`

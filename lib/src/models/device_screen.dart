@@ -6,8 +6,8 @@ import 'screen_model.dart';
 /// Enum that stores an interpretation of `ScreenType` for apps
 enum DeviceScreen { mobile, tablet, desktop }
 
-/// Extension to compare and get type of [DeviceScreen] easily
-/// Additionally we can get the value depending of the current `screen` with `getScreenValue` method
+/// Extension to compare and get type of [DeviceScreen] easily,
+/// additionally we can get the value depending of the current `screen` with `getScreenValue` method
 extension DeviceScreenX on DeviceScreen {
   bool isMobile() => this == DeviceScreen.mobile;
   bool isTablet() => this == DeviceScreen.tablet;

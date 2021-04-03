@@ -3,7 +3,7 @@ import 'device_screen.dart';
 
 /// {@template condition_breakpoint}
 ///
-/// Child Class of [Condition]
+/// Child Class of [Condition],
 /// It's goal is to have more modular conditions compared it with differents `breakpoint`
 /// we can use this to create more complex conditions.
 /// `ConditionBreakpoint` will be use by [valueFromConditionByBreakpoints]

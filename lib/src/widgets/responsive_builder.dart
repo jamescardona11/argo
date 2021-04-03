@@ -7,7 +7,7 @@ import '../utils/get_resonsive_information.dart';
 
 /// {@template responsive_builder}
 ///
-/// Widget to build a responsive view
+/// Widget to build a responsive view.
 /// This widget calculates internally [ResponsiveInformation]
 ///
 /// ```dart

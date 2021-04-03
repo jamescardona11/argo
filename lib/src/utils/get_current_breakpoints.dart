@@ -4,9 +4,11 @@ import '../models/screen_breakpoints.dart';
 
 /// {@template get_current_breakpoint}
 ///
-/// Get the [ScreenBreakpoints] comparing the local, global and default values
-/// In all cases compare the [SBValue] `type` be the same for all comparisons
-/// The priority of breakpoints are: Local -> Global -> Default(Min or Max)
+/// Get the [ScreenBreakpoints] comparing the local, global and default values.
+///
+///
+/// In all cases compare the [SBValue] `type` be the same for all comparisons,
+/// and the priority of breakpoints are: Local -> Global -> Default(Min or Max)
 ///
 ///
 /// {@endtemplate}
