@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
             ),
             builder: (IThemeDataRule themeDataRule, ThemeRule rule) {
               return Theme(
-                data: themeDataRule.getThemeByRule(rule),
+                data: themeDataRule.getThemeByRule(rule: rule),
                 child: child!,
               );
             },

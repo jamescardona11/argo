@@ -86,7 +86,7 @@ class ResponsiveWrapper extends StatelessWidget {
 
     return responsiveTheme != null
         ? Theme(
-            data: themeData.getThemeByRule(wrapConfig.themeRule),
+            data: themeData.getThemeByRule(rule: wrapConfig.themeRule),
             child: data as Widget,
           )
         : data as Widget;

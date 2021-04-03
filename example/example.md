@@ -72,7 +72,7 @@ One example `IThemeDataRule` usign of the Condition for ResponsiveTheme
 
 class MyThemesApp with IThemeDataRule {
   @override
-  ThemeData getThemeByRule(ThemeRule rule) {
+  ThemeData getThemeByRule({ThemeRule rule = ThemeRule.light}) {
     switch (rule) {
       case ThemeRule.light:
         return lightTheme;

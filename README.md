@@ -293,7 +293,7 @@ This is an example of a configuration:
 
 class MyThemesApp with IThemeDataRule {
   @override
-  ThemeData getThemeByRule(ThemeRule rule) {
+  ThemeData getThemeByRule({ThemeRule rule = ThemeRule.light}) {
     switch (rule) {
       case ThemeRule.light:
         return lightTheme;

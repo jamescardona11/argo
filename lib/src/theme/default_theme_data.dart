@@ -12,7 +12,7 @@ import 'theme_rule.dart';
 class DefaultThemeDataRule implements IThemeDataRule {
   const DefaultThemeDataRule();
   @override
-  ThemeData getThemeByRule(ThemeRule rule) {
+  ThemeData getThemeByRule({ThemeRule rule = ThemeRule.light}) {
     return ThemeData.light();
   }
 }
