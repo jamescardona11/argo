@@ -19,8 +19,8 @@ class ResponsiveInformation {
   })   : isLandscape = orientation == Orientation.landscape,
         isPortrait = orientation == Orientation.portrait;
 
-  /// This value tells the condition to look for the `breakpoint` value in the [WropperConfig]
-  /// for the sreen type [mobile], [tablet], [desktop]
+  /// This value tells the condition to look for the `breakpoint` value in the [WrapperConfig]
+  /// for the sreen type `mobile`, `tablet`, `desktop`
 
   final DeviceScreen deviceScreen;
 

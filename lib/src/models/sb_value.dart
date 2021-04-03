@@ -23,35 +23,35 @@
 /// {@endtemplate}
 class SBValue {
   final double value;
-  final SBType type;
+  final _SBType type;
 
   factory SBValue(double? value) => SBValue.min(value ?? 0);
 
-  const SBValue.min(this.value) : type = SBType.min;
+  const SBValue.min(this.value) : type = _SBType.min;
 
-  const SBValue.max(this.value) : type = SBType.max;
+  const SBValue.max(this.value) : type = _SBType.max;
 
   const SBValue.zero()
       : value = 0,
-        type = SBType.min;
+        type = _SBType.min;
 
   const SBValue.inf()
       : value = double.infinity,
-        type = SBType.max;
+        type = _SBType.max;
 
-  bool get isMinType => type == SBType.min;
-  bool get isMaxType => type == SBType.max;
+  bool get isMinType => type == _SBType.min;
+  bool get isMaxType => type == _SBType.max;
 
   @override
   String toString() {
-    final strType = isMinType ? SBType.min.toString() : SBType.max.toString();
+    final strType = isMinType ? _SBType.min.toString() : _SBType.max.toString();
 
     return 'SBType: $strType Value: $value';
   }
 }
 
 /// Enum for the SBValue types
-enum SBType {
+enum _SBType {
   min,
   max,
 }

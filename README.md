@@ -8,9 +8,9 @@ Widgets and tools for make it easy to create responsive apps for mobile, tablet 
 
 Special thanks to:
 
-1. [filledstacks](filledstacks.com)
-2. [Codelessly](https://github.com/Codelessly)
-3. [GskinnerTeam](https://github.com/gskinnerTeam)
+1. [filledstacks](https://www.filledstacks.com/)
+2. [Codelessly](https://www.github.com/Codelessly)
+3. [GskinnerTeam](https://www.github.com/gskinnerTeam)
 
 ---
 

@@ -2,7 +2,7 @@ import 'package:argo/src/models/sb_value.dart';
 
 import '../models/screen_breakpoints.dart';
 
-/// {@template get_conditions_screen}
+/// {@template get_current_breakpoint}
 ///
 /// Get the [ScreenBreakpoints] comparing the local, global and default values
 /// In all cases compare the [SBValue] `type` be the same for all comparisons

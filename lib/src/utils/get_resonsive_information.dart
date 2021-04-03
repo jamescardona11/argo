@@ -6,7 +6,7 @@ import '../models/screen_breakpoints.dart';
 import '../widgets/responsive_wrapper.dart';
 import 'get_current_breakpoints.dart';
 
-/// {@template get_conditions_screen}
+/// {@template get_responsive_information}
 ///
 /// Util to get the responsive information
 ///

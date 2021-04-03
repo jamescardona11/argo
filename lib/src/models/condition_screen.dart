@@ -4,7 +4,7 @@ import 'condition.dart';
 ///
 /// Child class of [Condition]
 /// It's goal is to have conditional value for the tree screen types [mobile], [tablet], [desktop]
-/// For default the [Conditional] always will be [EQUALS]
+/// For default the [Conditional] always will be `EQUALS`
 /// `ConditionScreen` will be use by [valueFromConditionByScreen]
 ///
 /// T Mobile: Is the value when the app screen is `mobile` this value is getting from CurrentBreakpoint (Local, Global or Default)

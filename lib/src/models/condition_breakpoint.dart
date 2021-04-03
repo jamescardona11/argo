@@ -47,7 +47,7 @@ class ConditionBreakpoint<T> extends Condition<T> {
     this.breakpoint,
   });
 
-  /// This value tells the condition to look for the `breakpoint` value in the [WropperConfig]
+  /// This value tells the condition to look for the `breakpoint` value in the [WrapperConfig]
   /// for the sreen type [mobile], [tablet], [desktop]
   final DeviceScreen? screenType;
 

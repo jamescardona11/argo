@@ -19,7 +19,7 @@ import 'get_current_breakpoints.dart';
 /// `defaultValue` Default value in case your list of `conditions` doesn't return anything
 ///
 /// The priority of this method is to calculate the value of the conditions,
-/// the priority will be [EQUALS], [SMALLER_THAN], [LARGER_THAN]
+/// the priority will be `EQUALS`, `SMALLER_THAN`, `LARGER_THAN`
 ///
 ///
 /// For the [ConditionBreakpoint] where `breakpoint` was null and

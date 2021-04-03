@@ -4,9 +4,9 @@ import 'screen_model.dart';
 
 /// {@template screen_breakpoints}
 ///
-/// [ScreenBreakpoints] are the control points that tells [ResponsiveWrapper] to change the `DeviceScreen`
+/// ScreenBreakpoints are the control points that tells [ResponsiveWrapper] to change the `DeviceScreen`
 /// We can say that this is an upper or lower limit depends on how it is configured compared with `Size.width`
-/// Also it serves to do comparisons with the [Condtions] class
+/// Also it serves to do comparisons with the [Condition] class
 /// [SBValue] save a value that means `Size.width`
 ///
 /// The basic use is
