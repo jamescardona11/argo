@@ -59,17 +59,28 @@ class MyApp extends StatelessWidget {
         ),
         builder: (ctx, themeDataRule) => child!,
       ),
-      home: MainScreen(),
+      home: Home(),
     );
   }
 }
 ```
 That's it!
+This widget allows to configurate the `WrapperConfig`.
+You can make the manage for `Responsive Theme`
+
+### ScreenBreakpoints
+Are the control points that tells `ResponsiveWrapper` to change the `DeviceScreen`.
+This is an upper or lower limit depends on how it is configured compared with `Size.width`.
+
+Also it serves to do comparisons with the `Condition` class.
+`SBValue` save a value that means `Size.width`.
+
 
 ## Responsive Widgets
 
 ### ResponsiveVisibility
-This widget show the child content depending on the basic conditions for `ScreenType`.
+Widget to show or hide a `child` depending of the `Condition`.
+You can override the globalBreakpoints for localBreakpoints
 
 ```dart
 ResponsiveVisibility.screen(
@@ -86,7 +97,6 @@ ResponsiveVisibility.screen(
 ),
 
 ```
-
 You can change the condition type and improve the versatility of conditions with `ConditionBreakpoint`, and make result for VisibleWhen or HiddenWhen.
 
 ```dart
@@ -123,7 +133,8 @@ ResponsiveVisibility.conditions(
 
 ### ResponsiveLayoutWidget
 
-This widget show different widget depending the condition configuration in `ResponsiveWrapper`, you can override the globalBreakpoints for localBreakpoints
+This widget show different widget depending of `screen` type, the condition configuration in `ResponsiveWrapper`, 
+you can override the globalBreakpoints for localBreakpoints.
 
 ```dart
 ResponsiveLayoutWidget(
@@ -134,7 +145,8 @@ ResponsiveLayoutWidget(
 
 ```
 
-In some moments you return and `RBuilder function` this typedef have the context and `ResponsiveInformation`
+In some moments you return and `RBuilder`, this typedef have the context and `ResponsiveInformation`.
+With `ResponsiveInformation` allows change the basic structure and improve the versatility.
 
 ```dart
 ResponsiveLayoutWidget.builder(
@@ -148,7 +160,9 @@ ResponsiveLayoutWidget.builder(
 
 ### ResponsiveBuilder
 
-This generic widget to handle responsive builder, this widget return the context and `ResponsiveInformation`
+This generic widget to handle responsive builder, this widget return the context and `ResponsiveInformation`.
+`ResponsiveInformation` is data class to handle `responsive` information for the widget.
+ResponsiveInformation have orientation, localSize, ScreenSize, currentBreakpoints and `DeviceScreen`.
 
 ```dart
 ResponsiveBuilder(
@@ -171,7 +185,8 @@ ResponsiveBuilder(
 
 ### OrientationLayoutBuilder
 
-This widget is useful to handle orientation
+This widget is it create views depending of their `orientation`.
+The widget is build with `RBuilder`, this typedef have the context and `ResponsiveInformation`.
 
 ```dart
 OrientationLayoutBuilder(
@@ -187,6 +202,8 @@ OrientationLayoutBuilder(
 ### valueFromConditionByBreakpoints
 
 You can get single value from `ConditionBreakpoint` List
+It's goal is to have more modular conditions compared it with differents `breakpoint` we can use this to create more complex conditions. And you have three different construtors: 
+`ConditionBreakpoint.equals` `ConditionBreakpoint.largerThan`, `ConditionBreakpoint.smallerThan`
 
 ```dart
 const List<ConditionBreakpoint<bool>> conditions = [
@@ -219,7 +236,8 @@ final value = valueFromConditionByBreakpoints<bool>(
 
 ### valueFromConditionByBreakpoints
 
-You can get single value from `ConditionScreen` List
+You can get single value from `ConditionScreen`,
+It's goal is to have conditional value for the tree screen types `mobile`, `tablet`, `desktop`.
 
 ```dart
 const condition = ConditionScreen(
@@ -250,13 +268,67 @@ You can get from the context info for make it easy the responsive apps
 
 ```
 
-### Responsive Theme (TODO)
+### Responsive Theme 
+
+Data class to handle the `theme responsive` information, this class may be used from `ResponsiveWrapper`
+It's used from `ResponsiveWrapper` to get the value for the currentBreakpoints
+Use differents `conditions` to store the themes.
+
+The advantage is that you can create all the classes with `IThemeDataRule` for the configurations the app need.
+
+It basic use:
+```dart
+ResponsiveTheme.screen(
+   conditionScreen: ConditionScreen(
+     mobile: MyThemesApp(),
+     tablet: MyThemesTablet(),
+     desktop: MyThemesWeb(),
+   ),
+ )
+```
+
+This is an example of a configuration:
+```Dart
+
+
+class MyThemesApp with IThemeDataRule {
+  @override
+  ThemeData getThemeByRule(ThemeRule rule) {
+    switch (rule) {
+      case ThemeRule.light:
+        return lightTheme;
+      case ThemeRule.dark:
+        return darkTheme;
+      case ThemeRule.custom:
+        return darkerTheme;
+      default:
+        return lightTheme;
+    }
+  }
+}
+
+// This is a themeData for LightTheme is a normal object
+final ThemeData lightTheme = ThemeData(
+    primaryColor: Colors.blueGrey,
+    brightness: Brightness.light,
+    textTheme: TextTheme(
+      headline1: headline1.copyWith(fontSize: 26),
+      headline2: headline2.copyWith(fontSize: 18),
+    ),
+  );
+
+
+```
+For more information and understand the ThemeResponsive check the Documentation and the Example.
+
+
 
 
 ### Examples
 
 1. [ArgoExample](https://github.com/jamescardona11/argo/tree/main/example/argo_example): Simple example of use the argo library
-3. [ThemingExample](): TODO
+2. [ThemingExample](https://github.com/jamescardona11/argo/tree/main/example/argo_example): Basic use for the ResponsiveTheming
+3. [MyPortfolioApp](https://github.com/jamescardona11/my_portfolio_web): TODO
 
 
 
@@ -272,6 +344,7 @@ Flutter is a game-changing technology that will revolutionize not just developme
 
 - [James Cardona](https://github.com/jamescardona11)
 
+You are welcome to contribute :3
 
 ## License
 

@@ -9,6 +9,8 @@ import '../utils/get_resonsive_information.dart';
 /// {@template responsive_layout_widget}
 ///
 /// Widget that shows different children depending of `screen` type,
+/// the screen was set from [ResponsiveWrapper] using `globalBreakpoints`,
+/// and you can override the globalBreakpoints for localBreakpoints.
 ///
 /// ```dart
 /// ResponsiveLayoutWidget(
