@@ -1,9 +1,6 @@
 import 'package:argo/src/models/screen_breakpoints.dart';
 import 'package:argo/src/utils/get_current_breakpoints.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
 
 void main() {
   group('Utils getCurrentBreakpoints', () {

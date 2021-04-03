@@ -93,7 +93,8 @@ extension ResponsiveContext on BuildContext {
 class ResponsiveUtils {
   final BuildContext _context;
 
-  double get _pixelsPerInch => PlatformInfo.isAndroid || PlatformInfo.isIOS ? 150 : 96;
+  double get _pixelsPerInch =>
+      PlatformInfo.isAndroid || PlatformInfo.isIOS ? 150 : 96;
 
   /// Returns same as MediaQuery.of(context)
   MediaQueryData get mq => MediaQuery.of(_context);
