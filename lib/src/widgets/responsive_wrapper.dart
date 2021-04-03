@@ -11,14 +11,38 @@ import '../theme/responsive_theme.dart';
 import '../utils/get_condition_breakpoint.dart';
 import '../utils/get_condition_screen.dart';
 
-/// Widget to configure the responsive for the application, you can configure [globalbreakpoints], the [thmeRule]
-/// You can use like global widget or builder widget into [MaterialApp] Widget
+/// {@template responsive_wrapper}
+///
+/// Widget to configure the responsive for the application
+/// You can use it like global widget or builder widget into `MaterialApp` Widget
+/// Adicionally allows to configurate the [WrapperConfig]
+/// You can make the manage for `Responsive Theme`
+///
+/// This widget uses `InheritedWidget` to acces from the app to the `wrapConfig`
+///
+/// The basic use:
+/// ``` dart
+/// MaterialApp(
+///  home: ResponsiveWrapper(
+///       wrapConfig: WrapperConfig(
+///         globalBreakpoints: ScreenBreakpoints(
+///           mobile: 321,
+///           tablet: 650,
+///         desktop: 1100,
+///         ),
+///       ),
+///       child: Home(),
+///    ),
+/// )
+/// ```
+/// Also [ResponsiveWrapper] can be the parent of `MaterialApp`
+///
+/// To configurate `Responsive Theme` use the `responsiveTheme`
+///
+///
+/// {@endtemplate}
+
 class ResponsiveWrapper extends StatelessWidget {
-  final dynamic child;
-
-  final ResponsiveTheme? responsiveTheme;
-  final WrapperConfig wrapConfig;
-
   const ResponsiveWrapper({
     Key? key,
     required Widget child,
@@ -34,6 +58,15 @@ class ResponsiveWrapper extends StatelessWidget {
     this.wrapConfig = const WrapperConfig(),
   })  : child = builder,
         super(key: key);
+
+  /// The widget child
+  final dynamic child;
+
+  /// Class to manage and handle the app themes
+  final ResponsiveTheme? responsiveTheme;
+
+  /// The global configuration of `ResponsiveWrapper`
+  final WrapperConfig wrapConfig;
 
   @override
   Widget build(BuildContext context) {

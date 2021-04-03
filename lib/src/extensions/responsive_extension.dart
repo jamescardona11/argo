@@ -8,7 +8,19 @@ import '../models/wrapper_config.dart';
 import '../platform_info/platform_info.dart';
 import '../widgets/responsive_wrapper.dart';
 
-/// Context Extension to have a lot information for make it easy the responsive design
+/// {@template responsive_extension}
+///
+/// Extension to bring the information in a easier way for the responsive
+/// All calculations related whit `MediaQuery.of(context).size`
+///
+/// ```dart
+/// context.isLandscape;
+/// context.widthPct(10);
+/// context.heightPx;
+/// ...
+/// ```
+///
+/// {@endtemplate}
 extension ResponsiveContext on BuildContext {
   /// Returns same as MediaQuery.of(context)
   MediaQueryData get mq => responsiveUtils.mq;
@@ -62,10 +74,30 @@ extension ResponsiveContext on BuildContext {
   bool isDesktop() => responsiveUtils.isDesktop();
 }
 
+/// {@template responsive_utils}
+///
+/// This class is a middleware to save the responsive information,
+/// it is usefull when you have to do a lot of callings in the same file.
+/// It has the same behaviour as the `BuildContext` extension
+///
+/// /// ```dart
+/// final mResponsive = ResponsiveUtils.of(context);
+///
+/// mResponsive.isLandscape;
+/// mResponsive.widthPct(10);
+/// mResponsive.heightPx;
+/// ...
+/// ```
+///
+/// {@endtemplate}
 class ResponsiveUtils {
   final BuildContext _context;
 
+  //Private constructor
   ResponsiveUtils._(this._context);
+
+  //Public constructor
+  ResponsiveUtils.of(this._context);
 
   double get _pixelsPerInch => PlatformInfo.isAndroid || PlatformInfo.isIOS ? 150 : 96;
 

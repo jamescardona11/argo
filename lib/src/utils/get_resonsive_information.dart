@@ -6,7 +6,15 @@ import '../models/screen_breakpoints.dart';
 import '../widgets/responsive_wrapper.dart';
 import 'get_current_breakpoints.dart';
 
-/// Get the responsive information util
+/// {@template get_conditions_screen}
+///
+/// Util to get the responsive information
+///
+/// `context` it is `BuildContext` of the widget
+/// `localSize` is the value gets from constrains
+/// `localBreakpoints` are the local breakpoints for the widget
+///
+/// {@endtemplate}
 ResponsiveInformation getResponsiveInformation({
   required BuildContext context,
   Size? localSize,

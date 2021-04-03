@@ -9,7 +9,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Utils getValueFromConditions By Breakpoint', () {
-    const ScreenBreakpoints screenBreakpoints = ScreenBreakpoints(
+    final ScreenBreakpoints screenBreakpoints = ScreenBreakpoints(
       mobile: 320,
       tablet: 700,
       desktop: 1200,

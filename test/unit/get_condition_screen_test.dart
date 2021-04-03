@@ -13,7 +13,7 @@ class MockBuildContext extends Mock implements BuildContext {}
 
 void main() {
   group('Utils getValueFromCondition By Screen', () {
-    const ScreenBreakpoints screenBreakpoints = ScreenBreakpoints(
+    final ScreenBreakpoints screenBreakpoints = ScreenBreakpoints(
       mobile: 320,
       tablet: 700,
       desktop: 1200,

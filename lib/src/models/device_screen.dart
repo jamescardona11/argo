@@ -1,9 +1,13 @@
+import 'package:argo/src/models/models.dart';
+
 import 'screen_breakpoints.dart';
 import 'screen_model.dart';
 
+/// Enum that stores an interpretation of `ScreenType` for apps
 enum DeviceScreen { mobile, tablet, desktop }
 
-/// Extension to get the device type for the current breakpoint
+/// Extension to compare and get type of [DeviceScreen] easily
+/// Additionally we can get the value depending of the current `screen` with `getScreenValue` method
 extension DeviceScreenX on DeviceScreen {
   bool isMobile() => this == DeviceScreen.mobile;
   bool isTablet() => this == DeviceScreen.tablet;
@@ -19,22 +23,22 @@ extension DeviceScreenX on DeviceScreen {
     double deviceWidth,
     ScreenBreakpoints breakpoints,
   ) {
-    if (breakpoints.isFloor) {
-      if (deviceWidth >= breakpoints.desktop!) {
+    if (breakpoints.isMinSBValue) {
+      if (deviceWidth >= breakpoints.desktop!.value) {
         return DeviceScreen.desktop;
       }
 
-      if (deviceWidth > breakpoints.tablet!) {
+      if (deviceWidth > breakpoints.tablet!.value) {
         return DeviceScreen.tablet;
       }
 
       return DeviceScreen.mobile;
     } else {
-      if (deviceWidth <= breakpoints.mobile!) {
+      if (deviceWidth <= breakpoints.mobile!.value) {
         return DeviceScreen.mobile;
       }
 
-      if (deviceWidth <= breakpoints.tablet!) {
+      if (deviceWidth <= breakpoints.tablet!.value) {
         return DeviceScreen.tablet;
       }
 

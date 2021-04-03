@@ -5,17 +5,33 @@ import '../models/screen_breakpoints.dart';
 import '../models/typedef.dart';
 import '../utils/get_resonsive_information.dart';
 
-/// Widget to build a responsive view, this widget return [ResponsiveInformation]
-/// [ScreenBreakpoints] property is LocalBreakpoints for this widgets
-class ResponsiveBuilder extends StatelessWidget {
-  final RBuilder builder;
-  final ScreenBreakpoints? breakpoints;
+/// {@template responsive_builder}
+///
+/// Widget to build a responsive view
+/// This widget calculates internally [ResponsiveInformation]
+///
+/// ```dart
+/// ResponsiveBuilder(
+///   builder: (ctx, info) {
+///     ...
+///   }
+/// )
+/// ```
+///
+/// {@endtemplate}
 
+class ResponsiveBuilder extends StatelessWidget {
   const ResponsiveBuilder({
     Key? key,
     required this.builder,
     this.breakpoints,
   }) : super(key: key);
+
+  /// Returns [RBuilder] with the responsive information
+  final RBuilder builder;
+
+  /// Are the local breakpoints for the widget
+  final ScreenBreakpoints? breakpoints;
 
   @override
   Widget build(BuildContext context) {

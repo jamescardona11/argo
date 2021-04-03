@@ -1,6 +1,13 @@
 import 'platform_locator.dart' if (dart.library.io) 'platform_io.dart';
 
 // ignore: avoid_classes_with_only_static_members
+/// {@template platform_info}
+///
+/// Class to know in what type of plataform is launched
+/// Use `if` in the import to know if the app is launch in the web or in another plataform
+///
+/// {@endtemplate}
+
 abstract class PlatformInfo {
   static PlatformInfoType get value => currentPlatformInfo;
 
@@ -13,6 +20,7 @@ abstract class PlatformInfo {
   static bool get isFuchsia => currentPlatformInfo == PlatformInfoType.Fuchsia;
 }
 
+/// All types of plataforms that supports `Flutter`
 enum PlatformInfoType {
   Web,
   Windows,

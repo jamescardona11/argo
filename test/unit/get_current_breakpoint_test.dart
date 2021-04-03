@@ -8,20 +8,20 @@ import 'package:mockito/mockito.dart';
 void main() {
   group('Utils getCurrentBreakpoints', () {
     test('GetValue default', () {
-      final current = getCurrentBreakPoints(global: defaultBreakPoints);
+      final current = getCurrentBreakPoints(global: defaultMinimumBreakPoints);
 
-      expect(current, defaultBreakPoints);
+      expect(current, defaultMinimumBreakPoints);
     });
 
     test('GetValue local', () {
-      const sb = ScreenBreakpoints(
+      final sb = ScreenBreakpoints(
         mobile: 450,
         tablet: 780,
         desktop: 1201,
       );
 
       final current = getCurrentBreakPoints(
-        global: defaultBreakPoints,
+        global: defaultMinimumBreakPoints,
         local: sb,
       );
 

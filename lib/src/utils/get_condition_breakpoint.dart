@@ -9,10 +9,25 @@ import '../models/wrapper_config.dart';
 import '../widgets/responsive_wrapper.dart';
 import 'get_current_breakpoints.dart';
 
-/// Goal, Get a value for an list of conditions
-/// [breakpoints] Currentbreakpoint for widget from(LocalBreakpoints, GlobalBreakpoints or DefaultBreakpoints)
-/// [CurrentSize] The current size for view screen
-/// [defaultValue] Default value in case you List of [conditions] don't return anything
+/// {@template get_conditions_breakpoints}
+///
+/// The goal is to get the actual value for a list of `conditions`
+///
+/// `context` it is `BuildContext` of the app or the widget
+/// `localBreakpoints` are the local breakpoints for the widget
+/// `condition` The list of conditions to evaluate
+/// `defaultValue` Default value in case your list of `conditions` doesn't return anything
+///
+/// The priority of this method is to calculate the value of the conditions,
+/// the priority will be [EQUALS], [SMALLER_THAN], [LARGER_THAN]
+///
+///
+/// For the [ConditionBreakpoint] where `breakpoint` was null and
+/// the values were send like a [DeviceScreen] the `breakpoint` will be change between
+/// `localBreakpoints`, `GlobalBreakpoints` or `DefaultBreakpoints`
+/// using [getCurrentBreakPoints]
+///
+///{@endtemplate}
 
 T valueFromConditionByBreakpoints<T>({
   required BuildContext context,
@@ -90,7 +105,7 @@ List<ConditionBreakpoint<T>> _setDefaultValuesToConditions<T>(
     conditions.map((cdt) {
       if (cdt.breakpoint == null) {
         return cdt.copyWith(
-            breakpoint: cdt.screenType!.getScreenValue(currentBreakpoints));
+            breakpoint: cdt.screenType!.getScreenValue(currentBreakpoints)!.value);
       }
       return cdt;
     }).toList();

@@ -1,11 +1,44 @@
 import 'condition.dart';
 import 'device_screen.dart';
 
-class ConditionBreakpoint<T> extends Condition<T> {
-  final DeviceScreen? screenType;
-  final T? value;
-  final double? breakpoint;
+/// {@template condition_breakpoint}
+///
+/// Child Class of [Condition]
+/// It's goal is to have more modular conditions compared it with differents `breakpoint`
+/// we can use this to create more complex conditions.
+/// `ConditionBreakpoint` will be use by [valueFromConditionByBreakpoints]
+///
+/// `ConditionBreakpoint.equals` It is used to create a condition of equality to the CurrentBreakpoint
+///
+/// `ConditionBreakpoint.largerThan` It is used to create a condition larger than an breakpoint
+///
+/// `ConditionBreakpoint.smallerThan` It is used to create a condition smaller than an breakpoint
+///
+/// Mobile, Tablet, Desktop properties from parent class doesn't have a use.
+///
+///
+/// Example
+/// ```dart
+/// const List<ConditionBreakpoint<bool>> conditions = [
+///         ConditionBreakpoint<bool>.equals(
+///           screenType: DeviceScreen.mobile,
+///           value: true,
+///         ),
+///         ConditionBreakpoint<bool>.smallerThan(
+///           screenType: DeviceScreen.desktop,
+///           value: true,
+///         ),
+///         ConditionBreakpoint<bool>.largerThan(
+///           value: true,
+///           breakpoint: 950,
+///         ),
+///       ];
+/// ```
+///
+///
+/// {@endtemplate}
 
+class ConditionBreakpoint<T> extends Condition<T> {
   const ConditionBreakpoint._({
     this.screenType,
     // ignore: avoid_unused_constructor_parameters
@@ -13,6 +46,16 @@ class ConditionBreakpoint<T> extends Condition<T> {
     this.value,
     this.breakpoint,
   });
+
+  /// This value tells the condition to look for the `breakpoint` value in the [WropperConfig]
+  /// for the sreen type [mobile], [tablet], [desktop]
+  final DeviceScreen? screenType;
+
+  /// It is the return value for the condition if is true
+  final T? value;
+
+  /// `Breakpoint` to filter by `Size.with`
+  final double? breakpoint;
 
   const ConditionBreakpoint.equals({
     required this.screenType,

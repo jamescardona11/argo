@@ -6,15 +6,32 @@ import '../models/screen_breakpoints.dart';
 import '../models/typedef.dart';
 import '../utils/get_resonsive_information.dart';
 
-/// Widget to show diferents childs depends of situation, you can use LocalBreakpoints, GlobalBreakpoints or DefaultBreakpoints
-/// [Mobile], [tablet], [desktop] are widget children
-/// [ScreenBreakpoints] property is LocalBreakpoints for this widgets
-class ResponsiveLayoutWidget extends StatelessWidget {
-  final dynamic? mobile;
-  final dynamic? tablet;
-  final dynamic? desktop;
-  final ScreenBreakpoints? breakpoints;
+/// {@template responsive_layout_widget}
+///
+/// Widget that shows different children depending of `screen` type
+///
+/// ```dart
+/// ResponsiveLayoutWidget(
+///   mobile: MobileChild(),
+///   tablet: TabletChild(),
+///   desktop: DesktopChild(),
+/// )
+/// ```
+///
+/// Also you can use the constructor `ResponsiveLayoutWidget.builder`
+/// To return for each `child` the [ResponsiveInformation]
+///
+/// ```dart
+/// ResponsiveLayoutWidget.builder(
+///   mobile: (ctx, info) => MobileChild(),
+///   tablet: (ctx, info) => TabletChild(),
+///   desktop:(ctx, info) => DesktopChild(),
+/// )
+/// ```
+///
+/// {@endtemplate}
 
+class ResponsiveLayoutWidget extends StatelessWidget {
   const ResponsiveLayoutWidget({
     Key? key,
     Widget mobile = const SizedBox(),
@@ -36,6 +53,18 @@ class ResponsiveLayoutWidget extends StatelessWidget {
         tablet = tablet,
         desktop = desktop,
         super(key: key);
+
+  /// This value may be type `Widget` or `RBuilder`
+  final dynamic? mobile;
+
+  /// This value may be type `Widget` or `RBuilder`
+  final dynamic? tablet;
+
+  /// This value may be type `Widget` or `RBuilder`
+  final dynamic? desktop;
+
+  /// Are the local breakpoints for the widget
+  final ScreenBreakpoints? breakpoints;
 
   @override
   Widget build(BuildContext context) {

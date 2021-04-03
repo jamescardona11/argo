@@ -1,15 +1,25 @@
 import 'dart:ui';
 
+/// {@template screen_model}
+///
+/// Parent class that has the structure of the `conditions` and the `brekpoints`
+///
+/// {@endtemplate}
 abstract class ScreenModel<T> {
-  final T? mobile;
-  final T? tablet;
-  final T? desktop;
-
   const ScreenModel({
     this.mobile,
     this.tablet,
     this.desktop,
   });
+
+  /// Value for mobile `Screen`
+  final T? mobile;
+
+  /// Value for tablet `Screen`
+  final T? tablet;
+
+  /// Value for desktop `Screen`
+  final T? desktop;
 
   ScreenModel copyWith();
 

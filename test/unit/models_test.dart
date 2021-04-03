@@ -2,6 +2,7 @@ import 'package:argo/src/models/condition.dart';
 import 'package:argo/src/models/condition_breakpoint.dart';
 import 'package:argo/src/models/condition_screen.dart';
 import 'package:argo/src/models/device_screen.dart';
+import 'package:argo/src/models/models.dart';
 import 'package:argo/src/models/screen_breakpoints.dart';
 import 'package:argo/src/utils/size_by_platform.dart';
 import 'package:flutter/widgets.dart';
@@ -107,7 +108,7 @@ void main() {
     ScreenBreakpoints? screenBreakpoints;
 
     setUp(() {
-      screenBreakpoints = const ScreenBreakpoints(
+      screenBreakpoints = ScreenBreakpoints(
         mobile: 100,
         tablet: 200,
         desktop: 300,
@@ -122,9 +123,17 @@ void main() {
 
     test('Get ScreenValue', () {
       const device = DeviceScreen.tablet;
-      final dst = device.getScreenValue<double>(screenBreakpoints!);
+      final dst = device.getScreenValue(screenBreakpoints!)!.value;
 
       expect(dst, 200);
+    });
+
+    test('ScreenBreakpoints Creation', () {
+      screenBreakpoints = ScreenBreakpoints.values(
+        mobile: const SBValue.min(100),
+        tablet: const SBValue.max(100),
+        desktop: const SBValue.min(100),
+      );
     });
   });
 }

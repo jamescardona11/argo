@@ -7,16 +7,14 @@ import '../models/screen_breakpoints.dart';
 import '../utils/get_condition_breakpoint.dart';
 import '../utils/get_condition_screen.dart';
 
-/// Widget to handle the visbility with conditions [ConditionBreakpoint or ConditionScreen]
-class ResponsiveVisibility extends StatelessWidget {
-  final Widget child;
-  final List<ConditionBreakpoint<bool>> hiddenWhen;
-  final List<ConditionBreakpoint<bool>> visibleWhen;
-  final ConditionScreen<bool> conditionScreen;
-  final bool visible;
-  final ScreenBreakpoints? localBreakpoints;
-  final ConditionType? type;
+/// {@template responsive_visibility}
+///
+/// Widget to show or hide a `child` depending of the [Condition]
+/// You can use [ConditionScreen] or [ConditionBreakpoint] each one will bring you a different control
+///
+/// {@endtemplate}
 
+class ResponsiveVisibility extends StatelessWidget {
   const ResponsiveVisibility.conditions({
     Key? key,
     required this.child,
@@ -38,6 +36,27 @@ class ResponsiveVisibility extends StatelessWidget {
         visibleWhen = const [],
         hiddenWhen = const [],
         super(key: key);
+
+  /// The widget to show or hide
+  final Widget child;
+
+  /// List of conditions to hide when they are met [ConditionBreakpoint]
+  final List<ConditionBreakpoint<bool>> hiddenWhen;
+
+  /// List of conditions to show when they are met [ConditionBreakpoint]
+  final List<ConditionBreakpoint<bool>> visibleWhen;
+
+  /// Do the manage of the visibility by [ConditionScreen]
+  final ConditionScreen<bool> conditionScreen;
+
+  /// the defoult value of the widget
+  final bool visible;
+
+  /// Are the local breakpoints for the widget
+  final ScreenBreakpoints? localBreakpoints;
+
+  /// The type of conditions that was invoked
+  final ConditionType? type;
 
   @override
   Widget build(BuildContext context) {
