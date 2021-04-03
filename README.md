@@ -319,7 +319,7 @@ final ThemeData lightTheme = ThemeData(
 
 
 ```
-For more information and understand the ThemeResponsive check the Documentation and the Example.
+For more information and understand the `Theme Responsive` check the Documentation and the [Example](https://github.com/jamescardona11/argo/tree/main/example/argo_example).
 
 
 
@@ -345,6 +345,13 @@ Flutter is a game-changing technology that will revolutionize not just developme
 - [James Cardona](https://github.com/jamescardona11)
 
 You are welcome to contribute :3
+
+
+## TODO
+- Create a new example
+- Improve the test
+- Improve de readme
+- Add globalLogs(--)
 
 ## License
 
