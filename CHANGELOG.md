@@ -1,3 +1,8 @@
+## 0.0.3
+
+* Add a new example reference
+* update some parts of theme rule
+
 ## 0.0.2
 
 * Add Documentation

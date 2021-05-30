@@ -9,7 +9,7 @@ import 'theme_rule.dart';
 ///
 /// {@endtemplate}
 mixin IThemeDataRule {
-  ThemeData getThemeByRule({ThemeRule rule = ThemeRule.light});
+  ThemeData getThemeByRule([ThemeRule rule = ThemeRule.light]);
 
   ThemeData getDefaultTheme() => getThemeByRule();
 }

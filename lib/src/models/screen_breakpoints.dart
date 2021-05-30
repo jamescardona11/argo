@@ -72,9 +72,9 @@ class ScreenBreakpoints extends ScreenModel<SBValue> {
         );
 
   bool get isMinSBValue =>
-      (mobile != null && mobile!.isMinType) ||
-      (tablet != null && tablet!.isMinType) ||
-      (desktop != null && desktop!.isMinType);
+      mobile?.isMinType == true ||
+      tablet?.isMinType == true ||
+      desktop?.isMinType == true;
 
   @override
   ScreenBreakpoints copyWith({

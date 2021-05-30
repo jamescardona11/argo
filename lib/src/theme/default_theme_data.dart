@@ -13,7 +13,7 @@ class DefaultThemeDataRule with IThemeDataRule {
   const DefaultThemeDataRule();
 
   @override
-  ThemeData getThemeByRule({ThemeRule rule = ThemeRule.light}) {
+  ThemeData getThemeByRule([ThemeRule rule = ThemeRule.light]) {
     return ThemeData.light();
   }
 }

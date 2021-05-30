@@ -6,6 +6,9 @@
 
 Widgets and tools for make it easy to create responsive apps for mobile, tablet and web. To handle visibility, orientation and handle diferent layout depend of screen.
 
+[![style: lint](https://img.shields.io/badge/style-lint-4BC0F5.svg)](https://pub.dev/packages/lint)
+
+
 Special thanks to:
 
 1. [filledstacks](https://www.filledstacks.com/)

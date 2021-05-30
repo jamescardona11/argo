@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class MyThemesApp with IThemeDataRule {
   @override
-  ThemeData getThemeByRule({ThemeRule rule = ThemeRule.light}) {
+  ThemeData getThemeByRule([ThemeRule rule = ThemeRule.light]) {
     switch (rule) {
       case ThemeRule.light:
         return lightTheme;
