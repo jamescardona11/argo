@@ -18,6 +18,7 @@ abstract class PlatformInfo {
   static bool get isAndroid => currentPlatformInfo == PlatformInfoType.Android;
   static bool get isIOS => currentPlatformInfo == PlatformInfoType.IOS;
   static bool get isFuchsia => currentPlatformInfo == PlatformInfoType.Fuchsia;
+  static bool get isMobile => isAndroid || isIOS;
 }
 
 /// All types of plataforms that supports `Flutter`

@@ -23,7 +23,7 @@ class ConditionalResponsiveWidget<T> extends StatelessWidget {
   }) : super(key: key);
 
   /// Returns [CBuilder] with the value match
-  final CBuilder<T> builder;
+  final CBuilder<T?> builder;
 
   /// List of conditions to show when they are met [ConditionBreakpoint]
   final List<ConditionBreakpoint<T>> conditionsMatch;

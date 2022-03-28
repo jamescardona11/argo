@@ -16,4 +16,4 @@ typedef RWBuilder = Widget Function(
 
 /// Signature for the `builder` function which takes the `BuildContext` and
 /// [T?] and is match conditions for the [ConditionalResponsiveWidget].
-typedef CBuilder<T> = Widget Function(BuildContext ctx, dynamic match);
+typedef CBuilder<T> = Widget Function(BuildContext ctx, T match);
