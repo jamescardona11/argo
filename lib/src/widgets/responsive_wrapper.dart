@@ -76,6 +76,7 @@ class ResponsiveWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final IThemeDataRule themeData = getThemeDataFromCondition(context);
+
     setLogging(enabled: debugLogDiagnostics);
 
     return _IWResponsiveWrapper(
@@ -117,7 +118,7 @@ class ResponsiveWrapper extends StatelessWidget {
           condition: responsiveTheme!.conditionScreen!,
           localBreakpoints: wrapConfig.globalBreakpoints,
           defaultValue: responsiveTheme!.deafultTheme ?? themeData,
-        );
+        )!;
       }
     }
 

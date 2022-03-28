@@ -34,7 +34,7 @@ import 'logger.dart';
 ///
 /// {@endtemplate }
 
-T valueFromConditionByScreen<T>({
+T? valueFromConditionByScreen<T>({
   required BuildContext context,
   required ConditionScreen<T> condition,
   ScreenBreakpoints? localBreakpoints,
@@ -62,7 +62,7 @@ T valueFromConditionByScreen<T>({
     deviceScreen,
   );
 
-  return deviceScreen ?? defaultValue;
+  return deviceScreen;
 }
 
 void _callLogs(

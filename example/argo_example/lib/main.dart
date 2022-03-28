@@ -12,10 +12,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: ResponsiveWrapper(
         wrapConfig: WrapperConfig(
-          globalBreakpoints: ScreenBreakpoints.values(
-            mobile: const SBValue.max(550),
-            tablet: const SBValue.max(1200),
-            desktop: const SBValue.inf(),
+          globalBreakpoints: ScreenBreakpoints(
+            mobile: 321,
+            tablet: 650,
+            desktop: 1100,
           ),
         ),
         child: MainScreen(),

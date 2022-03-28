@@ -21,8 +21,8 @@ ScreenBreakpoints getCurrentBreakPoints({
   final bool isMin = local != null ? local.isMinSBValue : global.isMinSBValue;
 
   final _mobile = _getDefaultOrValue(DeviceScreen.mobile, isMin, global);
-  final _tablet = _getDefaultOrValue(DeviceScreen.mobile, isMin, global);
-  final _desktop = _getDefaultOrValue(DeviceScreen.mobile, isMin, global);
+  final _tablet = _getDefaultOrValue(DeviceScreen.tablet, isMin, global);
+  final _desktop = _getDefaultOrValue(DeviceScreen.desktop, isMin, global);
 
   final defaultBreakPoints =
       isMin ? defaultMinimumBreakPoints : defaultMaximumBreakPoints;

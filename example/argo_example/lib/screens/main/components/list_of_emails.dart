@@ -36,12 +36,18 @@ class _ListOfEmailsState extends State<ListOfEmails> {
             children: [
               Row(
                 children: [
-                  ResponsiveVisibility.screen(
-                    conditionScreen: ConditionScreen(
-                      mobile: true,
-                      tablet: true,
-                      desktop: false,
-                    ),
+                  ResponsiveVisibility.conditions(
+                    hiddenWhen: const [
+                      ConditionBreakpoint<bool>.largerThan(
+                        value: false,
+                        breakpoint: 1089,
+                      ),
+                    ],
+                    // conditionScreen: ConditionScreen(
+                    //   mobile: true,
+                    //   tablet: true,
+                    //   desktop: false,
+                    // ),
                     child: Row(
                       children: [
                         IconButton(
@@ -79,7 +85,8 @@ class _ListOfEmailsState extends State<ListOfEmails> {
               ),
               SizedBox(height: kDefaultPadding),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: kDefaultPadding),
                 child: Row(
                   children: [
                     SvgPicture.asset(
@@ -109,13 +116,16 @@ class _ListOfEmailsState extends State<ListOfEmails> {
                 child: ListView.builder(
                   itemCount: emails.length,
                   itemBuilder: (context, index) => EmailCard(
-                    isActive: ResponsiveWrapper.isMobile(context) ? false : index == 0,
+                    isActive: ResponsiveWrapper.isMobile(context)
+                        ? false
+                        : index == 0,
                     email: emails[index],
                     press: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => EmailScreen(email: emails[index]),
+                          builder: (context) =>
+                              EmailScreen(email: emails[index]),
                         ),
                       );
                     },

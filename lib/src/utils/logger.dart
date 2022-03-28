@@ -11,9 +11,11 @@ import 'package:logging/logging.dart';
 final Logger log = Logger('Argo');
 
 StreamSubscription<LogRecord>? _subscription;
+bool _enabled = false;
 
 /// Forwards diagnostic messages to the dart:developer log() API.
 void setLogging({bool enabled = false}) {
+  _enabled = enabled;
   _subscription?.cancel();
   if (!enabled) {
     return;
@@ -23,27 +25,29 @@ void setLogging({bool enabled = false}) {
     // use `dumpErrorToConsole` for severe messages to ensure that severe
     // exceptions are formatted consistently with other Flutter examples and
     // avoids printing duplicate exceptions
-    if (e.level >= Level.SEVERE) {
-      final Object? error = e.error;
-      FlutterError.dumpErrorToConsole(
-        FlutterErrorDetails(
-          exception: error is Exception ? error : Exception(error),
-          stack: e.stackTrace,
-          library: e.loggerName,
-          context: ErrorDescription(e.message),
-        ),
-      );
-    } else {
-      developer.log(
-        e.message,
-        time: e.time,
-        sequenceNumber: e.sequenceNumber,
-        level: e.level.value,
-        name: e.loggerName,
-        zone: e.zone,
-        error: e.error,
-        stackTrace: e.stackTrace,
-      );
+    if (_enabled) {
+      if (e.level >= Level.SEVERE) {
+        final Object? error = e.error;
+        FlutterError.dumpErrorToConsole(
+          FlutterErrorDetails(
+            exception: error is Exception ? error : Exception(error),
+            stack: e.stackTrace,
+            library: e.loggerName,
+            context: ErrorDescription(e.message),
+          ),
+        );
+      } else {
+        developer.log(
+          e.message,
+          time: e.time,
+          sequenceNumber: e.sequenceNumber,
+          level: e.level.value,
+          name: e.loggerName,
+          zone: e.zone,
+          error: e.error,
+          stackTrace: e.stackTrace,
+        );
+      }
     }
   });
 }

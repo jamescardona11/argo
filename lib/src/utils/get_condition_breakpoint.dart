@@ -58,6 +58,7 @@ T valueFromConditionByBreakpoints<T>({
   );
 
   valueWhen.sort((a, b) => a.breakpoint!.compareTo(b.breakpoint!));
+
   final activeCondition = _getActiveCondition<T>(
     context,
     rw,
@@ -80,7 +81,8 @@ ConditionBreakpoint<T>? _getActiveCondition<T>(
   final ConditionBreakpoint<T>? equalsCondition = conditions
       .where((element) => element.conditional == Conditional.EQUALS)
       .firstWhereOrNull((element) =>
-          DeviceScreenX.fromBreakpoint(deviceWith, breakpoints) == element.screenType);
+          DeviceScreenX.fromBreakpoint(deviceWith, breakpoints) ==
+          element.screenType);
 
   if (equalsCondition != null) {
     return equalsCondition;
@@ -112,7 +114,8 @@ List<ConditionBreakpoint<T>> _setDefaultValuesToConditions<T>(
     conditions.map((cdt) {
       if (cdt.breakpoint == null) {
         return cdt.copyWith(
-            breakpoint: cdt.screenType!.getScreenValue(currentBreakpoints)!.value);
+            breakpoint:
+                cdt.screenType!.getScreenValue(currentBreakpoints)!.value);
       }
       return cdt;
     }).toList();
