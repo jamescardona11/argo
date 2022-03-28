@@ -1,3 +1,4 @@
+import 'package:argo/argo.dart';
 import 'package:argo/src/models/sb_value.dart';
 
 import '../models/screen_breakpoints.dart';
@@ -19,23 +20,9 @@ ScreenBreakpoints getCurrentBreakPoints({
   // the evaluation for SBValues is for MIN or MAX values.
   final bool isMin = local != null ? local.isMinSBValue : global.isMinSBValue;
 
-  final _mobile = isMin && global.mobile!.isMinType
-      ? global.mobile!
-      : !isMin && global.mobile!.isMinType
-          ? defaultMaximumBreakPoints.mobile!
-          : defaultMinimumBreakPoints.mobile!;
-
-  final _tablet = isMin && global.tablet!.isMinType
-      ? global.mobile!
-      : !isMin && global.tablet!.isMinType
-          ? defaultMaximumBreakPoints.tablet!
-          : defaultMinimumBreakPoints.tablet!;
-
-  final _desktop = isMin && global.desktop!.isMinType
-      ? global.desktop!
-      : !isMin && global.desktop!.isMinType
-          ? defaultMaximumBreakPoints.desktop!
-          : defaultMinimumBreakPoints.desktop!;
+  final _mobile = _getDefaultOrValue(DeviceScreen.mobile, isMin, global);
+  final _tablet = _getDefaultOrValue(DeviceScreen.mobile, isMin, global);
+  final _desktop = _getDefaultOrValue(DeviceScreen.mobile, isMin, global);
 
   final defaultBreakPoints =
       isMin ? defaultMinimumBreakPoints : defaultMaximumBreakPoints;
@@ -45,6 +32,42 @@ ScreenBreakpoints getCurrentBreakPoints({
     tablet: _getDoubleValue(local?.tablet, _tablet),
     desktop: _getDoubleValue(local?.desktop, _desktop),
   );
+}
+
+SBValue _getDefaultOrValue(
+    DeviceScreen device, bool isMin, ScreenBreakpoints global) {
+  late SBValue _global;
+  late SBValue _defaultMin;
+  late SBValue _defaultMax;
+  switch (device) {
+    case DeviceScreen.mobile:
+      _global = global.mobile!;
+      _defaultMin = defaultMinimumBreakPoints.mobile!;
+      _defaultMax = defaultMaximumBreakPoints.mobile!;
+
+      break;
+    case DeviceScreen.tablet:
+      _global = global.tablet!;
+      _defaultMin = defaultMinimumBreakPoints.tablet!;
+      _defaultMax = defaultMaximumBreakPoints.tablet!;
+
+      break;
+    case DeviceScreen.desktop:
+      _global = global.desktop!;
+      _defaultMin = defaultMinimumBreakPoints.desktop!;
+      _defaultMax = defaultMaximumBreakPoints.desktop!;
+
+      break;
+  }
+  if (isMin == _global.isMinType) {
+    return _global;
+  } else if (!isMin && _global.isMinType) {
+    return _defaultMax;
+  } else if (isMin && !_global.isMinType) {
+    return _defaultMin;
+  }
+
+  return _global;
 }
 
 SBValue _getDoubleValue(
