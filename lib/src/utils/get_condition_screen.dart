@@ -73,27 +73,27 @@ void _callLogs(
   condition,
   deviceScreen,
 ) {
-  log.info('------ Start valueFromConditionByScreen ------');
+  infoLog('------ Start valueFromConditionByScreen ------');
 
-  log.info('GlobalBreakPoints: '
+  infoLog('GlobalBreakPoints: '
       '"${rw.globalBreakpoints}"');
 
   if (localBreakpoints != null) {
-    log.info('LocalBreakPoints: '
+    infoLog('LocalBreakPoints: '
         '"$localBreakpoints"');
   }
 
-  log.info('Final Breakpoints: '
+  infoLog('Final Breakpoints: '
       '"$breakpoints"');
 
-  log.info('deviceScreenType: '
+  infoLog('deviceScreenType: '
       '"$deviceScreenType"');
 
-  log.info('condition: '
+  infoLog('condition: '
       '"$condition"');
 
-  log.info('deviceScreen: '
+  infoLog('deviceScreen: '
       '"$condition"');
 
-  log.info('------ ------ ------');
+  infoLog('------ ------ ------');
 }
