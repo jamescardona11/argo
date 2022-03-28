@@ -110,7 +110,7 @@ class ResponsiveWrapper extends StatelessWidget {
           condition: responsiveTheme!.changeWhen!,
           localBreakpoints: wrapConfig.globalBreakpoints,
           defaultValue: responsiveTheme!.deafultTheme ?? themeData,
-        );
+        )!;
       } else {
         infoLog('------ getThemeDataFromCondition ------');
         themeData = valueFromConditionByScreen<IThemeDataRule>(

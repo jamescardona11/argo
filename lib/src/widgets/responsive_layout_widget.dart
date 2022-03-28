@@ -57,13 +57,13 @@ class ResponsiveLayoutWidget extends StatelessWidget {
         super(key: key);
 
   /// This value may be type `Widget` or `RBuilder`
-  final dynamic? mobile;
+  final dynamic mobile;
 
   /// This value may be type `Widget` or `RBuilder`
-  final dynamic? tablet;
+  final dynamic tablet;
 
   /// This value may be type `Widget` or `RBuilder`
-  final dynamic? desktop;
+  final dynamic desktop;
 
   /// Are the local breakpoints for the widget
   final ScreenBreakpoints? breakpoints;
@@ -78,7 +78,7 @@ class ResponsiveLayoutWidget extends StatelessWidget {
           localBreakpoints: breakpoints,
         );
 
-        if (info.deviceScreen.isDesktop()) {
+        if (info.isDesktop) {
           // If we have supplied the desktop layout then display that
           if (desktop != null) return returnValue(desktop, context, info);
           // If no desktop layout is supplied we want to check if we have the size below it and display that
@@ -90,14 +90,17 @@ class ResponsiveLayoutWidget extends StatelessWidget {
         }
 
         // If none of the layouts above are supplied or we're on the mobile layout then we show the mobile layout
-        return mobile != null ? returnValue(mobile, context, info) : const SizedBox();
+        return mobile != null
+            ? returnValue(mobile, context, info)
+            : const SizedBox();
       },
     );
   }
 
   bool _isRBuilder(dynamic data) => data is RBuilder;
 
-  Widget returnValue(dynamic data, BuildContext context, ResponsiveInformation info) {
+  Widget returnValue(
+      dynamic data, BuildContext context, ResponsiveInformation info) {
     if (_isRBuilder(data)) {
       return (data as RBuilder)(context, info);
     }

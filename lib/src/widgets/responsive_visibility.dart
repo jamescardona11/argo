@@ -87,7 +87,7 @@ class ResponsiveVisibility extends StatelessWidget {
         condition: conditions,
         localBreakpoints: localBreakpoints,
         defaultValue: visibleValue,
-      );
+      )!;
     } else {
       visibleValue = valueFromConditionByScreen<bool>(
         context: context,

@@ -36,11 +36,11 @@ import 'get_current_breakpoints.dart';
 ///
 ///{@endtemplate}
 
-T valueFromConditionByBreakpoints<T>({
+T? valueFromConditionByBreakpoints<T>({
   required BuildContext context,
   required List<ConditionBreakpoint<T>> condition,
   ScreenBreakpoints? localBreakpoints,
-  required T defaultValue,
+  T? defaultValue,
 }) {
   final nCondition = List<ConditionBreakpoint<T>>.from(condition);
 
