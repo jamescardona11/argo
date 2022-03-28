@@ -111,6 +111,7 @@ class ResponsiveWrapper extends StatelessWidget {
           defaultValue: responsiveTheme!.deafultTheme ?? themeData,
         );
       } else {
+        log.info('------ getThemeDataFromCondition ------');
         themeData = valueFromConditionByScreen<IThemeDataRule>(
           context: context,
           condition: responsiveTheme!.conditionScreen!,

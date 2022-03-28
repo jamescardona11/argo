@@ -1,3 +1,4 @@
+import 'package:argo/src/utils/logger.dart';
 import 'package:flutter/widgets.dart';
 
 import '../models/condition.dart';
@@ -82,6 +83,7 @@ class ResponsiveVisibility extends StatelessWidget {
         defaultValue: visibleValue,
       );
     } else {
+      log.info('------ ResponsiveVisibility ------');
       visibleValue = valueFromConditionByScreen<bool>(
         context: context,
         condition: conditionScreen,
