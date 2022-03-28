@@ -5,6 +5,7 @@ import '../models/device_screen.dart';
 import '../models/screen_breakpoints.dart';
 import '../widgets/responsive_wrapper.dart';
 import 'get_current_breakpoints.dart';
+import 'logger.dart';
 
 /// {@template get_conditions_screen}
 ///
@@ -40,6 +41,7 @@ T valueFromConditionByScreen<T>({
   required T defaultValue,
 }) {
   final rw = ResponsiveWrapper.getWrapperConfig(context);
+
   final breakpoints = getCurrentBreakPoints(
     global: rw.globalBreakpoints,
     local: localBreakpoints,
@@ -47,7 +49,49 @@ T valueFromConditionByScreen<T>({
 
   final size = MediaQuery.of(context).size;
   final deviceWith = rw.getDeviceWidth(size);
-  final deviceScreenType = DeviceScreenX.fromBreakpoint(deviceWith, breakpoints);
+  final deviceScreenType =
+      DeviceScreenX.fromBreakpoint(deviceWith, breakpoints);
 
-  return deviceScreenType.getScreenValue(condition) ?? defaultValue;
+  final deviceScreen = deviceScreenType.getScreenValue(condition);
+  _callLogs(
+    rw,
+    localBreakpoints,
+    breakpoints,
+    deviceScreenType,
+    condition,
+    deviceScreen,
+  );
+
+  return deviceScreen ?? defaultValue;
+}
+
+void _callLogs(
+  rw,
+  ScreenBreakpoints? localBreakpoints,
+  breakpoints,
+  deviceScreenType,
+  condition,
+  deviceScreen,
+) {
+  log.info('Start valueFromConditionByScreen');
+
+  log.info('GlobalBreakPoints: '
+      '"${rw.globalBreakpoints}"');
+
+  if (localBreakpoints != null) {
+    log.info('LocalBreakPoints: '
+        '"$localBreakpoints"');
+  }
+
+  log.info('Final Breakpoints: '
+      '"$breakpoints"');
+
+  log.info('deviceScreenType: '
+      '"$deviceScreenType"');
+
+  log.info('condition: '
+      '"$condition"');
+
+  log.info('deviceScreen: '
+      '"$condition"');
 }

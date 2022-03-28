@@ -1,6 +1,6 @@
 import 'package:argo/src/models/typedef.dart';
+import 'package:argo/src/utils/logger.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../models/condition.dart';
 import '../models/device_screen.dart';
@@ -48,6 +48,7 @@ class ResponsiveWrapper extends StatelessWidget {
     required Widget child,
     this.responsiveTheme,
     this.wrapConfig = const WrapperConfig(),
+    this.debugLogDiagnostics = false,
   })  : child = child,
         super(key: key);
 
@@ -56,6 +57,7 @@ class ResponsiveWrapper extends StatelessWidget {
     required RWBuilder builder,
     this.responsiveTheme,
     this.wrapConfig = const WrapperConfig(),
+    this.debugLogDiagnostics = false,
   })  : child = builder,
         super(key: key);
 
@@ -68,9 +70,14 @@ class ResponsiveWrapper extends StatelessWidget {
   /// The global configuration of `ResponsiveWrapper`
   final WrapperConfig wrapConfig;
 
+  /// debug logs
+  final bool debugLogDiagnostics;
+
   @override
   Widget build(BuildContext context) {
     final IThemeDataRule themeData = getThemeDataFromCondition(context);
+    setLogging(enabled: debugLogDiagnostics);
+
     return _IWResponsiveWrapper(
       wrapConfig: wrapConfig,
       child: returnValue(child, themeData),
@@ -119,11 +126,14 @@ class ResponsiveWrapper extends StatelessWidget {
   static WrapperConfig getWrapperConfig(BuildContext context) =>
       _IWResponsiveWrapper.of(context)?.wrapConfig ?? const WrapperConfig();
 
-  static bool isMobile(BuildContext context) => _getDeviceScreen(context).isMobile();
+  static bool isMobile(BuildContext context) =>
+      _getDeviceScreen(context).isMobile();
 
-  static bool isTablet(BuildContext context) => _getDeviceScreen(context).isTablet();
+  static bool isTablet(BuildContext context) =>
+      _getDeviceScreen(context).isTablet();
 
-  static bool isDesktop(BuildContext context) => _getDeviceScreen(context).isDesktop();
+  static bool isDesktop(BuildContext context) =>
+      _getDeviceScreen(context).isDesktop();
 
   static DeviceScreen _getDeviceScreen(BuildContext context) {
     final rw = getWrapperConfig(context);
