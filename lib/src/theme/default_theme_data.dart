@@ -9,10 +9,11 @@ import 'theme_rule.dart';
 /// must return a `ThemeData`.
 ///
 /// {@endtemplate}
-class DefaultThemeDataRule implements IThemeDataRule {
+class DefaultThemeDataRule with IThemeDataRule {
   const DefaultThemeDataRule();
+
   @override
-  ThemeData getThemeByRule(ThemeRule rule) {
+  ThemeData getThemeByRule([ThemeRule rule = ThemeRule.light]) {
     return ThemeData.light();
   }
 }

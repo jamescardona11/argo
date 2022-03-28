@@ -1,3 +1,4 @@
+import 'package:argo/src/utils/logger.dart';
 import 'package:flutter/widgets.dart';
 
 import '../models/condition.dart';
@@ -18,18 +19,19 @@ class ResponsiveVisibility extends StatelessWidget {
   const ResponsiveVisibility.conditions({
     Key? key,
     required this.child,
-    this.visible = true,
+    this.visibilityIfNotMatch,
     this.visibleWhen = const [],
     this.hiddenWhen = const [],
     this.localBreakpoints,
-  })  : type = ConditionType.conditions,
+  })  : assert(visibleWhen.length == 0 || hiddenWhen.length == 0),
+        type = ConditionType.conditions,
         conditionScreen = _defaultConditionScreenVisibility,
         super(key: key);
 
   const ResponsiveVisibility.screen({
     Key? key,
     required this.child,
-    this.visible = true,
+    this.visibilityIfNotMatch = false,
     this.conditionScreen = _defaultConditionScreenVisibility,
     this.localBreakpoints,
   })  : type = ConditionType.screen,
@@ -49,8 +51,8 @@ class ResponsiveVisibility extends StatelessWidget {
   /// Do the manage of the visibility by [ConditionScreen]
   final ConditionScreen<bool> conditionScreen;
 
-  /// the defoult value of the widget
-  final bool visible;
+  /// the defoult value visibility of the widget
+  final bool? visibilityIfNotMatch;
 
   /// Are the local breakpoints for the widget
   final ScreenBreakpoints? localBreakpoints;
@@ -63,12 +65,17 @@ class ResponsiveVisibility extends StatelessWidget {
     // Initialize mutable value holders.
     final bool visibleValue = getVisibilityValue(context);
 
-    return visibleValue ? child : const SizedBox();
+    return Visibility(
+      visible: visibleValue,
+      child: child,
+    );
   }
 
   bool getVisibilityValue(BuildContext context) {
     final List<ConditionBreakpoint<bool>> conditions = [];
-    bool visibleValue = visible;
+    bool visibleValue = visibilityIfNotMatch != null
+        ? visibilityIfNotMatch!
+        : visibleWhen.isEmpty;
 
     // Combine Conditions.
     conditions.addAll(visibleWhen.map((e) => e.copyWith(value: true)));
@@ -80,14 +87,14 @@ class ResponsiveVisibility extends StatelessWidget {
         condition: conditions,
         localBreakpoints: localBreakpoints,
         defaultValue: visibleValue,
-      );
+      )!;
     } else {
       visibleValue = valueFromConditionByScreen<bool>(
         context: context,
         condition: conditionScreen,
         localBreakpoints: localBreakpoints,
         defaultValue: visibleValue,
-      );
+      )!;
     }
 
     return visibleValue;

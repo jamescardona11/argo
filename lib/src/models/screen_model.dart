@@ -34,5 +34,6 @@ abstract class ScreenModel<T> {
       other.desktop == desktop;
 
   @override
-  int get hashCode => hashValues(mobile.hashCode, tablet.hashCode, desktop.hashCode);
+  int get hashCode =>
+      hashValues(mobile.hashCode, tablet.hashCode, desktop.hashCode);
 }

@@ -5,6 +5,7 @@ import '../models/device_screen.dart';
 import '../models/screen_breakpoints.dart';
 import '../widgets/responsive_wrapper.dart';
 import 'get_current_breakpoints.dart';
+import 'logger.dart';
 
 /// {@template get_conditions_screen}
 ///
@@ -33,13 +34,14 @@ import 'get_current_breakpoints.dart';
 ///
 /// {@endtemplate }
 
-T valueFromConditionByScreen<T>({
+T? valueFromConditionByScreen<T>({
   required BuildContext context,
   required ConditionScreen<T> condition,
   ScreenBreakpoints? localBreakpoints,
   required T defaultValue,
 }) {
   final rw = ResponsiveWrapper.getWrapperConfig(context);
+
   final breakpoints = getCurrentBreakPoints(
     global: rw.globalBreakpoints,
     local: localBreakpoints,
@@ -47,7 +49,10 @@ T valueFromConditionByScreen<T>({
 
   final size = MediaQuery.of(context).size;
   final deviceWith = rw.getDeviceWidth(size);
-  final deviceScreenType = DeviceScreenX.fromBreakpoint(deviceWith, breakpoints);
+  final deviceScreenType =
+      DeviceScreenX.fromBreakpoint(deviceWith, breakpoints);
 
-  return deviceScreenType.getScreenValue(condition) ?? defaultValue;
+  final deviceScreen = deviceScreenType.getScreenValue(condition);
+
+  return deviceScreen;
 }

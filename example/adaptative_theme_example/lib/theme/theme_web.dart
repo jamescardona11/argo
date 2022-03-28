@@ -5,7 +5,7 @@ import 'common_data.dart';
 
 class MyThemesWeb with IThemeDataRule {
   @override
-  ThemeData getThemeByRule(ThemeRule rule) {
+  ThemeData getThemeByRule([ThemeRule rule = ThemeRule.light]) {
     switch (rule) {
       case ThemeRule.light:
         return lightTheme;

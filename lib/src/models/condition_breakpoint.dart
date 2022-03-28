@@ -45,7 +45,12 @@ class ConditionBreakpoint<T> extends Condition<T> {
     required Conditional conditional,
     this.value,
     this.breakpoint,
-  });
+  }) : super(
+          conditional: conditional,
+          mobile: value,
+          tablet: value,
+          desktop: value,
+        );
 
   /// This value tells the condition to look for the `breakpoint` value in the [WrapperConfig]
   /// for the sreen type [mobile], [tablet], [desktop]
@@ -61,13 +66,15 @@ class ConditionBreakpoint<T> extends Condition<T> {
     required this.screenType,
     this.value,
   })  : breakpoint = null,
-        super.equals(value: value);
+        super.equals(value);
 
-  const ConditionBreakpoint.largerThan({this.screenType, this.breakpoint, this.value})
-      : super.largerThan(value: value);
+  const ConditionBreakpoint.largerThan(
+      {this.screenType, this.breakpoint, this.value})
+      : super.largerThan(value);
 
-  const ConditionBreakpoint.smallerThan({this.screenType, this.breakpoint, this.value})
-      : super.smallerThan(value: value);
+  const ConditionBreakpoint.smallerThan(
+      {this.screenType, this.breakpoint, this.value})
+      : super.smallerThan(value);
 
   bool get isNull => breakpoint == null && screenType == null;
 
