@@ -1,7 +1,7 @@
 name: argo
 description: Widgets and tools for make it easy to create responsive apps. Widget to handle visibility, orientation, handle diferent layout depend of screen and can handle a responsive theme.
 
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/jamescardona11/argo
 
 environment:

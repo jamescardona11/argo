@@ -48,7 +48,7 @@ class ResponsiveWrapper extends StatelessWidget {
     required Widget child,
     this.responsiveTheme,
     this.wrapConfig = const WrapperConfig(),
-    this.debugLogDiagnostics = false,
+    // this.debugLogDiagnostics = false,
   })  : child = child,
         super(key: key);
 
@@ -57,7 +57,7 @@ class ResponsiveWrapper extends StatelessWidget {
     required RWBuilder builder,
     this.responsiveTheme,
     this.wrapConfig = const WrapperConfig(),
-    this.debugLogDiagnostics = false,
+    // this.debugLogDiagnostics = false,
   })  : child = builder,
         super(key: key);
 
@@ -71,13 +71,11 @@ class ResponsiveWrapper extends StatelessWidget {
   final WrapperConfig wrapConfig;
 
   /// debug logs
-  final bool debugLogDiagnostics;
+  // final bool debugLogDiagnostics;
 
   @override
   Widget build(BuildContext context) {
     final IThemeDataRule themeData = getThemeDataFromCondition(context);
-
-    setLogging(enabled: debugLogDiagnostics);
 
     return _IWResponsiveWrapper(
       wrapConfig: wrapConfig,
@@ -112,7 +110,6 @@ class ResponsiveWrapper extends StatelessWidget {
           defaultValue: responsiveTheme!.deafultTheme ?? themeData,
         )!;
       } else {
-        infoLog('------ getThemeDataFromCondition ------');
         themeData = valueFromConditionByScreen<IThemeDataRule>(
           context: context,
           condition: responsiveTheme!.conditionScreen!,

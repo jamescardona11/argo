@@ -53,47 +53,6 @@ T? valueFromConditionByScreen<T>({
       DeviceScreenX.fromBreakpoint(deviceWith, breakpoints);
 
   final deviceScreen = deviceScreenType.getScreenValue(condition);
-  _callLogs(
-    rw,
-    localBreakpoints,
-    breakpoints,
-    deviceScreenType,
-    condition,
-    deviceScreen,
-  );
 
   return deviceScreen;
-}
-
-void _callLogs(
-  rw,
-  ScreenBreakpoints? localBreakpoints,
-  breakpoints,
-  deviceScreenType,
-  condition,
-  deviceScreen,
-) {
-  infoLog('------ Start valueFromConditionByScreen ------');
-
-  infoLog('GlobalBreakPoints: '
-      '"${rw.globalBreakpoints}"');
-
-  if (localBreakpoints != null) {
-    infoLog('LocalBreakPoints: '
-        '"$localBreakpoints"');
-  }
-
-  infoLog('Final Breakpoints: '
-      '"$breakpoints"');
-
-  infoLog('deviceScreenType: '
-      '"$deviceScreenType"');
-
-  infoLog('condition: '
-      '"$condition"');
-
-  infoLog('deviceScreen: '
-      '"$condition"');
-
-  infoLog('------ ------ ------');
 }

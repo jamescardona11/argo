@@ -330,8 +330,8 @@ For more information and understand the `Theme Responsive` check the Documentati
 ### Examples
 
 1. [ArgoExample](https://github.com/jamescardona11/argo/tree/main/example/argo_example): Simple example of use the argo library
-2. [ThemingExample](https://github.com/jamescardona11/argo/tree/main/example/argo_example): Basic use for the ResponsiveTheming
-3. [MyPortfolioApp](https://github.com/jamescardona11/my_portfolio_web): TODO
+2. [ThemingExample](https://github.com/jamescardona11/argo/tree/main/example/adaptative_theme_example): Basic use for the ResponsiveTheming
+3. [BaseLandingPage](https://github.com/jamescardona11/base_landing_page): TODO
 
 
 
@@ -351,10 +351,9 @@ You are welcome to contribute :3
 
 
 ## TODO
-- Create a new example
 - Improve the test
 - Improve de readme
-- Add globalLogs(--)
+- Add globalLogs(inprogress)
 
 ## License
 
