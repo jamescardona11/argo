@@ -46,9 +46,9 @@ class SBValue {
 
   @override
   String toString() {
-    final strType = isMinType ? _SBType.min.toString() : _SBType.max.toString();
+    // final strType = isMinType ? _SBType.min.toString() : _SBType.max.toString();
 
-    return 'SBType: $strType Value: $value';
+    return 'Value: $value';
   }
 }
 

@@ -52,7 +52,7 @@ class ScreenBreakpoints extends ScreenModel<SBValue> {
     required SBValue mobile,
     required SBValue tablet,
     required SBValue desktop,
-  })   : assert(mobile.type == tablet.type &&
+  })  : assert(mobile.type == tablet.type &&
             mobile.type == desktop.type &&
             tablet.type == desktop.type),
         super(
@@ -89,7 +89,7 @@ class ScreenBreakpoints extends ScreenModel<SBValue> {
       );
 
   @override
-  String toString() => 'ScreenBreakpoints(${super.toString()}';
+  String toString() => super.toString();
 }
 
 /// Minimum values breakpoints for [DeviceScreen].
