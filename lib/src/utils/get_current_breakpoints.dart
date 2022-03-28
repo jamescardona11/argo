@@ -16,19 +16,26 @@ ScreenBreakpoints getCurrentBreakPoints({
   required ScreenBreakpoints global,
   ScreenBreakpoints? local,
 }) {
+  // the evaluation for SBValues is for MIN or MAX values.
   final bool isMin = local != null ? local.isMinSBValue : global.isMinSBValue;
 
   final _mobile = isMin && global.mobile!.isMinType
       ? global.mobile!
-      : defaultMinimumBreakPoints.mobile!;
+      : !isMin && global.mobile!.isMinType
+          ? defaultMaximumBreakPoints.mobile!
+          : defaultMinimumBreakPoints.mobile!;
 
   final _tablet = isMin && global.tablet!.isMinType
       ? global.mobile!
-      : defaultMinimumBreakPoints.tablet!;
+      : !isMin && global.tablet!.isMinType
+          ? defaultMaximumBreakPoints.tablet!
+          : defaultMinimumBreakPoints.tablet!;
 
   final _desktop = isMin && global.desktop!.isMinType
       ? global.desktop!
-      : defaultMinimumBreakPoints.desktop!;
+      : !isMin && global.desktop!.isMinType
+          ? defaultMaximumBreakPoints.desktop!
+          : defaultMinimumBreakPoints.desktop!;
 
   final defaultBreakPoints =
       isMin ? defaultMinimumBreakPoints : defaultMaximumBreakPoints;
