@@ -73,7 +73,7 @@ void _callLogs(
   condition,
   deviceScreen,
 ) {
-  log.info('Start valueFromConditionByScreen');
+  log.info('------ Start valueFromConditionByScreen ------');
 
   log.info('GlobalBreakPoints: '
       '"${rw.globalBreakpoints}"');
@@ -94,4 +94,6 @@ void _callLogs(
 
   log.info('deviceScreen: '
       '"$condition"');
+
+  log.info('------ ------ ------');
 }

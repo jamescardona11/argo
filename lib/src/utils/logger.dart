@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:logging/logging.dart';
 
 /// The logger for this package.
-final Logger log = Logger('GoRouter');
+final Logger log = Logger('Argo');
 
 StreamSubscription<LogRecord>? _subscription;
 
