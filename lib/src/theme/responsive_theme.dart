@@ -4,11 +4,11 @@ import '../models/condition_screen.dart';
 import 'default_theme_data.dart';
 import 'i_theme_data_rule.dart';
 
-/// {@template responsive_thme}
+/// {@template responsive_theme}
 ///
 /// Data class to handle the `theme responsive` information, this class may be used from [ResponsiveWrapper]
 /// It's used from [ResponsiveWrapper] to get the value for the currentBreakpoints
-/// Use differents `conditions` to store the themes.
+/// Use different `conditions` to store the themes.
 ///
 /// ```dart
 /// ResponsiveTheme.screen(
@@ -31,8 +31,8 @@ class ResponsiveTheme {
   /// The type of conditions that was invoked
   final ConditionType? type;
 
-  /// We can define a theme for default if there any `condition` that does'nt met
-  /// If there is'nt a default theme thay will use [DefaultThemeDataRule]
+  /// We can define a theme for default if there any `condition` that doesn't met
+  /// If there isn't a default theme that will use [DefaultThemeDataRule]
   final IThemeDataRule? defaultTheme;
 
   const ResponsiveTheme.screen({

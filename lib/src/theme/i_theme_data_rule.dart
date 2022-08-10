@@ -5,7 +5,7 @@ import 'theme_rule.dart';
 /// {@template i_theme_data_rule}
 /// Mixin for defining my owns `ThemeData` for the app.
 ///
-/// It is used to create differents `responsive theme` and through the [ThemeRule] you get the current `ThemeData`
+/// It is used to create different `responsive theme` and through the [ThemeRule] you get the current `ThemeData`
 ///
 /// {@endtemplate}
 mixin IThemeDataRule {

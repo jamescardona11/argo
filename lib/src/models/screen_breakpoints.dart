@@ -31,7 +31,7 @@ import 'screen_model.dart';
 ///   desktop: const SBValue.inf(),
 /// )
 /// ```
-/// Sugestion: in order to have a consistance in the behaviour of the app
+/// Suggestion: in order to have a consistence in the behavior of the app
 /// the best is to set the [SBValue] for a [ScreenBreakpoints] in all cases by `min` or `max`,
 /// avoiding mixing the types.
 ///

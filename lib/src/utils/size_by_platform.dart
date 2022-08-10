@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../platform_info/platform_info.dart';
+import 'package:argo/src/platform_info/platform_info.dart';
 
 /// {@template size_by_platform}
 ///

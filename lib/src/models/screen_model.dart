@@ -2,7 +2,7 @@ import 'dart:ui';
 
 /// {@template screen_model}
 ///
-/// Parent class that has the structure of the `conditions` and the `brekpoints`
+/// Parent class that has the structure of the `conditions` and the `breakpoints`
 ///
 /// {@endtemplate}
 abstract class ScreenModel<T> {

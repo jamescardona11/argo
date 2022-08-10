@@ -79,7 +79,7 @@ extension ResponsiveContext on BuildContext {
 /// it is useful when you have to do a lot of callings in the same file.
 /// It has the same behavior as the `BuildContext` extension
 ///
-/// /// ```dart
+/// ```dart
 /// final mResponsive = ResponsiveUtils.of(context);
 ///
 /// mResponsive.isLandscape;

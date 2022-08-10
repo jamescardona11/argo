@@ -1,9 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../models/responsive_information.dart';
-import '../models/screen_breakpoints.dart';
-import '../models/typedef.dart';
-import '../utils/get_resonsive_information.dart';
+import 'package:argo/src/models/models.dart';
+import 'package:argo/src/utils/utils.dart';
 
 /// {@template responsive_builder}
 ///

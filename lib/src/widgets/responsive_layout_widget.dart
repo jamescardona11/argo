@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import '../models/device_screen.dart';
 import '../models/screen_breakpoints.dart';
 import '../models/typedef.dart';
-import '../utils/get_resonsive_information.dart';
+import '../utils/get_responsive_information.dart';
 
 /// {@template responsive_layout_widget}
 ///

@@ -1,5 +1,5 @@
 import 'package:argo/src/models/typedef.dart';
-import 'package:argo/src/utils/get_resonsive_information.dart';
+import 'package:argo/src/utils/get_responsive_information.dart';
 import 'package:flutter/widgets.dart';
 
 /// {@template orientation_layout_builder}

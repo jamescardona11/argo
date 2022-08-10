@@ -1,11 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../models/condition.dart';
-import '../models/condition_breakpoint.dart';
-import '../models/condition_screen.dart';
-import '../models/screen_breakpoints.dart';
-import '../models/typedef.dart';
-import '../utils/get_condition_breakpoint.dart';
+import 'package:argo/src/models/models.dart';
+import 'package:argo/src/utils/get_condition_breakpoint.dart';
 
 /// {@template conditional_responsive_widget}
 ///

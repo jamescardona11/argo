@@ -1,9 +1,8 @@
 import 'package:flutter/widgets.dart';
 
-import '../models/condition_screen.dart';
-import '../models/device_screen.dart';
-import '../models/screen_breakpoints.dart';
-import '../widgets/responsive_wrapper.dart';
+import 'package:argo/src/models/models.dart';
+import 'package:argo/src/utils/utils.dart';
+import 'package:argo/src/widgets/responsive_wrapper.dart';
 import 'get_current_breakpoints.dart';
 
 /// {@template get_conditions_screen}

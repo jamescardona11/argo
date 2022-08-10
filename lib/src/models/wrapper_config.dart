@@ -1,12 +1,12 @@
 import 'package:flutter/widgets.dart';
 
-import '../theme/theme_rule.dart';
-import '../utils/size_by_platform.dart';
+import 'package:argo/src/theme/theme_rule.dart';
+import 'package:argo/src/utils/size_by_platform.dart';
 import 'screen_breakpoints.dart';
 
 /// {@template wrapper_config}
 ///
-/// Data class to handle the global configururation for the [ResponsiveWrapper]
+/// Data class to handle the global configuration for the [ResponsiveWrapper]
 /// Helps to define the rules for the `responsive`
 ///
 /// ```dart

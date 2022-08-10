@@ -1,14 +1,11 @@
-import 'package:argo/src/models/typedef.dart';
 import 'package:flutter/material.dart';
 
-import '../models/condition.dart';
-import '../models/device_screen.dart';
-import '../models/wrapper_config.dart';
-import '../theme/default_theme_data.dart';
-import '../theme/i_theme_data_rule.dart';
-import '../theme/responsive_theme.dart';
-import '../utils/get_condition_breakpoint.dart';
-import '../utils/get_condition_screen.dart';
+import 'package:argo/src/theme/i_theme_data_rule.dart';
+import 'package:argo/src/theme/default_theme_data.dart';
+import 'package:argo/src/theme/responsive_theme.dart';
+
+import 'package:argo/src/models/models.dart';
+import 'package:argo/src/utils/utils.dart';
 
 /// {@template responsive_wrapper}
 ///

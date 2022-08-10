@@ -6,7 +6,7 @@ import 'screen_breakpoints.dart';
 /// {@template responsive_information}
 ///
 /// Data class to handle `responsive` information for the widget.
-/// This class stores the necesary information so the widget can create their `responsive`
+/// This class stores the necessary information so the widget can create their `responsive`
 ///
 /// {@endtemplate}
 class ResponsiveInformation {
@@ -16,11 +16,11 @@ class ResponsiveInformation {
     required this.localSize,
     required this.currentBreakpoints,
     required Orientation orientation,
-  })   : isLandscape = orientation == Orientation.landscape,
+  })  : isLandscape = orientation == Orientation.landscape,
         isPortrait = orientation == Orientation.portrait;
 
   /// This value tells the condition to look for the `breakpoint` value in the [WrapperConfig]
-  /// for the sreen type `mobile`, `tablet`, `desktop`
+  /// for the screen type `mobile`, `tablet`, `desktop`
 
   final DeviceScreen deviceScreen;
 
