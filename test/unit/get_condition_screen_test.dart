@@ -1,11 +1,8 @@
-import 'dart:ui';
-
 import 'package:argo/src/models/condition_screen.dart';
 import 'package:argo/src/models/screen_breakpoints.dart';
 import 'package:argo/src/utils/get_condition_screen.dart';
 import 'package:argo/src/widgets/responsive_wrapper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
@@ -32,11 +29,13 @@ void main() {
       );
     }
 
-    testWidgets('GetValue boolean Size(800, 1000)', (WidgetTester tester) async {
+    testWidgets('GetValue boolean Size(800, 1000)',
+        (WidgetTester tester) async {
       const width = 800;
       const height = 1000;
       final dpi = tester.binding.window.devicePixelRatio;
-      tester.binding.window.physicalSizeTestValue = Size(width * dpi, height * dpi);
+      tester.binding.window.physicalSizeTestValue =
+          Size(width * dpi, height * dpi);
 
       await tester.pumpWidget(
         configWidget(
@@ -62,11 +61,13 @@ void main() {
       );
     });
 
-    testWidgets('GetValue boolean Size(1200, 1400)', (WidgetTester tester) async {
+    testWidgets('GetValue boolean Size(1200, 1400)',
+        (WidgetTester tester) async {
       const width = 1200;
       const height = 1400;
       final dpi = tester.binding.window.devicePixelRatio;
-      tester.binding.window.physicalSizeTestValue = Size(width * dpi, height * dpi);
+      tester.binding.window.physicalSizeTestValue =
+          Size(width * dpi, height * dpi);
       await tester.pumpWidget(
         configWidget(
           (BuildContext context) {

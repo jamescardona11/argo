@@ -1,9 +1,4 @@
-import 'package:argo/src/models/condition.dart';
-import 'package:argo/src/models/condition_breakpoint.dart';
-import 'package:argo/src/models/condition_screen.dart';
-import 'package:argo/src/models/device_screen.dart';
 import 'package:argo/src/models/models.dart';
-import 'package:argo/src/models/screen_breakpoints.dart';
 import 'package:argo/src/utils/size_by_platform.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -47,7 +42,7 @@ void main() {
       expect(conditionBreakpoint.breakpoint, 20.0);
     });
 
-    test('Test copywith', () {
+    test('Test copyWith', () {
       const conditionBreakpoint = ConditionBreakpoint.equals(
         screenType: DeviceScreen.mobile,
         value: 10.0,

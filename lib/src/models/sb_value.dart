@@ -2,10 +2,10 @@
 ///
 /// [SBValue] class to stores the values of [ScreenBreakpoints].
 /// [SBValue] save a value that means limit for a screen breakpoint is similar to `Size.width`.
-/// We can use differents `type` of values `min`, `max`,
-/// The types serves to do comparations between all the differents [ScreenBreakpoints]
+/// We can use different `type` of values `min`, `max`,
+/// The types serves to do comparisons between all the different [ScreenBreakpoints]
 ///
-/// Sugestion: in order to have a consistance in the behaviour of the app
+/// Suggestion: in order to have a consistence in the behavior of the app
 /// the best is to set the [SBValue] for a [ScreenBreakpoints] in all cases by `min` or `max`,
 /// avoiding mixing the types.
 ///
@@ -15,7 +15,7 @@
 ///
 /// Example
 /// mobile: SBValue.max(500) it means the maximum `width` to mobile type is 500.
-/// desktop: SBValue.min(1200) it means the minimun `width` to desktop type is 1200.
+/// desktop: SBValue.min(1200) it means the minimum `width` to desktop type is 1200.
 ///
 ///
 /// Could be use `SBValue.zero` for indicate the minimum value in 0.

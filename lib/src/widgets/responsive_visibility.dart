@@ -1,4 +1,3 @@
-import 'package:argo/src/utils/logger.dart';
 import 'package:flutter/widgets.dart';
 
 import '../models/condition.dart';
@@ -51,7 +50,7 @@ class ResponsiveVisibility extends StatelessWidget {
   /// Do the manage of the visibility by [ConditionScreen]
   final ConditionScreen<bool> conditionScreen;
 
-  /// the defoult value visibility of the widget
+  /// the default value visibility of the widget
   final bool? visibilityIfNotMatch;
 
   /// Are the local breakpoints for the widget

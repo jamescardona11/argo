@@ -331,7 +331,7 @@ For more information and understand the `Theme Responsive` check the Documentati
 
 1. [ArgoExample](https://github.com/jamescardona11/argo/tree/main/example/argo_example): Simple example of use the argo library
 2. [ThemingExample](https://github.com/jamescardona11/argo/tree/main/example/adaptative_theme_example): Basic use for the ResponsiveTheming
-3. [BaseLandingPage](https://github.com/jamescardona11/base_landing_page): TODO
+3. [BaseLandingPage](https://github.com/jamescardona11/base_landing_page): Basic landing page with argo
 
 
 

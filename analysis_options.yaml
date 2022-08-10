@@ -1,11 +1,9 @@
-include: package:lint/analysis_options_package.yaml
+include: package:flutter_lints/flutter.yaml
 
 
 analyzer:
-  # exclude:
-  #   - example/**
-  #   - example/adaptative_theme_example/**
-  #   - example/argo_example/**
+  exclude:
+    - example/**
 
 linter:
   rules: 
@@ -17,4 +15,5 @@ linter:
     prefer_initializing_formals: false
     use_setters_to_change_properties: false
     sort_unnamed_constructors_first: false
+    no_leading_underscores_for_local_identifiers: false
   

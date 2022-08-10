@@ -13,7 +13,7 @@ import 'condition.dart';
 ///
 /// CurrentBreakpoint is gets from method [getCurrentBreakPoints]
 ///
-/// Exampple
+/// Example
 /// ```dart
 /// ConditionScreen(
 ///  mobile: 'Mobile',

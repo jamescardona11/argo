@@ -1,5 +1,4 @@
 import 'package:argo/src/models/typedef.dart';
-import 'package:argo/src/utils/logger.dart';
 import 'package:flutter/material.dart';
 
 import '../models/condition.dart';
@@ -15,10 +14,10 @@ import '../utils/get_condition_screen.dart';
 ///
 /// Widget to configure the responsive for the application.
 /// You can use it like global widget or builder widget into `MaterialApp` Widget.
-/// Adicionally allows to configurate the [WrapperConfig].
+/// Additionally allows to config the [WrapperConfig].
 /// You can make the manage for `Responsive Theme`
 ///
-/// This widget uses `InheritedWidget` to acces from the app to the `wrapConfig`
+/// This widget uses `InheritedWidget` to access from the app to the `wrapConfig`
 ///
 /// The basic use:
 /// ``` dart
@@ -37,7 +36,7 @@ import '../utils/get_condition_screen.dart';
 /// ```
 /// Also [ResponsiveWrapper] can be the parent of `MaterialApp`
 ///
-/// To configurate `Responsive Theme` use the `responsiveTheme`
+/// To config `Responsive Theme` use the `responsiveTheme`
 ///
 ///
 /// {@endtemplate}
@@ -83,10 +82,10 @@ class ResponsiveWrapper extends StatelessWidget {
     );
   }
 
-  bool _isRWuilder(dynamic data) => data is RWBuilder;
+  bool _isRBuilder(dynamic data) => data is RWBuilder;
 
   Widget returnValue(dynamic data, IThemeDataRule themeData) {
-    if (_isRWuilder(data)) {
+    if (_isRBuilder(data)) {
       return (data as RWBuilder)(themeData, wrapConfig.themeRule);
     }
 
@@ -107,14 +106,14 @@ class ResponsiveWrapper extends StatelessWidget {
           context: context,
           condition: responsiveTheme!.changeWhen!,
           localBreakpoints: wrapConfig.globalBreakpoints,
-          defaultValue: responsiveTheme!.deafultTheme ?? themeData,
+          defaultValue: responsiveTheme!.defaultTheme ?? themeData,
         )!;
       } else {
         themeData = valueFromConditionByScreen<IThemeDataRule>(
           context: context,
           condition: responsiveTheme!.conditionScreen!,
           localBreakpoints: wrapConfig.globalBreakpoints,
-          defaultValue: responsiveTheme!.deafultTheme ?? themeData,
+          defaultValue: responsiveTheme!.defaultTheme ?? themeData,
         )!;
       }
     }

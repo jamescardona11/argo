@@ -4,7 +4,7 @@ import 'device_screen.dart';
 /// {@template condition_breakpoint}
 ///
 /// Child Class of [Condition],
-/// It's goal is to have more modular conditions compared it with differents `breakpoint`
+/// It's goal is to have more modular conditions compared it with different `breakpoint`
 /// we can use this to create more complex conditions.
 /// `ConditionBreakpoint` will be use by [valueFromConditionByBreakpoints]
 ///
@@ -53,7 +53,7 @@ class ConditionBreakpoint<T> extends Condition<T> {
         );
 
   /// This value tells the condition to look for the `breakpoint` value in the [WrapperConfig]
-  /// for the sreen type [mobile], [tablet], [desktop]
+  /// for the screen type [mobile], [tablet], [desktop]
   final DeviceScreen? screenType;
 
   /// It is the return value for the condition if is true

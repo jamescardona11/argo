@@ -5,7 +5,6 @@ import '../models/device_screen.dart';
 import '../models/screen_breakpoints.dart';
 import '../widgets/responsive_wrapper.dart';
 import 'get_current_breakpoints.dart';
-import 'logger.dart';
 
 /// {@template get_conditions_screen}
 ///
@@ -25,7 +24,7 @@ import 'logger.dart';
 ///
 ///
 ///
-/// First point is to find wich are the actual `breakpoints` between
+/// First point is to find which are the actual `breakpoints` between
 /// `localBreakpoints`, `GlobalBreakpoints` or `DefaultBreakpoints`
 /// using [getCurrentBreakPoints]
 ///

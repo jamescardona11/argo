@@ -33,17 +33,17 @@ class ResponsiveTheme {
 
   /// We can define a theme for default if there any `condition` that does'nt met
   /// If there is'nt a default theme thay will use [DefaultThemeDataRule]
-  final IThemeDataRule? deafultTheme;
+  final IThemeDataRule? defaultTheme;
 
   const ResponsiveTheme.screen({
     required this.conditionScreen,
-    this.deafultTheme = const DefaultThemeDataRule(),
+    this.defaultTheme = const DefaultThemeDataRule(),
   })  : type = ConditionType.screen,
         changeWhen = null;
 
   const ResponsiveTheme.conditions({
     required this.changeWhen,
-    this.deafultTheme = const DefaultThemeDataRule(),
+    this.defaultTheme = const DefaultThemeDataRule(),
   })  : type = ConditionType.conditions,
         conditionScreen = null;
 }

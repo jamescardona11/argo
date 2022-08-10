@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../models/device_screen.dart';
 import '../models/wrapper_config.dart';
@@ -77,8 +76,8 @@ extension ResponsiveContext on BuildContext {
 /// {@template responsive_utils}
 ///
 /// This class is a middleware to save the responsive information,
-/// it is usefull when you have to do a lot of callings in the same file.
-/// It has the same behaviour as the `BuildContext` extension
+/// it is useful when you have to do a lot of callings in the same file.
+/// It has the same behavior as the `BuildContext` extension
 ///
 /// /// ```dart
 /// final mResponsive = ResponsiveUtils.of(context);
