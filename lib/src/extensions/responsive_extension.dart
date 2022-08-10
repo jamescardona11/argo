@@ -110,6 +110,10 @@ class ResponsiveUtils {
   /// Returns same as MediaQuery.of(context).height
   double get heightPx => sizePx.height;
 
+  double get topPadding => mq.padding.top;
+
+  double get appBarHeight => topPadding + kToolbarHeight;
+
   /// Returns diagonal screen pixels
   double get diagonalPx {
     final Size s = sizePx;

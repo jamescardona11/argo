@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 import 'package:argo/src/models/models.dart';
-import 'package:argo/src/utils/utils.dart';
+import 'package:argo/src/utils/get_responsive_information.dart';
 
 /// {@template responsive_builder}
 ///

@@ -1,12 +1,9 @@
 import 'package:flutter/widgets.dart';
 
-import '../extensions/list_extension.dart';
-import '../models/condition.dart';
-import '../models/condition_breakpoint.dart';
-import '../models/device_screen.dart';
-import '../models/screen_breakpoints.dart';
-import '../models/wrapper_config.dart';
-import '../widgets/responsive_wrapper.dart';
+import 'package:argo/src/widgets/responsive_wrapper.dart';
+import 'package:argo/src/extensions/list_extension.dart';
+import 'package:argo/src/models/models.dart';
+import 'package:argo/src/utils/utils.dart';
 import 'get_current_breakpoints.dart';
 
 /// {@template get_conditions_breakpoints}
