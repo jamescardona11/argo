@@ -1,9 +1,11 @@
 export 'condition.dart';
 export 'condition_breakpoint.dart';
 export 'condition_screen.dart';
+export 'conditional_enum.dart';
 export 'device_screen.dart';
 export 'responsive_information.dart';
 export 'sb_value.dart';
 export 'screen_breakpoints.dart';
+export 'screen_model.dart';
 export 'typedef.dart';
 export 'wrapper_config.dart';

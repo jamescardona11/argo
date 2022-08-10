@@ -25,7 +25,7 @@ ResponsiveInformation getResponsiveInformation({
   ScreenBreakpoints? localBreakpoints,
 }) {
   final rw = ResponsiveWrapper.getWrapperConfig(context);
-  final breakpoints = getCurrentBreakPoints(
+  final breakpoints = getCurrentBreakPointsFunc(
     global: rw.globalBreakpoints,
     local: localBreakpoints,
   );

@@ -2,10 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../models/device_screen.dart';
-import '../models/wrapper_config.dart';
-import '../platform_info/platform_info.dart';
-import '../widgets/responsive_wrapper.dart';
+import 'package:argo/src/models/device_screen.dart';
+import 'package:argo/src/models/wrapper_config.dart';
+import 'package:argo/src/platform_info/platform_info.dart';
+import 'package:argo/src/widgets/responsive_wrapper.dart';
 
 /// {@template responsive_extension}
 ///

@@ -1,4 +1,4 @@
-import 'package:argo/argo.dart';
+import 'package:argo/src/models/models.dart';
 
 /// {@template get_current_breakpoint}
 ///
@@ -10,7 +10,7 @@ import 'package:argo/argo.dart';
 ///
 ///
 /// {@endtemplate}
-ScreenBreakpoints getCurrentBreakPoints({
+ScreenBreakpoints getCurrentBreakPointsFunc({
   required ScreenBreakpoints global,
   ScreenBreakpoints? local,
 }) {

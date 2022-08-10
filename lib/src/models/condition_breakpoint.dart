@@ -1,3 +1,5 @@
+import 'package:argo/src/models/conditional_enum.dart';
+
 import 'condition.dart';
 import 'device_screen.dart';
 

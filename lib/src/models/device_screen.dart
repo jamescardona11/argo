@@ -1,8 +1,5 @@
 import 'package:argo/src/models/models.dart';
 
-import 'screen_breakpoints.dart';
-import 'screen_model.dart';
-
 /// Enum that stores an interpretation of `ScreenType` for apps
 enum DeviceScreen { mobile, tablet, desktop }
 

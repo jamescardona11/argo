@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 import 'package:argo/src/widgets/responsive_wrapper.dart';
 import 'package:argo/src/extensions/list_extension.dart';
 import 'package:argo/src/models/models.dart';
-import 'package:argo/src/utils/utils.dart';
 import 'get_current_breakpoints.dart';
 
 /// {@template get_conditions_breakpoints}
@@ -33,7 +32,7 @@ import 'get_current_breakpoints.dart';
 ///
 ///{@endtemplate}
 
-T? valueFromConditionByBreakpoints<T>({
+T? valueFromConditionByBreakpointsFunc<T>({
   required BuildContext context,
   required List<ConditionBreakpoint<T>> condition,
   ScreenBreakpoints? localBreakpoints,
@@ -44,7 +43,7 @@ T? valueFromConditionByBreakpoints<T>({
   nCondition.removeWhere((element) => element.isNull);
 
   final rw = ResponsiveWrapper.getWrapperConfig(context);
-  final breakpoints = getCurrentBreakPoints(
+  final breakpoints = getCurrentBreakPointsFunc(
     global: rw.globalBreakpoints,
     local: localBreakpoints,
   );

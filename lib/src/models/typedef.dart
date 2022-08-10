@@ -18,4 +18,5 @@ typedef RWBuilder = Widget Function(
 /// [T?] and is match conditions for the [ConditionalResponsiveWidget].
 typedef CBuilder<T> = Widget Function(BuildContext ctx, T match);
 
+/// Signature for the `measure` widget callback
 typedef OnWidgetSizeChange = void Function(Size size);

@@ -46,7 +46,7 @@ void main() {
               desktop: 'Desktop',
             );
 
-            final value = valueFromConditionByScreen<String>(
+            final value = valueFromConditionByScreenFunc<String>(
               context: context,
               condition: condition,
               localBreakpoints: screenBreakpoints,
@@ -77,7 +77,7 @@ void main() {
               desktop: true,
             );
 
-            final value = valueFromConditionByScreen<bool>(
+            final value = valueFromConditionByScreenFunc<bool>(
               context: context,
               condition: condition,
               localBreakpoints: screenBreakpoints,

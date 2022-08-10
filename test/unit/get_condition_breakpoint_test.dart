@@ -57,7 +57,7 @@ void main() {
       await tester.pumpWidget(
         configWidget(
           (BuildContext context) {
-            final value = valueFromConditionByBreakpoints<bool>(
+            final value = valueFromConditionByBreakpointsFunc<bool>(
               context: context,
               condition: conditions,
               localBreakpoints: screenBreakpoints,
@@ -102,7 +102,7 @@ void main() {
       await tester.pumpWidget(
         configWidget(
           (BuildContext context) {
-            final value = valueFromConditionByBreakpoints<bool>(
+            final value = valueFromConditionByBreakpointsFunc<bool>(
               context: context,
               condition: conditions,
               localBreakpoints: screenBreakpoints,
@@ -135,7 +135,7 @@ void main() {
       await tester.pumpWidget(
         configWidget(
           (BuildContext context) {
-            final value = valueFromConditionByBreakpoints<bool>(
+            final value = valueFromConditionByBreakpointsFunc<bool>(
               context: context,
               condition: conditions,
               localBreakpoints: screenBreakpoints,
@@ -168,7 +168,7 @@ void main() {
       await tester.pumpWidget(
         configWidget(
           (BuildContext context) {
-            final value = valueFromConditionByBreakpoints<bool>(
+            final value = valueFromConditionByBreakpointsFunc<bool>(
               context: context,
               condition: conditions,
               localBreakpoints: screenBreakpoints,

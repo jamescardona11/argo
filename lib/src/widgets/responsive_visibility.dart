@@ -77,14 +77,14 @@ class ResponsiveVisibility extends StatelessWidget {
     conditions.addAll(hiddenWhen.map((e) => e.copyWith(value: false)));
 
     if (type! == ConditionType.conditions) {
-      visibleValue = valueFromConditionByBreakpoints<bool>(
+      visibleValue = ArgoUtils.valueFromConditionByBreakpoints<bool>(
         context: context,
         condition: conditions,
         localBreakpoints: localBreakpoints,
         defaultValue: visibleValue,
       )!;
     } else {
-      visibleValue = valueFromConditionByScreen<bool>(
+      visibleValue = ArgoUtils.valueFromConditionByScreen<bool>(
         context: context,
         condition: conditionScreen,
         localBreakpoints: localBreakpoints,

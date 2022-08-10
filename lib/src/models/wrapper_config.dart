@@ -32,6 +32,8 @@ class WrapperConfig {
   final ThemeRule themeRule;
   final bool enableShortestSide;
 
-  double getDeviceWidth(Size size) =>
-      getSizeByPlatform(size, shortestSide: enableShortestSide);
+  double getDeviceWidth(Size size) => getSizeByPlatform(
+        size,
+        shortestSide: enableShortestSide,
+      );
 }

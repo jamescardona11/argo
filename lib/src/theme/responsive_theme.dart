@@ -1,6 +1,5 @@
-import '../models/condition.dart';
-import '../models/condition_breakpoint.dart';
-import '../models/condition_screen.dart';
+import 'package:argo/src/models/models.dart';
+
 import 'default_theme_data.dart';
 import 'i_theme_data_rule.dart';
 

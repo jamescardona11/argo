@@ -5,7 +5,8 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   group('Utils getCurrentBreakpoints', () {
     test('GetValue default', () {
-      final current = getCurrentBreakPoints(global: defaultMinimumBreakPoints);
+      final current =
+          getCurrentBreakPointsFunc(global: defaultMinimumBreakPoints);
 
       expect(current, defaultMinimumBreakPoints);
     });
@@ -17,7 +18,7 @@ void main() {
         desktop: 1201,
       );
 
-      final current = getCurrentBreakPoints(
+      final current = getCurrentBreakPointsFunc(
         global: defaultMinimumBreakPoints,
         local: sb,
       );

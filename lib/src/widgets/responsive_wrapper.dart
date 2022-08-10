@@ -99,14 +99,14 @@ class ResponsiveWrapper extends StatelessWidget {
 
     if (responsiveTheme != null) {
       if (responsiveTheme!.type == ConditionType.conditions) {
-        themeData = valueFromConditionByBreakpoints<IThemeDataRule>(
+        themeData = ArgoUtils.valueFromConditionByBreakpoints<IThemeDataRule>(
           context: context,
           condition: responsiveTheme!.changeWhen!,
           localBreakpoints: wrapConfig.globalBreakpoints,
           defaultValue: responsiveTheme!.defaultTheme ?? themeData,
         )!;
       } else {
-        themeData = valueFromConditionByScreen<IThemeDataRule>(
+        themeData = ArgoUtils.valueFromConditionByScreen<IThemeDataRule>(
           context: context,
           condition: responsiveTheme!.conditionScreen!,
           localBreakpoints: wrapConfig.globalBreakpoints,
