@@ -1,11 +1,9 @@
-import 'package:flutter/material.dart';
-
-import 'package:argo/src/theme/i_theme_data_rule.dart';
-import 'package:argo/src/theme/default_theme_data.dart';
-import 'package:argo/src/theme/responsive_theme.dart';
-
 import 'package:argo/src/models/models.dart';
+import 'package:argo/src/theme/default_theme_data.dart';
+import 'package:argo/src/theme/i_theme_data_rule.dart';
+import 'package:argo/src/theme/responsive_theme.dart';
 import 'package:argo/src/utils/utils.dart';
+import 'package:flutter/material.dart';
 
 /// {@template responsive_wrapper}
 ///
@@ -40,22 +38,20 @@ import 'package:argo/src/utils/utils.dart';
 
 class ResponsiveWrapper extends StatelessWidget {
   const ResponsiveWrapper({
-    Key? key,
+    super.key,
     required Widget child,
     this.responsiveTheme,
     this.wrapConfig = const WrapperConfig(),
     // this.debugLogDiagnostics = false,
-  })  : child = child,
-        super(key: key);
+  }) : child = child;
 
   const ResponsiveWrapper.builder({
-    Key? key,
+    super.key,
     required RWBuilder builder,
     this.responsiveTheme,
     this.wrapConfig = const WrapperConfig(),
     // this.debugLogDiagnostics = false,
-  })  : child = builder,
-        super(key: key);
+  }) : child = builder;
 
   /// The widget child
   final dynamic child;
@@ -118,22 +114,17 @@ class ResponsiveWrapper extends StatelessWidget {
     return themeData;
   }
 
-  static WrapperConfig getWrapperConfig(BuildContext context) =>
-      _IWResponsiveWrapper.of(context)?.wrapConfig ?? const WrapperConfig();
+  static WrapperConfig getWrapperConfig(BuildContext context) => _IWResponsiveWrapper.of(context)?.wrapConfig ?? const WrapperConfig();
 
-  static bool isMobile(BuildContext context) =>
-      _getDeviceScreen(context).isMobile();
+  static bool isMobile(BuildContext context) => _getDeviceScreen(context).isMobile();
 
-  static bool isTablet(BuildContext context) =>
-      _getDeviceScreen(context).isTablet();
+  static bool isTablet(BuildContext context) => _getDeviceScreen(context).isTablet();
 
-  static bool isDesktop(BuildContext context) =>
-      _getDeviceScreen(context).isDesktop();
+  static bool isDesktop(BuildContext context) => _getDeviceScreen(context).isDesktop();
 
   static DeviceScreen _getDeviceScreen(BuildContext context) {
     final rw = getWrapperConfig(context);
-    return DeviceScreenX.fromBreakpoint(
-        rw.getDeviceWidth(MediaQuery.of(context).size), rw.globalBreakpoints);
+    return DeviceScreenX.fromBreakpoint(rw.getDeviceWidth(MediaQuery.of(context).size), rw.globalBreakpoints);
   }
 }
 
@@ -142,13 +133,11 @@ class _IWResponsiveWrapper extends InheritedWidget {
   final WrapperConfig wrapConfig;
 
   const _IWResponsiveWrapper({
-    Key? key,
-    required Widget child,
+    required super.child,
     required this.wrapConfig,
-  }) : super(key: key, child: child);
+  });
 
-  static _IWResponsiveWrapper? of(BuildContext context) =>
-      context.dependOnInheritedWidgetOfExactType<_IWResponsiveWrapper>();
+  static _IWResponsiveWrapper? of(BuildContext context) => context.dependOnInheritedWidgetOfExactType<_IWResponsiveWrapper>();
 
   @override
   bool updateShouldNotify(_IWResponsiveWrapper oldWidget) => false;

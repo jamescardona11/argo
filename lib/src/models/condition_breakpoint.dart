@@ -44,11 +44,10 @@ class ConditionBreakpoint<T> extends Condition<T> {
   const ConditionBreakpoint._({
     this.screenType,
     // ignore: avoid_unused_constructor_parameters
-    required Conditional conditional,
+    required super.conditional,
     this.value,
     this.breakpoint,
   }) : super(
-          conditional: conditional,
           mobile: value,
           tablet: value,
           desktop: value,
@@ -70,13 +69,9 @@ class ConditionBreakpoint<T> extends Condition<T> {
   })  : breakpoint = null,
         super.equals(value);
 
-  const ConditionBreakpoint.largerThan(
-      {this.screenType, this.breakpoint, this.value})
-      : super.largerThan(value);
+  const ConditionBreakpoint.largerThan({this.screenType, this.breakpoint, this.value}) : super.largerThan(value);
 
-  const ConditionBreakpoint.smallerThan(
-      {this.screenType, this.breakpoint, this.value})
-      : super.smallerThan(value);
+  const ConditionBreakpoint.smallerThan({this.screenType, this.breakpoint, this.value}) : super.smallerThan(value);
 
   bool get isNull => breakpoint == null && screenType == null;
 

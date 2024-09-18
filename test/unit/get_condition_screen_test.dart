@@ -8,6 +8,7 @@ import 'package:mockito/mockito.dart';
 
 class MockBuildContext extends Mock implements BuildContext {}
 
+// TODO Wrong test and response values
 void main() {
   group('Utils getValueFromCondition By Screen', () {
     final ScreenBreakpoints screenBreakpoints = ScreenBreakpoints(
@@ -16,80 +17,68 @@ void main() {
       desktop: 1200,
     );
 
-    Widget configWidget(WidgetBuilder child) {
-      return MediaQuery(
-        data: const MediaQueryData(),
+    Widget configWidget() {
+      return const MediaQuery(
+        data: MediaQueryData(),
         child: MaterialApp(
           home: ResponsiveWrapper(
-            child: Builder(
-              builder: child,
-            ),
+            child: SizedBox(),
           ),
         ),
       );
     }
 
-    testWidgets('GetValue boolean Size(800, 1000)',
-        (WidgetTester tester) async {
+    testWidgets('GetValue Condition Value from Size(800, 1000)', (WidgetTester tester) async {
       const width = 800;
       const height = 1000;
-      final dpi = tester.binding.window.devicePixelRatio;
-      tester.binding.window.physicalSizeTestValue =
-          Size(width * dpi, height * dpi);
+      final dpi = tester.view.devicePixelRatio;
+      tester.view.physicalSize = Size(width * dpi, height * dpi);
 
-      await tester.pumpWidget(
-        configWidget(
-          (BuildContext context) {
-            const condition = ConditionScreen(
-              mobile: 'Mobile',
-              tablet: 'Tablet',
-              desktop: 'Desktop',
-            );
+      await tester.pumpWidget(configWidget());
 
-            final value = valueFromConditionByScreenFunc<String>(
-              context: context,
-              condition: condition,
-              localBreakpoints: screenBreakpoints,
-              defaultValue: 'TEST',
-            );
-
-            expect(value, 'Tablet');
-
-            return const SizedBox();
-          },
-        ),
+      const condition = ConditionScreen(
+        mobile: 'Mobile',
+        tablet: 'Tablet',
+        desktop: 'Desktop',
       );
+
+      BuildContext context = tester.element(find.byType(MaterialApp));
+
+      final value = valueFromConditionByScreenFunc<String>(
+        context: context,
+        condition: condition,
+        localBreakpoints: screenBreakpoints,
+        defaultValue: 'TEST',
+      );
+
+      debugPrint(value);
+
+      expect(value, 'Tablet');
     });
 
-    testWidgets('GetValue boolean Size(1200, 1400)',
-        (WidgetTester tester) async {
+    testWidgets('GetValue boolean Size(1200, 1400)', (WidgetTester tester) async {
       const width = 1200;
       const height = 1400;
-      final dpi = tester.binding.window.devicePixelRatio;
-      tester.binding.window.physicalSizeTestValue =
-          Size(width * dpi, height * dpi);
-      await tester.pumpWidget(
-        configWidget(
-          (BuildContext context) {
-            const condition = ConditionScreen(
-              mobile: true,
-              tablet: false,
-              desktop: true,
-            );
+      final dpi = tester.view.devicePixelRatio;
+      tester.view.physicalSize = Size(width * dpi, height * dpi);
+      await tester.pumpWidget(configWidget());
 
-            final value = valueFromConditionByScreenFunc<bool>(
-              context: context,
-              condition: condition,
-              localBreakpoints: screenBreakpoints,
-              defaultValue: false,
-            );
+      BuildContext context = tester.element(find.byType(MaterialApp));
 
-            expect(value, true);
-
-            return const SizedBox();
-          },
-        ),
+      const condition = ConditionScreen(
+        mobile: true,
+        tablet: false,
+        desktop: true,
       );
+
+      final value = valueFromConditionByScreenFunc<bool>(
+        context: context,
+        condition: condition,
+        localBreakpoints: screenBreakpoints,
+        defaultValue: false,
+      );
+
+      expect(value, true);
     });
   });
 }

@@ -1,16 +1,15 @@
+import 'package:argo/src/models/typedef.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
-import 'package:argo/src/models/typedef.dart';
 
 class MeasureWidgetWrapper extends SingleChildRenderObjectWidget {
   final OnWidgetSizeChange onSizeChange;
 
   const MeasureWidgetWrapper({
-    Key? key,
+    super.key,
     required this.onSizeChange,
-    required Widget child,
-  }) : super(key: key, child: child);
+    required Widget super.child,
+  });
 
   @override
   RenderObject createRenderObject(BuildContext context) {

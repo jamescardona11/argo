@@ -25,11 +25,10 @@ import 'condition.dart';
 /// {@endtemplate}
 class ConditionScreen<T> extends Condition<T> {
   const ConditionScreen({
-    T? mobile,
-    T? tablet,
-    T? desktop,
-  })  : assert(mobile != null || tablet != null || desktop != null),
-        super(mobile: mobile, tablet: tablet, desktop: desktop);
+    super.mobile,
+    super.tablet,
+    super.desktop,
+  }) : assert(mobile != null || tablet != null || desktop != null);
 
   @override
   ConditionScreen copyWith({

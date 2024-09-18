@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 /// {@template screen_model}
 ///
 /// Parent class that has the structure of the `conditions` and the `breakpoints`
@@ -27,13 +25,8 @@ abstract class ScreenModel<T> {
   String toString() => 'mobile: $mobile, tablet: $tablet, desktop: $desktop';
 
   @override
-  bool operator ==(Object other) =>
-      other is ScreenModel &&
-      other.mobile == mobile &&
-      other.tablet == tablet &&
-      other.desktop == desktop;
+  bool operator ==(Object other) => other is ScreenModel && other.mobile == mobile && other.tablet == tablet && other.desktop == desktop;
 
   @override
-  int get hashCode =>
-      hashValues(mobile.hashCode, tablet.hashCode, desktop.hashCode);
+  int get hashCode => Object.hash(mobile.hashCode, tablet.hashCode, desktop.hashCode);
 }

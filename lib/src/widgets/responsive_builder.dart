@@ -1,7 +1,6 @@
-import 'package:flutter/widgets.dart';
-
 import 'package:argo/src/models/models.dart';
 import 'package:argo/src/utils/get_responsive_information.dart';
+import 'package:flutter/widgets.dart';
 
 /// {@template responsive_builder}
 ///
@@ -20,10 +19,10 @@ import 'package:argo/src/utils/get_responsive_information.dart';
 
 class ResponsiveBuilder extends StatelessWidget {
   const ResponsiveBuilder({
-    Key? key,
+    super.key,
     required this.builder,
     this.breakpoints,
-  }) : super(key: key);
+  });
 
   /// Returns [RBuilder] with the responsive information
   final RBuilder builder;

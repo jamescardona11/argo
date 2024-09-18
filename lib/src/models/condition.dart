@@ -13,10 +13,10 @@ abstract class Condition<T> extends ScreenModel<T> {
 
   const Condition({
     this.conditional = Conditional.EQUALS,
-    T? mobile,
-    T? tablet,
-    T? desktop,
-  }) : super(mobile: mobile, tablet: tablet, desktop: desktop);
+    super.mobile,
+    super.tablet,
+    super.desktop,
+  });
 
   const Condition.equals(T? value)
       : conditional = Conditional.EQUALS,
@@ -29,7 +29,4 @@ abstract class Condition<T> extends ScreenModel<T> {
   const Condition.smallerThan(T? value)
       : conditional = Conditional.SMALLER_THAN,
         super(mobile: value, tablet: value, desktop: value);
-
-  @override
-  String toString() => super.toString();
 }

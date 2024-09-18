@@ -17,10 +17,10 @@ import 'package:flutter/widgets.dart';
 ///
 class OrientationLayoutBuilder extends StatelessWidget {
   const OrientationLayoutBuilder({
-    Key? key,
+    super.key,
     this.landscape,
     required this.portrait,
-  }) : super(key: key);
+  });
 
   /// Returns [RBuilder] with the responsive information, when the landscape mode
   final RBuilder? landscape;

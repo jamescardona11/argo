@@ -1,7 +1,6 @@
-import 'package:flutter/widgets.dart';
-
-import 'package:argo/src/utils/utils.dart';
 import 'package:argo/src/models/models.dart';
+import 'package:argo/src/utils/utils.dart';
+import 'package:flutter/widgets.dart';
 
 /// {@template conditional_responsive_widget}
 ///
@@ -12,11 +11,11 @@ import 'package:argo/src/models/models.dart';
 
 class ConditionalResponsiveWidget<T> extends StatelessWidget {
   const ConditionalResponsiveWidget({
-    Key? key,
+    super.key,
     required this.builder,
     this.conditionsMatch = const [],
     this.localBreakpoints,
-  }) : super(key: key);
+  });
 
   /// Returns [CBuilder] with the value match
   final CBuilder<T?> builder;

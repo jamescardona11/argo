@@ -1,7 +1,6 @@
-import 'package:flutter/widgets.dart';
-
 import 'package:argo/src/models/models.dart';
 import 'package:argo/src/utils/utils.dart';
+import 'package:flutter/widgets.dart';
 
 /// {@template responsive_visibility}
 ///
@@ -12,7 +11,7 @@ import 'package:argo/src/utils/utils.dart';
 
 class ResponsiveVisibility extends StatelessWidget {
   const ResponsiveVisibility.conditions({
-    Key? key,
+    super.key,
     required this.child,
     this.visibilityIfNotMatch,
     this.visibleWhen = const [],
@@ -20,19 +19,17 @@ class ResponsiveVisibility extends StatelessWidget {
     this.localBreakpoints,
   })  : assert(visibleWhen.length == 0 || hiddenWhen.length == 0),
         type = ConditionType.conditions,
-        conditionScreen = _defaultConditionScreenVisibility,
-        super(key: key);
+        conditionScreen = _defaultConditionScreenVisibility;
 
   const ResponsiveVisibility.screen({
-    Key? key,
+    super.key,
     required this.child,
     this.visibilityIfNotMatch = false,
     this.conditionScreen = _defaultConditionScreenVisibility,
     this.localBreakpoints,
   })  : type = ConditionType.screen,
         visibleWhen = const [],
-        hiddenWhen = const [],
-        super(key: key);
+        hiddenWhen = const [];
 
   /// The widget to show or hide
   final Widget child;
@@ -68,9 +65,7 @@ class ResponsiveVisibility extends StatelessWidget {
 
   bool getVisibilityValue(BuildContext context) {
     final List<ConditionBreakpoint<bool>> conditions = [];
-    bool visibleValue = visibilityIfNotMatch != null
-        ? visibilityIfNotMatch!
-        : visibleWhen.isEmpty;
+    bool visibleValue = visibilityIfNotMatch != null ? visibilityIfNotMatch! : visibleWhen.isEmpty;
 
     // Combine Conditions.
     conditions.addAll(visibleWhen.map((e) => e.copyWith(value: true)));

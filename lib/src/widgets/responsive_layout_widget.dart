@@ -1,7 +1,6 @@
 import 'package:argo/src/models/responsive_information.dart';
 import 'package:flutter/widgets.dart';
 
-import '../models/device_screen.dart';
 import '../models/screen_breakpoints.dart';
 import '../models/typedef.dart';
 import '../utils/get_responsive_information.dart';
@@ -35,26 +34,24 @@ import '../utils/get_responsive_information.dart';
 
 class ResponsiveLayoutWidget extends StatelessWidget {
   const ResponsiveLayoutWidget({
-    Key? key,
+    super.key,
     Widget mobile = const SizedBox(),
     Widget? tablet,
     Widget? desktop,
     this.breakpoints,
   })  : mobile = mobile,
         tablet = tablet,
-        desktop = desktop,
-        super(key: key);
+        desktop = desktop;
 
   const ResponsiveLayoutWidget.builder({
-    Key? key,
+    super.key,
     RBuilder? mobile,
     RBuilder? tablet,
     RBuilder? desktop,
     this.breakpoints,
   })  : mobile = mobile,
         tablet = tablet,
-        desktop = desktop,
-        super(key: key);
+        desktop = desktop;
 
   /// This value may be type `Widget` or `RBuilder`
   final dynamic mobile;
@@ -90,17 +87,14 @@ class ResponsiveLayoutWidget extends StatelessWidget {
         }
 
         // If none of the layouts above are supplied or we're on the mobile layout then we show the mobile layout
-        return mobile != null
-            ? returnValue(mobile, context, info)
-            : const SizedBox();
+        return mobile != null ? returnValue(mobile, context, info) : const SizedBox();
       },
     );
   }
 
   bool _isRBuilder(dynamic data) => data is RBuilder;
 
-  Widget returnValue(
-      dynamic data, BuildContext context, ResponsiveInformation info) {
+  Widget returnValue(dynamic data, BuildContext context, ResponsiveInformation info) {
     if (_isRBuilder(data)) {
       return (data as RBuilder)(context, info);
     }

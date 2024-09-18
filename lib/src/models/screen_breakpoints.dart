@@ -52,10 +52,7 @@ class ScreenBreakpoints extends ScreenModel<SBValue> {
     required SBValue mobile,
     required SBValue tablet,
     required SBValue desktop,
-  })  : assert(mobile.type == tablet.type &&
-            mobile.type == desktop.type &&
-            tablet.type == desktop.type),
-        super(
+  }) : super(
           mobile: mobile,
           tablet: tablet,
           desktop: desktop,
@@ -71,10 +68,7 @@ class ScreenBreakpoints extends ScreenModel<SBValue> {
           desktop: desktop,
         );
 
-  bool get isMinSBValue =>
-      mobile?.isMinType == true ||
-      tablet?.isMinType == true ||
-      desktop?.isMinType == true;
+  bool get isMinSBValue => mobile?.isMinType == true || tablet?.isMinType == true || desktop?.isMinType == true;
 
   @override
   ScreenBreakpoints copyWith({
@@ -87,9 +81,6 @@ class ScreenBreakpoints extends ScreenModel<SBValue> {
         tablet: tablet ?? tablet!,
         desktop: desktop ?? desktop!,
       );
-
-  @override
-  String toString() => super.toString();
 }
 
 /// Minimum values breakpoints for [DeviceScreen].

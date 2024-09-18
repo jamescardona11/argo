@@ -27,8 +27,7 @@ void main() {
       );
     }
 
-    testWidgets('GetValue boolean Size(800, 1000)',
-        (WidgetTester tester) async {
+    testWidgets('GetValue boolean Size(800, 1000)', (WidgetTester tester) async {
       const List<ConditionBreakpoint<bool>> conditions = [
         ConditionBreakpoint<bool>.equals(
           screenType: DeviceScreen.mobile,
@@ -50,9 +49,8 @@ void main() {
 
       const width = 800;
       const height = 1000;
-      final dpi = tester.binding.window.devicePixelRatio;
-      tester.binding.window.physicalSizeTestValue =
-          Size(width * dpi, height * dpi);
+      final dpi = tester.view.devicePixelRatio;
+      tester.view.physicalSize = Size(width * dpi, height * dpi);
 
       await tester.pumpWidget(
         configWidget(
@@ -72,8 +70,7 @@ void main() {
       );
     });
 
-    testWidgets('GetValue boolean Size(1200, 1400)',
-        (WidgetTester tester) async {
+    testWidgets('GetValue boolean Size(1200, 1400)', (WidgetTester tester) async {
       const List<ConditionBreakpoint<bool>> conditions = [
         ConditionBreakpoint<bool>.equals(
           screenType: DeviceScreen.mobile,
@@ -95,9 +92,8 @@ void main() {
 
       const width = 1200;
       const height = 1400;
-      final dpi = tester.binding.window.devicePixelRatio;
-      tester.binding.window.physicalSizeTestValue =
-          Size(width * dpi, height * dpi);
+      final dpi = tester.view.devicePixelRatio;
+      tester.view.physicalSize = Size(width * dpi, height * dpi);
 
       await tester.pumpWidget(
         configWidget(
@@ -117,8 +113,7 @@ void main() {
       );
     });
 
-    testWidgets('GetValue boolean Size(450, 1400) LargeThan',
-        (WidgetTester tester) async {
+    testWidgets('GetValue boolean Size(450, 1400) LargeThan', (WidgetTester tester) async {
       const List<ConditionBreakpoint<bool>> conditions = [
         ConditionBreakpoint<bool>.largerThan(
           value: true,
@@ -128,9 +123,8 @@ void main() {
 
       const width = 450;
       const height = 1400;
-      final dpi = tester.binding.window.devicePixelRatio;
-      tester.binding.window.physicalSizeTestValue =
-          Size(width * dpi, height * dpi);
+      final dpi = tester.view.devicePixelRatio;
+      tester.view.physicalSize = Size(width * dpi, height * dpi);
 
       await tester.pumpWidget(
         configWidget(
@@ -150,8 +144,7 @@ void main() {
       );
     });
 
-    testWidgets('GetValue boolean Size(450, 1400) SmallerThan',
-        (WidgetTester tester) async {
+    testWidgets('GetValue boolean Size(450, 1400) SmallerThan', (WidgetTester tester) async {
       const List<ConditionBreakpoint<bool>> conditions = [
         ConditionBreakpoint<bool>.smallerThan(
           value: true,
@@ -161,9 +154,8 @@ void main() {
 
       const width = 450;
       const height = 1400;
-      final dpi = tester.binding.window.devicePixelRatio;
-      tester.binding.window.physicalSizeTestValue =
-          Size(width * dpi, height * dpi);
+      final dpi = tester.view.devicePixelRatio;
+      tester.view.physicalSize = Size(width * dpi, height * dpi);
 
       await tester.pumpWidget(
         configWidget(
