@@ -8,4 +8,3 @@ export 'sb_value.dart';
 export 'screen_breakpoints.dart';
 export 'screen_model.dart';
 export 'typedef.dart';
-export 'wrapper_config.dart';

@@ -1,9 +1,8 @@
-import 'package:flutter/widgets.dart';
-
 import 'package:argo/src/models/models.dart';
 import 'package:argo/src/widgets/responsive_wrapper.dart';
+import 'package:flutter/widgets.dart';
 
-import 'get_current_breakpoints.dart';
+import 'utils.dart';
 
 /// {@template get_responsive_information}
 ///
@@ -24,14 +23,15 @@ ResponsiveInformation getResponsiveInformation({
   Size? localSize,
   ScreenBreakpoints? localBreakpoints,
 }) {
-  final rw = ResponsiveWrapper.getWrapperConfig(context);
+  final globalBreakpoints = ResponsiveWrapper.getGlobalBreakpoints(context);
   final breakpoints = getCurrentBreakPointsFunc(
-    global: rw.globalBreakpoints,
+    global: globalBreakpoints,
     local: localBreakpoints,
   );
 
   final mp = MediaQuery.of(context);
-  final deviceWith = rw.getDeviceWidth(mp.size);
+  final deviceWith = getSizeByPlatform(mp.size);
+
   final deviceScreen = DeviceScreenX.fromBreakpoint(deviceWith, breakpoints);
   deviceScreen.isMobile();
 

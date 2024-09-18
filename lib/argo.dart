@@ -16,8 +16,7 @@ export 'src/models/models.dart'
         RBuilder,
         RWBuilder,
         CBuilder,
-        OnWidgetSizeChange,
-        WrapperConfig;
+        OnWidgetSizeChange;
 export 'src/platform_info/platform_info.dart';
 export 'src/theme/theme.dart';
 export 'src/utils/utils.dart' show ArgoUtils;

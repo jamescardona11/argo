@@ -1,8 +1,8 @@
+import 'package:argo/src/models/models.dart';
+import 'package:argo/src/widgets/responsive_wrapper.dart';
 import 'package:flutter/widgets.dart';
 
-import 'package:argo/src/models/models.dart';
-import 'package:argo/src/utils/utils.dart';
-import 'package:argo/src/widgets/responsive_wrapper.dart';
+import 'utils.dart';
 
 /// {@template get_conditions_screen}
 ///
@@ -37,17 +37,16 @@ T? valueFromConditionByScreenFunc<T>({
   ScreenBreakpoints? localBreakpoints,
   required T defaultValue,
 }) {
-  final rw = ResponsiveWrapper.getWrapperConfig(context);
+  final globalBreakpoints = ResponsiveWrapper.getGlobalBreakpoints(context);
 
   final breakpoints = getCurrentBreakPointsFunc(
-    global: rw.globalBreakpoints,
+    global: globalBreakpoints,
     local: localBreakpoints,
   );
 
   final size = MediaQuery.of(context).size;
-  final deviceWith = rw.getDeviceWidth(size);
-  final deviceScreenType =
-      DeviceScreenX.fromBreakpoint(deviceWith, breakpoints);
+  final deviceWith = getSizeByPlatform(size);
+  final deviceScreenType = DeviceScreenX.fromBreakpoint(deviceWith, breakpoints);
 
   final deviceScreen = deviceScreenType.getScreenValue(condition);
 

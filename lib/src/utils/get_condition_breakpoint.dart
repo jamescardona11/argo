@@ -1,8 +1,8 @@
+import 'package:argo/argo.dart';
 import 'package:argo/src/models/models.dart';
-import 'package:argo/src/widgets/responsive_wrapper.dart';
 import 'package:flutter/widgets.dart';
 
-import 'get_current_breakpoints.dart';
+import 'utils.dart';
 
 /// {@template get_conditions_breakpoints}
 ///
@@ -41,9 +41,9 @@ T? valueFromConditionByBreakpointsFunc<T>({
 
   nCondition.removeWhere((element) => element.isNull);
 
-  final rw = ResponsiveWrapper.getWrapperConfig(context);
+  final globalBreakpoints = ResponsiveWrapper.getGlobalBreakpoints(context);
   final breakpoints = getCurrentBreakPointsFunc(
-    global: rw.globalBreakpoints,
+    global: globalBreakpoints,
     local: localBreakpoints,
   );
 
@@ -56,7 +56,6 @@ T? valueFromConditionByBreakpointsFunc<T>({
 
   final activeCondition = _getActiveCondition<T>(
     context,
-    rw,
     valueWhen,
     breakpoints,
   );
@@ -66,12 +65,11 @@ T? valueFromConditionByBreakpointsFunc<T>({
 
 ConditionBreakpoint<T>? _getActiveCondition<T>(
   BuildContext context,
-  WrapperConfig rw,
   List<ConditionBreakpoint<T>> conditions,
   ScreenBreakpoints breakpoints,
 ) {
-  final size = MediaQuery.of(context).size;
-  final deviceWith = rw.getDeviceWidth(size);
+  final size = context.sizePx;
+  final deviceWith = getSizeByPlatform(size);
 
   final ConditionBreakpoint<T>? equalsCondition = conditions
       .where((element) => element.conditional == Conditional.EQUALS)

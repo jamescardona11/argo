@@ -1,6 +1,7 @@
 import 'package:argo/src/extensions/responsive_extension.dart';
 import 'package:argo/src/models/device_screen.dart';
-import 'package:argo/src/models/wrapper_config.dart';
+import 'package:argo/src/models/screen_breakpoints.dart';
+import 'package:argo/src/utils/utils.dart';
 import 'package:argo/src/widgets/responsive_wrapper.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,8 @@ extension DeviceContext on BuildContext {
   bool isTablet() => _getDeviceScreen().isTablet();
   bool isDesktop() => _getDeviceScreen().isDesktop();
 
-  WrapperConfig get _rw => ResponsiveWrapper.getWrapperConfig(this);
-  DeviceScreen _getDeviceScreen() => DeviceScreenX.fromBreakpoint(_rw.getDeviceWidth(sizePx), _rw.globalBreakpoints);
+  DeviceScreen _getDeviceScreen() {
+    final ScreenBreakpoints globalBreakpoints = ResponsiveWrapper.getGlobalBreakpoints(this);
+    return DeviceScreenX.fromBreakpoint(getSizeByPlatform(sizePx), globalBreakpoints);
+  }
 }
