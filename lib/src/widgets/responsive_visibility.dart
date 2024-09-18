@@ -13,21 +13,23 @@ class ResponsiveVisibility extends StatelessWidget {
   const ResponsiveVisibility.conditions({
     super.key,
     required this.child,
-    this.visibilityIfNotMatch,
+    this.defaultVisibility = false,
     this.visibleWhen = const [],
     this.hiddenWhen = const [],
     this.localBreakpoints,
-  })  : assert(visibleWhen.length == 0 || hiddenWhen.length == 0),
-        type = ConditionType.conditions,
-        conditionScreen = _defaultConditionScreenVisibility;
+  }) : conditionScreen = null;
 
   const ResponsiveVisibility.screen({
     super.key,
     required this.child,
-    this.visibilityIfNotMatch = false,
-    this.conditionScreen = _defaultConditionScreenVisibility,
+    this.defaultVisibility = false,
     this.localBreakpoints,
-  })  : type = ConditionType.screen,
+    ConditionScreen<bool> conditionScreen = const ConditionScreen<bool>(
+      mobile: true,
+      tablet: false,
+      desktop: false,
+    ),
+  })  : conditionScreen = conditionScreen,
         visibleWhen = const [],
         hiddenWhen = const [];
 
@@ -41,16 +43,13 @@ class ResponsiveVisibility extends StatelessWidget {
   final List<ConditionBreakpoint<bool>> visibleWhen;
 
   /// Do the manage of the visibility by [ConditionScreen]
-  final ConditionScreen<bool> conditionScreen;
+  final ConditionScreen<bool>? conditionScreen;
 
-  /// the default value visibility of the widget
-  final bool? visibilityIfNotMatch;
+  /// The default value visibility of the widget when the conditions are not met
+  final bool defaultVisibility;
 
   /// Are the local breakpoints for the widget
   final ScreenBreakpoints? localBreakpoints;
-
-  /// The type of conditions that was invoked
-  final ConditionType? type;
 
   @override
   Widget build(BuildContext context) {
@@ -65,34 +64,26 @@ class ResponsiveVisibility extends StatelessWidget {
 
   bool getVisibilityValue(BuildContext context) {
     final List<ConditionBreakpoint<bool>> conditions = [];
-    bool visibleValue = visibilityIfNotMatch != null ? visibilityIfNotMatch! : visibleWhen.isEmpty;
+    bool? visibleValue;
 
     // Combine Conditions.
     conditions.addAll(visibleWhen.map((e) => e.copyWith(value: true)));
     conditions.addAll(hiddenWhen.map((e) => e.copyWith(value: false)));
 
-    if (type! == ConditionType.conditions) {
+    if (conditionScreen == null) {
       visibleValue = ArgoUtils.valueFromConditionByBreakpoints<bool>(
         context: context,
         condition: conditions,
         localBreakpoints: localBreakpoints,
-        defaultValue: visibleValue,
-      )!;
+      );
     } else {
       visibleValue = ArgoUtils.valueFromConditionByScreen<bool>(
         context: context,
-        condition: conditionScreen,
+        condition: conditionScreen!,
         localBreakpoints: localBreakpoints,
-        defaultValue: visibleValue,
-      )!;
+      );
     }
 
-    return visibleValue;
+    return visibleValue ?? defaultVisibility;
   }
 }
-
-const _defaultConditionScreenVisibility = ConditionScreen<bool>(
-  mobile: true,
-  tablet: false,
-  desktop: false,
-);

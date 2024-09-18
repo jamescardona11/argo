@@ -35,7 +35,6 @@ T? valueFromConditionByScreenFunc<T>({
   required BuildContext context,
   required ConditionScreen<T> condition,
   ScreenBreakpoints? localBreakpoints,
-  required T defaultValue,
 }) {
   final globalBreakpoints = ResponsiveWrapper.getGlobalBreakpoints(context);
 

@@ -1,7 +1,6 @@
-import 'package:flutter/widgets.dart';
-
-import 'package:argo/src/utils/utils.dart';
 import 'package:argo/src/models/models.dart';
+import 'package:argo/src/utils/utils.dart';
+import 'package:flutter/widgets.dart';
 
 /// {@template argo_utils}
 ///
@@ -29,20 +28,15 @@ class ArgoUtils {
     T? defaultValue,
   }) =>
       valueFromConditionByBreakpointsFunc<T>(
-          context: context,
-          condition: condition,
-          localBreakpoints: localBreakpoints,
-          defaultValue: defaultValue);
+          context: context, condition: condition, localBreakpoints: localBreakpoints, defaultValue: defaultValue);
 
   static T? valueFromConditionByScreen<T>({
     required BuildContext context,
     required ConditionScreen<T> condition,
     ScreenBreakpoints? localBreakpoints,
-    required T defaultValue,
   }) =>
       valueFromConditionByScreenFunc<T>(
         context: context,
         condition: condition,
-        defaultValue: defaultValue,
       );
 }
