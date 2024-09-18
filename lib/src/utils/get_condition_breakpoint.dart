@@ -1,8 +1,7 @@
+import 'package:argo/src/models/models.dart';
+import 'package:argo/src/widgets/responsive_wrapper.dart';
 import 'package:flutter/widgets.dart';
 
-import 'package:argo/src/widgets/responsive_wrapper.dart';
-import 'package:argo/src/extensions/list_extension.dart';
-import 'package:argo/src/models/models.dart';
 import 'get_current_breakpoints.dart';
 
 /// {@template get_conditions_breakpoints}
@@ -76,9 +75,8 @@ ConditionBreakpoint<T>? _getActiveCondition<T>(
 
   final ConditionBreakpoint<T>? equalsCondition = conditions
       .where((element) => element.conditional == Conditional.EQUALS)
-      .firstWhereOrNull((element) =>
-          DeviceScreenX.fromBreakpoint(deviceWith, breakpoints) ==
-          element.screenType);
+      .where((element) => DeviceScreenX.fromBreakpoint(deviceWith, breakpoints) == element.screenType)
+      .firstOrNull;
 
   if (equalsCondition != null) {
     return equalsCondition;
@@ -86,7 +84,8 @@ ConditionBreakpoint<T>? _getActiveCondition<T>(
 
   final ConditionBreakpoint<T>? smallerThanCondition = conditions
       .where((element) => element.conditional == Conditional.SMALLER_THAN)
-      .firstWhereOrNull((element) => deviceWith < element.breakpoint!);
+      .where((element) => deviceWith < element.breakpoint!)
+      .firstOrNull;
 
   if (smallerThanCondition != null) {
     return smallerThanCondition;
@@ -94,7 +93,8 @@ ConditionBreakpoint<T>? _getActiveCondition<T>(
 
   final ConditionBreakpoint<T>? largerThanCondition = conditions.reversed
       .where((element) => element.conditional == Conditional.LARGER_THAN)
-      .firstWhereOrNull((element) => deviceWith >= element.breakpoint!);
+      .where((element) => deviceWith >= element.breakpoint!)
+      .firstOrNull;
 
   if (largerThanCondition != null) {
     return largerThanCondition;
@@ -109,9 +109,7 @@ List<ConditionBreakpoint<T>> _setDefaultValuesToConditions<T>(
 ) =>
     conditions.map((cdt) {
       if (cdt.breakpoint == null) {
-        return cdt.copyWith(
-            breakpoint:
-                cdt.screenType!.getScreenValue(currentBreakpoints)!.value);
+        return cdt.copyWith(breakpoint: cdt.screenType!.getScreenValue(currentBreakpoints)!.value);
       }
       return cdt;
     }).toList();

@@ -1,15 +1,19 @@
 import 'package:argo/src/models/models.dart';
 
 /// Enum that stores an interpretation of `ScreenType` for apps
-enum DeviceScreen { mobile, tablet, desktop }
+enum DeviceScreen {
+  mobile,
+  tablet,
+  desktop;
+
+  bool isMobile() => this == DeviceScreen.mobile;
+  bool isTablet() => this == DeviceScreen.tablet;
+  bool isDesktop() => this == DeviceScreen.desktop;
+}
 
 /// Extension to compare and get type of [DeviceScreen] easily,
 /// additionally we can get the value depending of the current `screen` with `getScreenValue` method
 extension DeviceScreenX on DeviceScreen {
-  bool isMobile() => this == DeviceScreen.mobile;
-  bool isTablet() => this == DeviceScreen.tablet;
-  bool isDesktop() => this == DeviceScreen.desktop;
-
   T? getScreenValue<T>(ScreenModel<T> sbp) => {
         DeviceScreen.mobile: sbp.mobile,
         DeviceScreen.tablet: sbp.tablet,

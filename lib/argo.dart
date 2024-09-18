@@ -1,6 +1,6 @@
 library argo;
 
-export 'src/extensions/responsive_extension.dart';
+export 'src/extensions/argo_extension.dart';
 export 'src/models/models.dart'
     show
         ConditionBreakpoint,
