@@ -23,8 +23,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  argo:
-    path: ../../
+  argo: ^0.0.3
+  # argo:
+  #   path: ../../
 
 dev_dependencies:
   flutter_test:
