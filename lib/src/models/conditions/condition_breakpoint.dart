@@ -1,9 +1,7 @@
-import 'package:argo/src/models/conditional_enum.dart';
-import 'package:argo/src/models/screen_breakpoints.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:argo/src/models/conditions/conditional_enum.dart';
 
+import '../device_screen.dart';
 import 'condition.dart';
-import 'device_screen.dart';
 
 /// {@template condition_breakpoint}
 ///
@@ -93,10 +91,4 @@ class ConditionBreakpoint<T> extends Condition<T> {
         value: value ?? this.value,
         breakpoint: breakpoint ?? this.breakpoint,
       );
-
-  valueFromConditionByBreakpointsFunc(
-      {required BuildContext context,
-      required List<ConditionBreakpoint<bool>> condition,
-      required ScreenBreakpoints localBreakpoints,
-      required bool defaultValue}) {}
 }

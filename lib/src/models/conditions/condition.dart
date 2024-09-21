@@ -1,5 +1,5 @@
+import '../screen_model.dart';
 import 'conditional_enum.dart';
-import 'screen_model.dart';
 
 /// {@template condition}
 ///

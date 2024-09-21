@@ -1,4 +1,4 @@
-import 'package:argo/src/models/condition_breakpoint.dart';
+import 'package:argo/src/models/conditions/condition_breakpoint.dart';
 import 'package:argo/src/models/device_screen.dart';
 import 'package:argo/src/models/screen_breakpoints.dart';
 import 'package:argo/src/utils/get_condition_breakpoint.dart';

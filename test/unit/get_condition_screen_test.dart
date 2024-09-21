@@ -1,4 +1,4 @@
-import 'package:argo/src/models/condition_screen.dart';
+import 'package:argo/src/models/conditions/condition_screen.dart';
 import 'package:argo/src/models/screen_breakpoints.dart';
 import 'package:argo/src/utils/get_condition_screen.dart';
 import 'package:argo/src/widgets/responsive_wrapper.dart';
