@@ -10,7 +10,7 @@ import 'package:flutter/widgets.dart';
 /// {@endtemplate}
 
 class ResponsiveVisibility extends StatelessWidget {
-  const ResponsiveVisibility.conditions({
+  const ResponsiveVisibility.byConditions({
     super.key,
     required this.child,
     this.defaultVisibility = false,
@@ -19,16 +19,12 @@ class ResponsiveVisibility extends StatelessWidget {
     this.localBreakpoints,
   }) : conditionScreen = null;
 
-  const ResponsiveVisibility.screen({
+  const ResponsiveVisibility.byScreen({
     super.key,
     required this.child,
+    required ConditionScreen<bool> conditionScreen,
     this.defaultVisibility = false,
     this.localBreakpoints,
-    ConditionScreen<bool> conditionScreen = const ConditionScreen<bool>(
-      mobile: true,
-      tablet: false,
-      desktop: false,
-    ),
   })  : conditionScreen = conditionScreen,
         visibleWhen = const [],
         hiddenWhen = const [];
@@ -53,27 +49,19 @@ class ResponsiveVisibility extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Initialize mutable value holders.
-    final bool visibleValue = getVisibilityValue(context);
-
-    return Visibility(
-      visible: visibleValue,
-      child: child,
-    );
-  }
-
-  bool getVisibilityValue(BuildContext context) {
-    final List<ConditionBreakpoint<bool>> conditions = [];
     bool? visibleValue;
+    final size = MediaQuery.sizeOf(context);
 
     // Combine Conditions.
+    final List<ConditionBreakpoint<bool>> conditions = [];
     conditions.addAll(visibleWhen.map((e) => e.copyWith(value: true)));
     conditions.addAll(hiddenWhen.map((e) => e.copyWith(value: false)));
 
     if (conditionScreen == null) {
-      visibleValue = ArgoUtils.valueFromConditionByBreakpoints<bool>(
+      visibleValue = GetConditionBreakpoint<bool>().value(
         context: context,
-        condition: conditions,
+        size: size,
+        conditions: conditions,
         localBreakpoints: localBreakpoints,
       );
     } else {
@@ -84,6 +72,9 @@ class ResponsiveVisibility extends StatelessWidget {
       );
     }
 
-    return visibleValue ?? defaultVisibility;
+    return Visibility(
+      visible: visibleValue ?? defaultVisibility,
+      child: child,
+    );
   }
 }

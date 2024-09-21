@@ -50,16 +50,17 @@ void main() {
       const width = 800;
       const height = 1000;
       final dpi = tester.view.devicePixelRatio;
-      tester.view.physicalSize = Size(width * dpi, height * dpi);
+      final size = Size(width * dpi, height * dpi);
+      tester.view.physicalSize = size;
 
       await tester.pumpWidget(
         configWidget(
           (BuildContext context) {
-            final value = valueFromConditionByBreakpointsFunc<bool>(
+            final value = GetConditionBreakpoint<bool>().value(
               context: context,
-              condition: conditions,
+              size: size,
+              conditions: conditions,
               localBreakpoints: screenBreakpoints,
-              defaultValue: true,
             );
 
             expect(value, false);
@@ -93,16 +94,17 @@ void main() {
       const width = 1200;
       const height = 1400;
       final dpi = tester.view.devicePixelRatio;
-      tester.view.physicalSize = Size(width * dpi, height * dpi);
+      final size = Size(width * dpi, height * dpi);
+      tester.view.physicalSize = size;
 
       await tester.pumpWidget(
         configWidget(
           (BuildContext context) {
-            final value = valueFromConditionByBreakpointsFunc<bool>(
+            final value = GetConditionBreakpoint<bool>().value(
               context: context,
-              condition: conditions,
+              size: size,
+              conditions: conditions,
               localBreakpoints: screenBreakpoints,
-              defaultValue: true,
             );
 
             expect(value, true);
@@ -124,16 +126,17 @@ void main() {
       const width = 450;
       const height = 1400;
       final dpi = tester.view.devicePixelRatio;
-      tester.view.physicalSize = Size(width * dpi, height * dpi);
+      final size = Size(width * dpi, height * dpi);
+      tester.view.physicalSize = size;
 
       await tester.pumpWidget(
         configWidget(
           (BuildContext context) {
-            final value = valueFromConditionByBreakpointsFunc<bool>(
+            final value = GetConditionBreakpoint<bool>().value(
               context: context,
-              condition: conditions,
+              size: size,
+              conditions: conditions,
               localBreakpoints: screenBreakpoints,
-              defaultValue: false,
             );
 
             expect(value, false);
@@ -155,16 +158,17 @@ void main() {
       const width = 450;
       const height = 1400;
       final dpi = tester.view.devicePixelRatio;
-      tester.view.physicalSize = Size(width * dpi, height * dpi);
+      final size = Size(width * dpi, height * dpi);
+      tester.view.physicalSize = size;
 
       await tester.pumpWidget(
         configWidget(
           (BuildContext context) {
-            final value = valueFromConditionByBreakpointsFunc<bool>(
+            final value = GetConditionBreakpoint<bool>().value(
               context: context,
-              condition: conditions,
+              size: size,
+              conditions: conditions,
               localBreakpoints: screenBreakpoints,
-              defaultValue: false,
             );
 
             expect(value, true);

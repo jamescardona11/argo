@@ -21,15 +21,6 @@ class ArgoUtils {
         local: local,
       );
 
-  static T? valueFromConditionByBreakpoints<T>({
-    required BuildContext context,
-    required List<ConditionBreakpoint<T>> condition,
-    ScreenBreakpoints? localBreakpoints,
-    T? defaultValue,
-  }) =>
-      valueFromConditionByBreakpointsFunc<T>(
-          context: context, condition: condition, localBreakpoints: localBreakpoints, defaultValue: defaultValue);
-
   static T? valueFromConditionByScreen<T>({
     required BuildContext context,
     required ConditionScreen<T> condition,

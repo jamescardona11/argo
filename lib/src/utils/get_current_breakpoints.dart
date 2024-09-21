@@ -21,8 +21,7 @@ ScreenBreakpoints getCurrentBreakPointsFunc({
   final _tablet = _getDefaultOrValue(DeviceScreen.tablet, isMin, global);
   final _desktop = _getDefaultOrValue(DeviceScreen.desktop, isMin, global);
 
-  final defaultBreakPoints =
-      isMin ? defaultMinimumBreakPoints : defaultMaximumBreakPoints;
+  final defaultBreakPoints = isMin ? defaultMinimumBreakPoints : defaultMaximumBreakPoints;
 
   return defaultBreakPoints.copyWith(
     mobile: _getDoubleValue(local?.mobile, _mobile),
@@ -31,8 +30,7 @@ ScreenBreakpoints getCurrentBreakPointsFunc({
   );
 }
 
-SBValue _getDefaultOrValue(
-    DeviceScreen device, bool isMin, ScreenBreakpoints global) {
+SBValue _getDefaultOrValue(DeviceScreen device, bool isMin, ScreenBreakpoints global) {
   late SBValue _global;
   late SBValue _defaultMin;
   late SBValue _defaultMax;

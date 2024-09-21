@@ -1,4 +1,6 @@
 import 'package:argo/src/models/conditional_enum.dart';
+import 'package:argo/src/models/screen_breakpoints.dart';
+import 'package:flutter/src/widgets/framework.dart';
 
 import 'condition.dart';
 import 'device_screen.dart';
@@ -43,7 +45,6 @@ import 'device_screen.dart';
 class ConditionBreakpoint<T> extends Condition<T> {
   const ConditionBreakpoint._({
     this.screenType,
-    // ignore: avoid_unused_constructor_parameters
     required super.conditional,
     this.value,
     this.breakpoint,
@@ -73,7 +74,7 @@ class ConditionBreakpoint<T> extends Condition<T> {
 
   const ConditionBreakpoint.smallerThan({this.screenType, this.breakpoint, this.value}) : super.smallerThan(value);
 
-  bool get isNull => breakpoint == null && screenType == null;
+  bool get hasNull => breakpoint == null && screenType == null;
 
   @override
   String toString() =>
@@ -92,4 +93,10 @@ class ConditionBreakpoint<T> extends Condition<T> {
         value: value ?? this.value,
         breakpoint: breakpoint ?? this.breakpoint,
       );
+
+  valueFromConditionByBreakpointsFunc(
+      {required BuildContext context,
+      required List<ConditionBreakpoint<bool>> condition,
+      required ScreenBreakpoints localBreakpoints,
+      required bool defaultValue}) {}
 }

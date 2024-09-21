@@ -31,6 +31,14 @@ import 'utils.dart';
 ///
 /// {@endtemplate }
 
+class GetConditionScreen {
+  T? valueFromScreenCondition<T>({
+    required BuildContext context,
+    required ConditionScreen<T> condition,
+    ScreenBreakpoints? localBreakpoints,
+  }) {}
+}
+
 T? valueFromConditionByScreenFunc<T>({
   required BuildContext context,
   required ConditionScreen<T> condition,

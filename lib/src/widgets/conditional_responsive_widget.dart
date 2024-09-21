@@ -1,5 +1,5 @@
 import 'package:argo/src/models/models.dart';
-import 'package:argo/src/utils/utils.dart';
+import 'package:argo/src/utils/get_condition_breakpoint.dart';
 import 'package:flutter/widgets.dart';
 
 /// {@template conditional_responsive_widget}
@@ -28,10 +28,13 @@ class ConditionalResponsiveWidget<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
+
     // Initialize mutable value holders.
-    final value = valueFromConditionByBreakpointsFunc<T>(
+    final value = GetConditionBreakpoint<T>().value(
       context: context,
-      condition: conditionsMatch,
+      size: size,
+      conditions: conditionsMatch,
       localBreakpoints: localBreakpoints,
     );
 

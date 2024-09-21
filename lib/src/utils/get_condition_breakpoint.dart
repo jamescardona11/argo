@@ -31,83 +31,70 @@ import 'utils.dart';
 ///
 ///{@endtemplate}
 
-T? valueFromConditionByBreakpointsFunc<T>({
-  required BuildContext context,
-  required List<ConditionBreakpoint<T>> condition,
-  ScreenBreakpoints? localBreakpoints,
-  T? defaultValue,
-}) {
-  final nCondition = List<ConditionBreakpoint<T>>.from(condition);
+class GetConditionBreakpoint<T> {
+  T? value({
+    required BuildContext context,
+    required Size size,
+    required List<ConditionBreakpoint<T>> conditions,
+    ScreenBreakpoints? localBreakpoints,
+  }) {
+    final breakpoints = ResponsiveWrapper.breakpoints(context, local: localBreakpoints);
+    final valueWhen = conditions
+        .where((element) => !element.hasNull)
+        .map((cdt) {
+          if (cdt.breakpoint == null) {
+            return cdt.copyWith(breakpoint: cdt.screenType!.getScreenValue(breakpoints)?.value);
+          }
+          return cdt;
+        })
+        .where((element) => !element.hasNull)
+        .toList();
 
-  nCondition.removeWhere((element) => element.isNull);
+    valueWhen.sort((a, b) => a.breakpoint!.compareTo(b.breakpoint!));
 
-  final globalBreakpoints = ResponsiveWrapper.getGlobalBreakpoints(context);
-  final breakpoints = getCurrentBreakPointsFunc(
-    global: globalBreakpoints,
-    local: localBreakpoints,
-  );
+    final activeCondition = _getActiveCondition(
+      size,
+      valueWhen,
+      breakpoints,
+    );
 
-  final valueWhen = _setDefaultValuesToConditions<T>(
-    breakpoints,
-    nCondition,
-  );
+    return activeCondition?.value;
+  }
 
-  valueWhen.sort((a, b) => a.breakpoint!.compareTo(b.breakpoint!));
+  ConditionBreakpoint<T>? _getActiveCondition<T>(
+    Size size,
+    List<ConditionBreakpoint<T>> conditions,
+    ScreenBreakpoints breakpoints,
+  ) {
+    final deviceWith = getSizeByPlatform(size);
 
-  final activeCondition = _getActiveCondition<T>(
-    context,
-    valueWhen,
-    breakpoints,
-  );
+    final ConditionBreakpoint<T>? equalsCondition = conditions
+        .where((element) => element.conditional == Conditional.EQUALS)
+        .where((element) => DeviceScreenX.fromBreakpoint(deviceWith, breakpoints) == element.screenType)
+        .firstOrNull;
 
-  return activeCondition?.value ?? defaultValue;
+    if (equalsCondition != null) {
+      return equalsCondition;
+    }
+
+    final ConditionBreakpoint<T>? smallerThanCondition = conditions
+        .where((element) => element.conditional == Conditional.SMALLER_THAN)
+        .where((element) => deviceWith < element.breakpoint!)
+        .firstOrNull;
+
+    if (smallerThanCondition != null) {
+      return smallerThanCondition;
+    }
+
+    final ConditionBreakpoint<T>? largerThanCondition = conditions.reversed
+        .where((element) => element.conditional == Conditional.LARGER_THAN)
+        .where((element) => deviceWith >= element.breakpoint!)
+        .firstOrNull;
+
+    if (largerThanCondition != null) {
+      return largerThanCondition;
+    }
+
+    return null;
+  }
 }
-
-ConditionBreakpoint<T>? _getActiveCondition<T>(
-  BuildContext context,
-  List<ConditionBreakpoint<T>> conditions,
-  ScreenBreakpoints breakpoints,
-) {
-  final size = context.sizePx;
-  final deviceWith = getSizeByPlatform(size);
-
-  final ConditionBreakpoint<T>? equalsCondition = conditions
-      .where((element) => element.conditional == Conditional.EQUALS)
-      .where((element) => DeviceScreenX.fromBreakpoint(deviceWith, breakpoints) == element.screenType)
-      .firstOrNull;
-
-  if (equalsCondition != null) {
-    return equalsCondition;
-  }
-
-  final ConditionBreakpoint<T>? smallerThanCondition = conditions
-      .where((element) => element.conditional == Conditional.SMALLER_THAN)
-      .where((element) => deviceWith < element.breakpoint!)
-      .firstOrNull;
-
-  if (smallerThanCondition != null) {
-    return smallerThanCondition;
-  }
-
-  final ConditionBreakpoint<T>? largerThanCondition = conditions.reversed
-      .where((element) => element.conditional == Conditional.LARGER_THAN)
-      .where((element) => deviceWith >= element.breakpoint!)
-      .firstOrNull;
-
-  if (largerThanCondition != null) {
-    return largerThanCondition;
-  }
-
-  return null;
-}
-
-List<ConditionBreakpoint<T>> _setDefaultValuesToConditions<T>(
-  ScreenBreakpoints currentBreakpoints,
-  List<ConditionBreakpoint<T>> conditions,
-) =>
-    conditions.map((cdt) {
-      if (cdt.breakpoint == null) {
-        return cdt.copyWith(breakpoint: cdt.screenType!.getScreenValue(currentBreakpoints)!.value);
-      }
-      return cdt;
-    }).toList();
