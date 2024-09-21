@@ -13,7 +13,7 @@ class ConditionalResponsiveWidget<T> extends StatelessWidget {
   const ConditionalResponsiveWidget({
     super.key,
     required this.builder,
-    this.conditionsMatch = const [],
+    this.conditions = const [],
     this.localBreakpoints,
   });
 
@@ -21,7 +21,7 @@ class ConditionalResponsiveWidget<T> extends StatelessWidget {
   final CBuilder<T?> builder;
 
   /// List of conditions to show when they are met [ConditionBreakpoint]
-  final List<ConditionBreakpoint<T>> conditionsMatch;
+  final List<ConditionBreakpoint<T>> conditions;
 
   /// Are the local breakpoints for the widget
   final ScreenBreakpoints? localBreakpoints;
@@ -34,7 +34,7 @@ class ConditionalResponsiveWidget<T> extends StatelessWidget {
     final value = GetConditionBreakpoint<T>().value(
       context: context,
       size: size,
-      conditions: conditionsMatch,
+      conditions: conditions,
       localBreakpoints: localBreakpoints,
     );
 

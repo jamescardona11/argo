@@ -77,24 +77,24 @@ class ResponsiveLayoutWidget extends StatelessWidget {
 
         if (info.isDesktop) {
           // If we have supplied the desktop layout then display that
-          if (desktop != null) return returnValue(desktop, context, info);
+          if (desktop != null) return _returnValue(desktop, context, info);
           // If no desktop layout is supplied we want to check if we have the size below it and display that
-          if (tablet != null) return returnValue(tablet, context, info);
+          if (tablet != null) return _returnValue(tablet, context, info);
         }
 
         if (info.deviceScreen.isTablet()) {
-          if (tablet != null) return returnValue(tablet, context, info);
+          if (tablet != null) return _returnValue(tablet, context, info);
         }
 
         // If none of the layouts above are supplied or we're on the mobile layout then we show the mobile layout
-        return mobile != null ? returnValue(mobile, context, info) : const SizedBox();
+        return mobile != null ? _returnValue(mobile, context, info) : const SizedBox();
       },
     );
   }
 
   bool _isRBuilder(dynamic data) => data is RBuilder;
 
-  Widget returnValue(dynamic data, BuildContext context, ResponsiveInformation info) {
+  Widget _returnValue(dynamic data, BuildContext context, ResponsiveInformation info) {
     if (_isRBuilder(data)) {
       return (data as RBuilder)(context, info);
     }
