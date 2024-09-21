@@ -31,31 +31,19 @@ import 'utils.dart';
 ///
 /// {@endtemplate }
 
-class GetConditionScreen {
-  T? valueFromScreenCondition<T>({
+class GetConditionScreen<T> {
+  T? value({
     required BuildContext context,
+    required Size size,
     required ConditionScreen<T> condition,
     ScreenBreakpoints? localBreakpoints,
-  }) {}
-}
+  }) {
+    final breakpoints = ResponsiveWrapper.breakpoints(context, local: localBreakpoints);
 
-T? valueFromConditionByScreenFunc<T>({
-  required BuildContext context,
-  required ConditionScreen<T> condition,
-  ScreenBreakpoints? localBreakpoints,
-}) {
-  final globalBreakpoints = ResponsiveWrapper.getGlobalBreakpoints(context);
+    final deviceWith = getSizeByPlatform(size);
+    final deviceScreenType = DeviceScreenX.fromBreakpoint(deviceWith, breakpoints);
+    final deviceScreen = deviceScreenType.getScreenValue(condition);
 
-  final breakpoints = getCurrentBreakPointsFunc(
-    global: globalBreakpoints,
-    local: localBreakpoints,
-  );
-
-  final size = MediaQuery.of(context).size;
-  final deviceWith = getSizeByPlatform(size);
-  final deviceScreenType = DeviceScreenX.fromBreakpoint(deviceWith, breakpoints);
-
-  final deviceScreen = deviceScreenType.getScreenValue(condition);
-
-  return deviceScreen;
+    return deviceScreen;
+  }
 }

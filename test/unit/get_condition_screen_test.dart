@@ -32,7 +32,8 @@ void main() {
       const width = 800;
       const height = 1000;
       final dpi = tester.view.devicePixelRatio;
-      tester.view.physicalSize = Size(width * dpi, height * dpi);
+      final size = Size(width * dpi, height * dpi);
+      tester.view.physicalSize = size;
 
       await tester.pumpWidget(configWidget());
 
@@ -44,8 +45,9 @@ void main() {
 
       BuildContext context = tester.element(find.byType(MaterialApp));
 
-      final value = valueFromConditionByScreenFunc<String>(
+      final value = GetConditionScreen<String>().value(
         context: context,
+        size: size,
         condition: condition,
         localBreakpoints: screenBreakpoints,
       );
@@ -57,7 +59,9 @@ void main() {
       const width = 1200;
       const height = 1400;
       final dpi = tester.view.devicePixelRatio;
-      tester.view.physicalSize = Size(width * dpi, height * dpi);
+      final size = Size(width * dpi, height * dpi);
+      tester.view.physicalSize = size;
+
       await tester.pumpWidget(configWidget());
 
       BuildContext context = tester.element(find.byType(MaterialApp));
@@ -68,8 +72,9 @@ void main() {
         desktop: true,
       );
 
-      final value = valueFromConditionByScreenFunc<bool>(
+      final value = GetConditionScreen<bool>().value(
         context: context,
+        size: size,
         condition: condition,
         localBreakpoints: screenBreakpoints,
       );

@@ -1,6 +1,5 @@
 import 'package:argo/src/models/models.dart';
 import 'package:argo/src/utils/utils.dart';
-import 'package:flutter/widgets.dart';
 
 /// {@template argo_utils}
 ///
@@ -19,15 +18,5 @@ class ArgoUtils {
       getCurrentBreakPointsFunc(
         global: global,
         local: local,
-      );
-
-  static T? valueFromConditionByScreen<T>({
-    required BuildContext context,
-    required ConditionScreen<T> condition,
-    ScreenBreakpoints? localBreakpoints,
-  }) =>
-      valueFromConditionByScreenFunc<T>(
-        context: context,
-        condition: condition,
       );
 }

@@ -52,12 +52,12 @@ class ResponsiveVisibility extends StatelessWidget {
     bool? visibleValue;
     final size = MediaQuery.sizeOf(context);
 
-    // Combine Conditions.
-    final List<ConditionBreakpoint<bool>> conditions = [];
-    conditions.addAll(visibleWhen.map((e) => e.copyWith(value: true)));
-    conditions.addAll(hiddenWhen.map((e) => e.copyWith(value: false)));
-
     if (conditionScreen == null) {
+      // Combine Conditions.
+      final List<ConditionBreakpoint<bool>> conditions = [];
+      conditions.addAll(visibleWhen.map((e) => e.copyWith(value: true)));
+      conditions.addAll(hiddenWhen.map((e) => e.copyWith(value: false)));
+
       visibleValue = GetConditionBreakpoint<bool>().value(
         context: context,
         size: size,
@@ -65,8 +65,9 @@ class ResponsiveVisibility extends StatelessWidget {
         localBreakpoints: localBreakpoints,
       );
     } else {
-      visibleValue = ArgoUtils.valueFromConditionByScreen<bool>(
+      visibleValue = GetConditionScreen<bool>().value(
         context: context,
+        size: size,
         condition: conditionScreen!,
         localBreakpoints: localBreakpoints,
       );
