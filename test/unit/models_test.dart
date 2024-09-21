@@ -111,7 +111,7 @@ void main() {
     });
 
     test('Get DeviceType from Breakpoint', () {
-      final mSize = getSizeByPlatform(size, shortestSide: false);
+      final mSize = getSizeByPlatform(size);
       final dst = DeviceScreenX.fromBreakpoint(mSize, screenBreakpoints!);
       expect(dst, DeviceScreen.desktop);
     });

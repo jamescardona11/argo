@@ -21,14 +21,14 @@ class ResponsiveBuilder extends StatelessWidget {
   const ResponsiveBuilder({
     super.key,
     required this.builder,
-    this.breakpoints,
+    this.localBreakpoints,
   });
 
   /// Returns [RBuilder] with the responsive information
   final RBuilder builder;
 
   /// Are the local breakpoints for the widget
-  final ScreenBreakpoints? breakpoints;
+  final ScreenBreakpoints? localBreakpoints;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class ResponsiveBuilder extends StatelessWidget {
       final info = getResponsiveInformation(
         context: context,
         localSize: Size(boxConstraints.maxWidth, boxConstraints.maxHeight),
-        localBreakpoints: breakpoints,
+        localBreakpoints: localBreakpoints,
       );
 
       return builder(context, info);

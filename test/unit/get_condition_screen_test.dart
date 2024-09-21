@@ -48,10 +48,7 @@ void main() {
         context: context,
         condition: condition,
         localBreakpoints: screenBreakpoints,
-        defaultValue: 'TEST',
       );
-
-      debugPrint(value);
 
       expect(value, 'Tablet');
     });
@@ -75,7 +72,6 @@ void main() {
         context: context,
         condition: condition,
         localBreakpoints: screenBreakpoints,
-        defaultValue: false,
       );
 
       expect(value, true);

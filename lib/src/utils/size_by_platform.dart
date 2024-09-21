@@ -1,6 +1,5 @@
-import 'package:flutter/widgets.dart';
-
 import 'package:argo/src/platform_info/platform_info.dart';
+import 'package:flutter/widgets.dart';
 
 /// {@template size_by_platform}
 ///
@@ -11,15 +10,11 @@ import 'package:argo/src/platform_info/platform_info.dart';
 /// The `shortestSide` serves when the device are in landscape mode don't be confuse with a `tablet` screen
 ///
 /// {@endtemplate}
-double getSizeByPlatform(Size size, {bool shortestSide = false}) {
-  if (shortestSide) {
-    double deviceWidth = size.shortestSide;
-    if (PlatformInfo.isWeb) {
-      deviceWidth = size.width;
-    }
-
-    return deviceWidth;
+double getSizeByPlatform(Size size) {
+  double deviceWidth = size.shortestSide;
+  if (PlatformInfo.isWeb) {
+    deviceWidth = size.width;
   }
 
-  return size.width;
+  return deviceWidth;
 }

@@ -1,3 +1,4 @@
+import 'package:argo/src/extensions/responsive_extension.dart';
 import 'package:argo/src/models/typedef.dart';
 import 'package:argo/src/utils/get_responsive_information.dart';
 import 'package:flutter/widgets.dart';
@@ -37,11 +38,8 @@ class OrientationLayoutBuilder extends StatelessWidget {
           localSize: Size(boxConstraints.maxWidth, boxConstraints.maxHeight),
         );
 
-        final orientation = MediaQuery.of(context).orientation;
-        if (orientation == Orientation.landscape) {
-          if (landscape != null) {
-            return landscape!(context, info);
-          }
+        if (context.isLandscape && landscape != null) {
+          return landscape!(context, info);
         }
         return portrait(context, info);
       },

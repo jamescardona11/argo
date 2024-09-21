@@ -1,3 +1,4 @@
+import 'package:argo/src/extensions/responsive_extension.dart';
 import 'package:argo/src/models/models.dart';
 import 'package:argo/src/widgets/responsive_wrapper.dart';
 import 'package:flutter/widgets.dart';
@@ -29,17 +30,17 @@ ResponsiveInformation getResponsiveInformation({
     local: localBreakpoints,
   );
 
-  final mp = MediaQuery.of(context);
-  final deviceWith = getSizeByPlatform(mp.size);
+  final size = context.sizePx;
+  final deviceWith = getSizeByPlatform(size);
 
   final deviceScreen = DeviceScreenX.fromBreakpoint(deviceWith, breakpoints);
   deviceScreen.isMobile();
 
   return ResponsiveInformation(
     deviceScreen: deviceScreen,
-    screenSize: mp.size,
-    localSize: localSize ?? mp.size,
+    screenSize: size,
+    localSize: localSize ?? size,
     currentBreakpoints: breakpoints,
-    orientation: mp.orientation,
+    orientation: context.orientation,
   );
 }

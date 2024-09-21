@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:argo/src/platform_info/platform_info.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 /// {@template responsive_extension}
 ///
@@ -22,6 +23,9 @@ extension ResponsiveContext on BuildContext {
 
   /// Returns same as MediaQuery.of(context).size
   Size get sizePx => MediaQuery.sizeOf(this);
+
+  /// Returns same as MediaQuery.of(context).orientation
+  Orientation get orientation => MediaQuery.orientationOf(this);
 
   /// Returns same as MediaQuery.of(context).size.width
   double get widthPx => sizePx.width;
