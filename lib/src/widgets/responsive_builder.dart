@@ -32,9 +32,11 @@ class ResponsiveBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
     return LayoutBuilder(builder: (context, boxConstraints) {
-      final info = getResponsiveInformation(
+      final info = GetResponsiveInformation().value(
         context: context,
+        screenSize: size,
         localSize: Size(boxConstraints.maxWidth, boxConstraints.maxHeight),
         localBreakpoints: localBreakpoints,
       );

@@ -11,10 +11,9 @@ import 'package:flutter/widgets.dart';
 ///
 /// {@endtemplate}
 double getSizeByPlatform(Size size) {
-  double deviceWidth = size.shortestSide;
   if (PlatformInfo.isWeb) {
-    deviceWidth = size.width;
+    return size.width;
   }
 
-  return deviceWidth;
+  return size.shortestSide;
 }

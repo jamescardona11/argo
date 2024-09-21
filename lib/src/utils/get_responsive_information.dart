@@ -19,24 +19,26 @@ import 'utils.dart';
 /// `localBreakpoints` are the local breakpoints for the widget.
 ///
 /// {@endtemplate}
-ResponsiveInformation getResponsiveInformation({
-  required BuildContext context,
-  Size? localSize,
-  ScreenBreakpoints? localBreakpoints,
-}) {
-  final breakpoints = ResponsiveWrapper.breakpoints(context, local: localBreakpoints);
+class GetResponsiveInformation {
+  ResponsiveInformation value({
+    required BuildContext context,
+    required Size screenSize,
+    required Size localSize,
+    ScreenBreakpoints? localBreakpoints,
+  }) {
+    final breakpoints = ResponsiveWrapper.breakpoints(context, local: localBreakpoints);
 
-  final size = context.sizePx;
-  final deviceWith = getSizeByPlatform(size);
+    final deviceWith = getSizeByPlatform(screenSize);
 
-  final deviceScreen = DeviceScreenX.fromBreakpoint(deviceWith, breakpoints);
-  deviceScreen.isMobile();
+    final deviceScreen = DeviceScreenX.fromBreakpoint(deviceWith, breakpoints);
+    deviceScreen.isMobile();
 
-  return ResponsiveInformation(
-    deviceScreen: deviceScreen,
-    screenSize: size,
-    localSize: localSize ?? size,
-    currentBreakpoints: breakpoints,
-    orientation: context.orientation,
-  );
+    return ResponsiveInformation(
+      deviceScreen: deviceScreen,
+      screenSize: screenSize,
+      localSize: localSize,
+      currentBreakpoints: breakpoints,
+      orientation: context.orientation,
+    );
+  }
 }

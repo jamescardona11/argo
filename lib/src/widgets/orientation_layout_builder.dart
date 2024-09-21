@@ -31,10 +31,12 @@ class OrientationLayoutBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints boxConstraints) {
-        final info = getResponsiveInformation(
+        final info = GetResponsiveInformation().value(
           context: context,
+          screenSize: size,
           localSize: Size(boxConstraints.maxWidth, boxConstraints.maxHeight),
         );
 

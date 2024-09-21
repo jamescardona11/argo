@@ -14,5 +14,4 @@ export 'src/models/models.dart'
         CBuilder,
         OnWidgetSizeChange;
 export 'src/platform_info/platform_info.dart';
-export 'src/utils/utils.dart' show ArgoUtils;
 export 'src/widgets/widgets.dart';

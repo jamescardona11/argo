@@ -1,9 +1,9 @@
 import 'package:argo/src/models/responsive_information.dart';
+import 'package:argo/src/utils/get_responsive_information.dart';
 import 'package:flutter/widgets.dart';
 
 import '../models/screen_breakpoints.dart';
 import '../models/typedef.dart';
-import '../utils/get_responsive_information.dart';
 
 /// {@template responsive_layout_widget}
 ///
@@ -67,10 +67,12 @@ class ResponsiveLayoutWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints boxConstraints) {
-        final info = getResponsiveInformation(
+        final info = GetResponsiveInformation().value(
           context: context,
+          screenSize: size,
           localSize: Size(boxConstraints.maxWidth, boxConstraints.maxHeight),
           localBreakpoints: breakpoints,
         );
