@@ -24,11 +24,7 @@ ResponsiveInformation getResponsiveInformation({
   Size? localSize,
   ScreenBreakpoints? localBreakpoints,
 }) {
-  final globalBreakpoints = ResponsiveWrapper.getGlobalBreakpoints(context);
-  final breakpoints = getCurrentBreakPointsFunc(
-    global: globalBreakpoints,
-    local: localBreakpoints,
-  );
+  final breakpoints = ResponsiveWrapper.breakpoints(context, local: localBreakpoints);
 
   final size = context.sizePx;
   final deviceWith = getSizeByPlatform(size);
