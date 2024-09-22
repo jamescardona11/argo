@@ -58,12 +58,14 @@ class ResponsiveVisibility extends StatelessWidget {
       conditions.addAll(visibleWhen.map((e) => e.copyWith(value: true)));
       conditions.addAll(hiddenWhen.map((e) => e.copyWith(value: false)));
 
-      visibleValue = GetConditionBreakpoint<bool>().value(
-        context: context,
-        size: size,
-        conditions: conditions,
-        localBreakpoints: localBreakpoints,
-      );
+      visibleValue = GetConditionBreakpoint<bool>()
+          .value(
+            context: context,
+            size: size,
+            conditions: conditions,
+            localBreakpoints: localBreakpoints,
+          )
+          ?.value;
     } else {
       visibleValue = GetConditionScreen<bool>().value(
         context: context,

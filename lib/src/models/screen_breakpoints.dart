@@ -83,20 +83,25 @@ class ScreenBreakpoints extends ScreenModel<SBValue> {
       );
 }
 
+abstract class Breakpoint {
+  static const double md = 700;
+  static const double lg = 1200;
+}
+
 /// Minimum values breakpoints for [DeviceScreen].
 ///
 /// This values are used when `globalBreakpoints` in the [ResponsiveWrapper] aren't set.
 const defaultMinimumBreakPoints = ScreenBreakpoints._defaultValues(
   mobile: SBValue.zero(),
-  tablet: SBValue.min(700),
-  desktop: SBValue.min(1200),
+  tablet: SBValue.min(Breakpoint.md),
+  desktop: SBValue.min(Breakpoint.lg),
 );
 
 /// Maximum values breakpoints for [DeviceScreen].
 ///
 /// This values are used when `globalBreakpoints` in the [ResponsiveWrapper] aren't set.
 const defaultMaximumBreakPoints = ScreenBreakpoints._defaultValues(
-  mobile: SBValue.max(700),
-  tablet: SBValue.max(1200),
+  mobile: SBValue.max(Breakpoint.md),
+  tablet: SBValue.max(Breakpoint.lg),
   desktop: SBValue.inf(),
 );

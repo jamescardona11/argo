@@ -32,7 +32,7 @@ import 'utils.dart';
 ///{@endtemplate}
 
 class GetConditionBreakpoint<T> {
-  T? value({
+  ConditionBreakpoint<T>? value({
     required BuildContext context,
     required Size size,
     required List<ConditionBreakpoint<T>> conditions,
@@ -58,7 +58,7 @@ class GetConditionBreakpoint<T> {
       breakpoints,
     );
 
-    return activeCondition?.value;
+    return activeCondition;
   }
 
   ConditionBreakpoint<T>? _getActiveCondition<T>(
@@ -79,7 +79,7 @@ class GetConditionBreakpoint<T> {
 
     final ConditionBreakpoint<T>? smallerThanCondition = conditions
         .where((element) => element.conditional == Conditional.SMALLER_THAN)
-        .where((element) => deviceWith < element.breakpoint!)
+        .where((element) => deviceWith <= element.breakpoint!)
         .firstOrNull;
 
     if (smallerThanCondition != null) {
@@ -88,7 +88,7 @@ class GetConditionBreakpoint<T> {
 
     final ConditionBreakpoint<T>? largerThanCondition = conditions.reversed
         .where((element) => element.conditional == Conditional.LARGER_THAN)
-        .where((element) => deviceWith >= element.breakpoint!)
+        .where((element) => deviceWith > element.breakpoint!)
         .firstOrNull;
 
     if (largerThanCondition != null) {

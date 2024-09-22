@@ -3,6 +3,7 @@ library argo;
 export 'src/extensions/argo_extension.dart';
 export 'src/models/models.dart'
     show
+        Breakpoint,
         ConditionBreakpoint,
         ConditionScreen,
         Conditional,
